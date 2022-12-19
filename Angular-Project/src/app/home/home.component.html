@@ -15,8 +15,8 @@ input {
 }
 
 button {
-  background-color: #04AA6D;
-  color: white;
+  background-color: #939799;
+  color: black;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
@@ -66,8 +66,10 @@ span.psw {
 </style>
 </head>
 <body>
+  <br>
+  <br>
 
-<h2>Login Form</h2>
+<h2>&ensp;Login </h2>
 
 <form action="/action_page.php" method="post">
   <div class="imgcontainer">
@@ -76,22 +78,23 @@ span.psw {
   </div>
 
   <div class="container">
-    <label for="uname"><b>Username</b></label>
+    <label for="uname"><b>Mail id:</b></label>
     <input type="email" placeholder="Enter your Mail Id" name="email" required>
 
-    <label for="psw"><b>Password</b></label>
+    <label for="psw"><b>Password:</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
         
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+    <button type="submit">Login</button><br>
+    
+    <input type="checkbox" checked="checked" name="remember"><label>Remember me</label> 
+  
   </div>
-
-  <div class="container" style="background-color:#f1f1f1">
+  
+  <div class="container" style="background-color:#faf8f8">
     <span class="psw"> <a href="#">Forgot password?</a></span>
   </div>
 </form>
+
 
 </body>
 </html>

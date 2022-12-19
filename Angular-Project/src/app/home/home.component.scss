@@ -2,6 +2,7 @@
 body {
   font-family: Arial;
   color: rgb(15, 15, 15);
+  Overflow-x:scroll;
 }
 
 .split {
@@ -43,3 +44,11 @@ h1{
   font-style: oblique;
 }
 
+input[type=email] {
+  border: 2px solid grey;
+  border-radius: 4px;
+}
+input[type=password] {
+  border: 2px solid grey;
+  border-radius: 4px;
+}
