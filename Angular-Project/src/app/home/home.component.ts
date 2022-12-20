@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+
+
+  constructor (private form:FormBuilder){}
+
+    //this is formbuilder method 
+    addEmployeeForm = this.form.group({
+      email:['abc@gmail.com'],
+      password:[]
+
+    })
+
+
+  }
+
+  // this is form group method
+  // addEmployeeForm = new FormGroup({
+  //   email: new FormControl('vicky'),
+  //   password: new FormControl('')
+
+  // });
   
 
-}
+

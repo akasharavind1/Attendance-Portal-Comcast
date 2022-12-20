@@ -1,7 +1,6 @@
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 </head>
 <body>
   <br>
@@ -9,21 +8,31 @@
 
 <h2>&ensp;Login </h2>
 
-<form >
-  <div class="imgcontainer">
+<form [formGroup]="addEmployeeForm" >
+  
+
+  <!-- <div class="imgcontainer">
     <h1></h1>
     <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
-  </div>
+  <!-- </div> --> 
 
-  <div class="container">
+  <div class="container" >
+
+    {{addEmployeeForm.value |json}}<br>
+
+    
     <label for="uname"><b>Mail ID:</b></label>
-    <input required type="email" placeholder="Enter your Mail Id" name="email" required>
+    <input required type="email" placeholder="Enter your Mail Id" name="email" required formControlName="email">
 
     <label for="psw"><b>Password:</b></label>
-    <input required type="password" placeholder="Enter Password" name="psw" required>
+    <input required type="password" placeholder="Enter Password" name="psw" required formControlName="password" >
         
     <button [routerLink]="'/admin'" type="submit" >Login</button><br>
+
+    <button [routerLink]="'/addemployee'" type="submit" >SignUp</button><br>
     <!-- (click)="goToPage('admin')" -->
+
+    
     
   
     
@@ -38,6 +47,7 @@
     <span class="psw"> <a href="#">Forgot password?</a></span>
   </div>
 </form>
+
 
 
 </body>
