@@ -17,13 +17,15 @@
 
   <div class="container">
     <label for="uname"><b>Mail ID:</b></label>
-    <input type="email" placeholder="Enter your Mail Id" name="email" required>
+    <input required type="email" placeholder="Enter your Mail Id" name="email" required>
 
     <label for="psw"><b>Password:</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input required type="password" placeholder="Enter Password" name="psw" required>
         
-    <button type="submit" [routerLink]="'/admin'">Login</button><br>
+    <button [routerLink]="'/admin'" type="submit" >Login</button><br>
     <!-- (click)="goToPage('admin')" -->
+    
+  
     
     <input type="checkbox" checked="checked" name="remember"><label>Remember me</label> 
     <nav>
