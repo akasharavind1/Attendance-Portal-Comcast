@@ -2,6 +2,11 @@ h1{
     font-style: oblique;
   }
  
+  input[type=text] {
+    border: 2px solid grey;
+    border-radius: 4px;
+  }
+
  input[type=email] {
    border: 2px solid grey;
    border-radius: 4px;
@@ -35,3 +40,8 @@ h1{
    cursor: pointer;
    width: 100%;
  }
+
+ input.ng-invalid.ng-touched.ng-dirty{ 
+  // background:#F84072;
+  border: 2px red solid;
+}

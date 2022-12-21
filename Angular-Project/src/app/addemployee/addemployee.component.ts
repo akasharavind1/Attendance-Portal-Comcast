@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-addemployee',
@@ -10,14 +10,28 @@ export class AddemployeeComponent {
 
   constructor (private form:FormBuilder){}
 
-    //this is formbuilder method 
-    addEmployeeForm = this.form.group({
-      FirstName:[''],
-      LastName:[''],
-      Email:[''],
-      NewPassword:[''],
-      ConfirmPassword:['']
+    addEmployeeForm= this.form.group({
+      firstName:['',Validators.required, Validators.minLength(2)],
+      lastName:[''],
+      email:[''],
+      newPassword:[''],
+      confirmPassword:['']
 
     })
+
+    get firstName(){
+      return this.addEmployeeForm.get('firstName');
+    }
+
+    onSubmit(){
+
+      if(this.addEmployeeForm.invalid){
+
+      }
+      else{
+        
+
+      }
+    }
 
 }
