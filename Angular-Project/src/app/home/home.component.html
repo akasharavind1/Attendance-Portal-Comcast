@@ -6,23 +6,18 @@
   <br>
   <br>
 
-<h2>&ensp;Login </h2>
+<h2>Login: </h2>
 
-<form [formGroup]="addEmployeeForm" >
-  
-
-  <!-- <div class="imgcontainer">
-    <h1></h1>
-    <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
-  <!-- </div> --> 
-
+<form [formGroup]="validateemployee" >
+   
   <div class="container" >
 
-    {{addEmployeeForm.value |json}}<br>
+    {{validateemployee.value |json}}<br>
 
     
     <label for="uname"><b>Mail ID:</b></label>
     <input required type="email" placeholder="Enter your Mail Id" name="email" required formControlName="email">
+
 
     <label for="psw"><b>Password:</b></label>
     <input required type="password" placeholder="Enter Password" name="psw" required formControlName="password" >
@@ -32,14 +27,9 @@
     <button [routerLink]="'/addemployee'" type="submit" >SignUp</button><br>
     <!-- (click)="goToPage('admin')" -->
 
-    
-    
-  
-    
     <input type="checkbox" checked="checked" name="remember"><label>Remember me</label> 
-    <nav>
-      <!-- <a routerLink="admin">Admin link</a> -->
-    </nav>
+    
+
   
   </div>
   

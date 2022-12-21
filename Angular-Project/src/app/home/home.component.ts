@@ -12,9 +12,9 @@ export class HomeComponent {
   constructor (private form:FormBuilder){}
 
     //this is formbuilder method 
-    addEmployeeForm = this.form.group({
-      email:['abc@gmail.com'],
-      password:[]
+    validateemployee = this.form.group({
+      email:[''],
+      password:['']
 
     })
 
