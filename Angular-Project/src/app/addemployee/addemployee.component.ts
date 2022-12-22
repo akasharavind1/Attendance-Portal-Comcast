@@ -15,7 +15,7 @@ export class AddemployeeComponent {
       firstName:['',Validators.required, Validators.minLength(2)],
       lastName:[''],
       email:['',Validators.required],
-      newPassword:['',Validators.required],
+      newPassword:['', Validators.required],
       confirmPassword:['',Validators.required]
 
     })
@@ -28,12 +28,6 @@ export class AddemployeeComponent {
 
       if(this.addEmployeeForm.invalid && this.addEmployeeForm.dirty && this.addEmployeeForm.touched){
         
-      }
-      else{
-
-
-        
-
       }
     }
 
