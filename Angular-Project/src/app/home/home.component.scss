@@ -77,6 +77,11 @@ button {
   width: 100%;
 }
 
+input.ng-invalid.ng-touched.ng-dirty{ 
+  border: 2px red solid;
+}
+
+
 // button:hover {
 //   opacity: 0.8;
 // }

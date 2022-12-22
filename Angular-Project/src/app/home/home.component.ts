@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +13,8 @@ export class HomeComponent {
 
     //this is formbuilder method 
     validateemployee = this.form.group({
-      email:[''],
-      password:['']
+      email:['', Validators.required],
+      password:['',Validators.required]
 
     })
 

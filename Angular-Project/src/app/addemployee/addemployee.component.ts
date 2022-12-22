@@ -26,7 +26,10 @@ export class AddemployeeComponent {
 
     onSubmit(){
 
-      if(this.addEmployeeForm.invalid && this.addEmployeeForm.dirty && this.addEmployeeForm.touched){
+      if(this.addEmployeeForm.invalid && this.addEmployeeForm.dirty
+         && this.addEmployeeForm.touched && this.addEmployeeForm.untouched){
+
+
         
       }
     }
