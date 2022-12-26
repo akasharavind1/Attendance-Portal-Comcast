@@ -1,9 +1,21 @@
+<br>
+<h1>Employee Details:</h1>
+<br>
+<br>
+<table class="table">
+<tr>
+    <th>First Name:</th>&nbsp;
+    <th>Last Name:</th>&nbsp;
+    <th>Email:</th>&nbsp;
+    <th>Employee Id:</th>&nbsp;
+</tr>
+<br>
+<tr *ngFor="let employees of employeeList">
+    <td>{{employees.firstName}}</td>&nbsp;
+    <td>{{employees.lastName}}</td>&nbsp;
+    <td>{{employees.mailID}}</td>&nbsp;
+    <td>{{employees.employeeId}}</td>
 
-<head>
-</head>
-<body>
-
-Hey this is admin!
-
-</body>
+</tr>
+</table>
 
