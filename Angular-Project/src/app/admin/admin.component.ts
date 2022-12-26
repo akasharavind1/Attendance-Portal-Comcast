@@ -23,7 +23,7 @@ export class AdminComponent {
   getEmployeeList(){
     this.httpClient.get("http://localhost:8080/api/v1/Employee").subscribe((result: any)=>{
       this.employeeList= result;
-
+      
     })
   }
 
