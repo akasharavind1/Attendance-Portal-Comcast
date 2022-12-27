@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -9,7 +12,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class HomeComponent {
 
 
-  constructor (private form:FormBuilder){}
+  constructor (private form:FormBuilder,private router:Router){}
 
     //this is formbuilder method 
     validateemployee = this.form.group({
@@ -17,16 +20,4 @@ export class HomeComponent {
       password:['',Validators.required]
 
     })
-
-
   }
-
-  // this is form group method
-  // addEmployeeForm = new FormGroup({
-  //   email: new FormControl('vicky'),
-  //   password: new FormControl('')
-
-  // });
-  
-
-
