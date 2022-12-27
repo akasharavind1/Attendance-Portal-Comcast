@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ServicefilesService } from '../servicefiles/servicefiles.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,9 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AdminComponent {
 
-    // url="http://localhost:8080/api/v1/Employee";
+    // url="http://localhost:8080/api/v1/employee";
     employeeList:any;
-  constructor(private httpClient: HttpClient){
+  constructor(private serviceData:ServicefilesService){
     this.employeeList=[];
     
   }
@@ -21,7 +22,7 @@ export class AdminComponent {
   }
 
   getEmployeeList(){
-    this.httpClient.get("http://localhost:8080/api/v1/Employee").subscribe((result: any)=>{
+    this.serviceData.getEmployeeList().subscribe((result: any)=>{
       this.employeeList= result;
       
     })
