@@ -26,7 +26,9 @@ export class AddemployeeComponent {
 
     onSubmit(){
 
-      if(this.addEmployeeForm.invalid){
+      if(this.addEmployeeForm.invalid, this.addEmployeeForm.touched, this.addEmployeeForm.dirty){
+
+        
 
 
           let requestBody={
@@ -41,10 +43,8 @@ export class AddemployeeComponent {
           this.service.postEmployee(requestBody).subscribe((result: any)=>{
             console.log(result);
           })
-
-          
-  
-      }
+        }
+        {console.log("error")}
     }
 
 }
