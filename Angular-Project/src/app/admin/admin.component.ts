@@ -20,11 +20,12 @@ export class AdminComponent implements OnInit {
   }
 
   getEmployeeList(){
-    this.httpClient.get("http://localhost:8080/api/v1/getLogin").subscribe((result: any)=>{
 
     this.serviceData.getEmployeeList().subscribe((result: any)=>{
       this.employeeList= result;
       
     })
-  })
+  
+
+
 }}
