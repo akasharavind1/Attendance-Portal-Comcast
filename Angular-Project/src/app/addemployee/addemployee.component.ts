@@ -27,10 +27,6 @@ export class AddemployeeComponent {
     onSubmit(){
 
       if(this.addEmployeeForm.invalid, this.addEmployeeForm.touched, this.addEmployeeForm.dirty){
-
-        
-
-
           let requestBody={
             firstName: this.addEmployeeForm.get('firstName')?.value,
             lastName: this.addEmployeeForm.get('lastName')?.value,
