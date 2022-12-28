@@ -26,7 +26,7 @@ export class HomeComponent {
     onSubmit(){
       if(this.validateemployee.valid){
         this.router.navigate(['/', 'admin']);
-        //provide the login post and get method
+        //write the login post and get method
       } 
       else{
       alert("Provide all the details");

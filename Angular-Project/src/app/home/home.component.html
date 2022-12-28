@@ -28,9 +28,9 @@
     <small *ngIf="validateemployee.controls['password'].dirty && validateemployee.hasError('required','password') ">*Password Id is required</small>
     <br>
     <br>
-    <button type="submit" (click)="onSubmit()">Login</button><br>
+    <button type="submit" (click)="onSubmit()">Login</button>
     <!-- [routerLink]="'/admin'" -->
-
+    <p style="text-align:center"> Don't have an account ? Create a new account by clicking on Sign Up</p>
     <button [routerLink]="'/addemployee'" type="submit" >SignUp</button><br>
     <!-- (click)="goToPage('admin')" -->
 
