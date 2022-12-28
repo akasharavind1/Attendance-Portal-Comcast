@@ -8,9 +8,13 @@ export class ServicefilesService {
   constructor(private http:HttpClient) {
     }
     getEmployeeList(){
-      return this.http.get("http://localhost:8080/api/v1/employee")
+      return this.http.get("http://localhost:8080/api/v1/getLogin")
     }
     postEmployee(body:any){
-      return this.http.post("http://localhost:8080/api/v1/employee",body)
+      return this.http.post("http://localhost:8080/api/v1/signup",body)
     }
-}
+    postLogin(body:any){
+
+            return this.http.post("http://localhost:8080/api/v1/login",body)
+          }
+    }

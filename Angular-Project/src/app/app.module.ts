@@ -8,7 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { AddemployeeComponent } from './addemployee/addemployee.component';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
+import { UserPageComponent } from './user-page/user-page.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     AdminComponent,
-    AddemployeeComponent
+    AddemployeeComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,
