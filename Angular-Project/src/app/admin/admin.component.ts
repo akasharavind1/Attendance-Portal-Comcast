@@ -20,14 +20,12 @@ export class AdminComponent implements OnInit {
   }
 
   getEmployeeList(){
-    this.httpClient.get("http://localhost:8080/api/v1/getLogin").subscribe((result: any)=>{
 
-      this.employeeList= result;
-      if(result.roles=='admin')
-      {}
     this.serviceData.getEmployeeList().subscribe((result: any)=>{
       this.employeeList= result;
       
     })
-  })
+  
+
+
 }}

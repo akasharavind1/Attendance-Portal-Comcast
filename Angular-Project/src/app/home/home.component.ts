@@ -14,12 +14,15 @@ export class HomeComponent {
 
   constructor (private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){}
 
+
+
     //this is formbuilder method 
     validateemployee = this.form.group({
       email:['', Validators.required],
       password:['',Validators.required]
 
     })
+<<<<<<< HEAD
     
     login(){
 
@@ -36,3 +39,18 @@ export class HomeComponent {
     }
 
   }
+=======
+
+    onSubmit(){
+      if(this.validateemployee.valid){
+        this.router.navigate(['/', 'admin']);
+        //provide the login post and get method
+      } 
+      else{
+      alert("Provide all the details");
+      }
+    }
+
+
+  }
+>>>>>>> 191359169a6fabdbc9877376fe36e04f65557cda
