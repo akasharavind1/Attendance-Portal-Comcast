@@ -14,15 +14,22 @@
 
     {{validateemployee.value |json}}<br>
 
-    
+    <div>
     <label for="uname"><b>Mail ID:</b></label>
     <input required type="email" placeholder="Enter your Mail Id" name="email" required formControlName="email">
-
-
-    <label for="psw"><b>Password:</b></label>
-    <input required type="password" placeholder="Enter Password" name="psw" required formControlName="password" >
-        
-    <button [routerLink]="'/admin'" type="submit" >Login</button><br>
+    </div>
+    <small *ngIf="validateemployee.controls['email'].dirty && validateemployee.hasError('required','email') ">*Mail Id is required</small>
+    <br>
+    <br>
+    <div>
+    <label for="psw" ><b>Password:</b></label>
+    <input required type="password" placeholder="Enter Password" name="psw" required formControlName="password" > 
+    </div>
+    <small *ngIf="validateemployee.controls['password'].dirty && validateemployee.hasError('required','password') ">*Password Id is required</small>
+    <br>
+    <br>
+    <button type="submit" (click)="onSubmit()">Login</button><br>
+    <!-- [routerLink]="'/admin'" -->
 
     <button [routerLink]="'/addemployee'" type="submit" >SignUp</button><br>
     <!-- (click)="goToPage('admin')" -->

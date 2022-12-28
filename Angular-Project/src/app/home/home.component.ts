@@ -14,10 +14,24 @@ export class HomeComponent {
 
   constructor (private form:FormBuilder,private router:Router){}
 
+
+
     //this is formbuilder method 
     validateemployee = this.form.group({
       email:['', Validators.required],
       password:['',Validators.required]
 
     })
+
+    onSubmit(){
+      if(this.validateemployee.valid){
+        this.router.navigate(['/', 'admin']);
+        //provide the login post and get method
+      } 
+      else{
+      alert("Provide all the details");
+      }
+    }
+
+
   }
