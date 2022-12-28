@@ -35,10 +35,10 @@ export class HomeComponent {
            this.router.navigateByUrl('/admin');
           }
           else if(result.statusCodeValue==200 && result.body=="Password Mismatch"){
-             console.log("password wrong");
+            alert('password mismatch');
             }
             else if(result.statusCodeValue=404){
-              console.log("Wrong format");
+             alert('wrong details');
             }
         
           })
