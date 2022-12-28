@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { ServicefilesService } from '../servicefiles/servicefiles.service';
-import { AdminComponent } from '../admin/admin.component';
 
 
 @Component({
@@ -13,7 +11,10 @@ import { AdminComponent } from '../admin/admin.component';
 })
 export class HomeComponent {
 
-  constructor (private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){}
+
+  constructor (private form:FormBuilder,private router:Router){}
+
+
 
     //this is formbuilder method 
     validateemployee = this.form.group({
@@ -21,9 +22,8 @@ export class HomeComponent {
       password:['',Validators.required]
 
     })
-    error_message="The accout exists on database";
-    login(){
 
+<<<<<<< HEAD
       if(true){
           let requestBody={
             mailId: this.validateemployee.get('email')?.value,
@@ -43,6 +43,17 @@ export class HomeComponent {
         
           })
         }
+=======
+    onSubmit(){
+      if(this.validateemployee.valid){
+        this.router.navigate(['/', 'admin']);
+        //write the login post and get method
+      } 
+      else{
+      alert("Provide all the details");
+      }
+>>>>>>> 13c093640bbcb7856e092c48f2bf15b8f1b6809e
     }
+
 
   }
