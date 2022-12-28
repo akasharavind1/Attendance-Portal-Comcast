@@ -30,12 +30,10 @@ export class AddemployeeComponent {
           let requestBody={
             firstName: this.addEmployeeForm.get('firstName')?.value,
             lastName: this.addEmployeeForm.get('lastName')?.value,
-            mailID: this.addEmployeeForm.get('mailID')?.value,
+            mailId: this.addEmployeeForm.get('mailID')?.value,
             employeeId: this.addEmployeeForm.get('employeeId')?.value,
-            newPassword: this.addEmployeeForm.get('newPassword')?.value,
-            confirmPassword: this.addEmployeeForm.get('confirmPassword')?.value,
+            password: this.addEmployeeForm.get('newPassword')?.value,
           }
-
           this.service.postEmployee(requestBody).subscribe((result: any)=>{
             console.log(result);
           })
