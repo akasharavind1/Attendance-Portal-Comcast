@@ -38,7 +38,6 @@ export class AddemployeeComponent {
             console.log(result);
           })
         }
-        {console.log("error")}
     }
 
 }

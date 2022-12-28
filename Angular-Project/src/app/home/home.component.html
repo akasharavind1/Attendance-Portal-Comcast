@@ -17,14 +17,13 @@
     <div>
     <label for="uname"><b>Mail ID:</b></label>
     <input required type="email" placeholder="Enter your Mail Id" name="email" required formControlName="email">
-<<<<<<< HEAD
 
 
     <label for="psw"><b>Password:</b></label>
     <input required type="password" placeholder="Enter Password" name="psw" required formControlName="password" >
         
     <button  (click) ="login()" >Login</button><br>
-=======
+
     </div>
     <small *ngIf="validateemployee.controls['email'].dirty && validateemployee.hasError('required','email') ">*Mail Id is required</small>
     <br>
@@ -36,10 +35,8 @@
     <small *ngIf="validateemployee.controls['password'].dirty && validateemployee.hasError('required','password') ">*Password Id is required</small>
     <br>
     <br>
-    <button type="submit" (click)="onSubmit()">Login</button><br>
+    <button type="submit" (click)="login()">Login</button><br>
     <!-- [routerLink]="'/admin'" -->
->>>>>>> 191359169a6fabdbc9877376fe36e04f65557cda
-
     <button [routerLink]="'/addemployee'" type="submit"  >SignUp</button><br>
     <!-- (click)="goToPage('admin')" -->
 
@@ -53,8 +50,5 @@
     <span class="psw"> <a href="#">Forgot password?</a></span>
   </div>
 </form>
-
-
-
 </body>
 </html>
