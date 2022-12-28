@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 
 
@@ -12,14 +12,14 @@ export class AddemployeeComponent {
 
   constructor (private form:FormBuilder, 
                private service:ServicefilesService){}
-
     addEmployeeForm= this.form.group({
       firstName:['',[Validators.required, Validators.minLength(2)]],
       lastName:[''],
       mailID:['',[Validators.required]],
       employeeId:['',[Validators.required]],
       newPassword:['', [Validators.required]],
-      confirmPassword:['',[Validators.required]]
+      confirmPassword:['',[Validators.required]],
+      roles:['',[Validators.required]]
 
     })
 
@@ -33,6 +33,7 @@ export class AddemployeeComponent {
             mailId: this.addEmployeeForm.get('mailID')?.value,
             employeeId: this.addEmployeeForm.get('employeeId')?.value,
             password: this.addEmployeeForm.get('newPassword')?.value,
+            roles:this.addEmployeeForm.get("roles")?.value,
           }
           this.service.postEmployee(requestBody).subscribe((result: any)=>{
             console.log(result);

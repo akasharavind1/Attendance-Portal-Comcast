@@ -14,7 +14,7 @@ export class ServicefilesService {
       return this.http.post("http://localhost:8080/api/v1/signup",body)
     }
     postLogin(body:any){
-      console.log(body);
+
             return this.http.post("http://localhost:8080/api/v1/login",body)
           }
     }

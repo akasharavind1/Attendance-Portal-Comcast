@@ -17,17 +17,7 @@
     <div>
     <label for="uname"><b>Mail ID:</b></label>
     <input required type="email" placeholder="Enter your Mail Id" name="email" required formControlName="email">
-
-
-    <label for="psw"><b>Password:</b></label>
-    <input required type="password" placeholder="Enter Password" name="psw" required formControlName="password" >
-        
-    <button  (click) ="login()" >Login</button><br>
-
     </div>
-    <small *ngIf="validateemployee.controls['email'].dirty && validateemployee.hasError('required','email') ">*Mail Id is required</small>
-    <br>
-    <br>
     <div>
     <label for="psw" ><b>Password:</b></label>
     <input required type="password" placeholder="Enter Password" name="psw" required formControlName="password" > 
@@ -36,16 +26,9 @@
     <br>
     <br>
     <button type="submit" (click)="login()">Login</button><br>
-    <!-- [routerLink]="'/admin'" -->
-    <button [routerLink]="'/addemployee'" type="submit"  >SignUp</button><br>
-    <!-- (click)="goToPage('admin')" -->
-
+    <button [routerLink]="'/addemployee'" type="submit"  >SignUp</button><br><br>
     <input type="checkbox" checked="checked" name="remember"><label>Remember me</label> 
-    
-
-  
   </div>
-  
   <div class="container" style="background-color:#faf8f8">
     <span class="psw"> <a href="#">Forgot password?</a></span>
   </div>
