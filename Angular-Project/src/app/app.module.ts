@@ -9,7 +9,6 @@ import { FooterComponent } from './footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { AddemployeeComponent } from './addemployee/addemployee.component';
 import { HttpClientModule } from '@angular/common/http';
-import { UserPageComponent } from './user-page/user-page.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +17,6 @@ import { UserPageComponent } from './user-page/user-page.component';
     FooterComponent,
     AdminComponent,
     AddemployeeComponent,
-    UserPageComponent
   ],
   imports: [
     BrowserModule,

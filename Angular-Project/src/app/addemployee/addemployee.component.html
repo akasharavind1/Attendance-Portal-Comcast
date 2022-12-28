@@ -29,9 +29,8 @@
       <input required type="password" placeholder="Confirm your Password" name="confirmpsw" required formControlName="confirmPassword" >
       <label for="role"><b>ROLE:</b></label>
       <input required type = "text" value="USER" placeholder="USER" name="roles" required formControlName="roles" >
-      <button  (click)="onSubmit()">SEND</button>
           
-      <button [disabled]="addEmployeeForm.invalid" (click)="onSubmit()" type="submit" >Submit</button><br>
+      <button (click)="onSubmit()" type="submit" >Submit</button><br>
   
       <!-- (click)="goToPage('admin')" -->
 
