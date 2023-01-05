@@ -31,13 +31,8 @@ export class AddemployeeComponent {
             lastName: this.addEmployeeForm.get('lastName')?.value,
             mailID: this.addEmployeeForm.get('mailID')?.value,
             employeeId: this.addEmployeeForm.get('employeeId')?.value,
-<<<<<<< HEAD
             password: this.addEmployeeForm.get('newPassword')?.value,
             roles:this.addEmployeeForm.get('roles')?.value
-=======
-            newPassword: this.addEmployeeForm.get('newPassword')?.value,
-            roles:this.addEmployeeForm.get("roles")?.value,
->>>>>>> de9253da48ee0de5aef70d2a908ffa32d187d145
           }
           this.service.postEmployee(requestBody).subscribe((result: any)=>{
             console.log(result);

@@ -19,7 +19,7 @@ import { EmployeeComponent } from './employee/employee.component';
     FooterComponent,
     AdminComponent,
     AddemployeeComponent,
-    EmployeeComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
