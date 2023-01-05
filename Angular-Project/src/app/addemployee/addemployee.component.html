@@ -28,7 +28,11 @@
       <label for="confirmpsw"><b>Confirm Password:</b></label>
       <input required type="password" placeholder="Confirm your Password" name="confirmpsw" required formControlName="confirmPassword" >
       <label for="role"><b>ROLE:</b></label>
-      <input required type = "text" value="USER" placeholder="USER" name="roles" required formControlName="roles" >
+      <select formControlName="roles" id="role" name="role">
+        <option value="user">User</option>
+      </select>
+      <!-- <input required type = "submit" name="roles" required formControlName="roles" > -->
+      
           
       <button (click)="onSubmit()" type="submit" >Submit</button><br>
   
