@@ -16,6 +16,9 @@ export class HomeComponent {
   constructor (private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){}
 
     //this is formbuilder method 
+
+    passwrong=false;
+    detailswrong=false;
     validateemployee = this.form.group({
       email:['', Validators.required],
       password:['',Validators.required]
@@ -35,10 +38,19 @@ export class HomeComponent {
            this.router.navigateByUrl('/admin');
           }
           else if(result.statusCodeValue==200 && result.body=="Password Mismatch"){
+<<<<<<< HEAD
             alert('Password mismatch');
             }
             else if(result.statusCodeValue==404){
              alert('Wrong details');
+=======
+           this.passwrong=true;
+           this.detailswrong=false;
+            }
+            else if(result.statusCodeValue=404){
+              this.passwrong=false;
+            this.detailswrong=true;
+>>>>>>> c88583577e02a8045305f892e4a5b96d274b1a83
             }
         
           })

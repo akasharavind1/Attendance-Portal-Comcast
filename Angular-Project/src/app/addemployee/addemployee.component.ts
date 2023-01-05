@@ -19,7 +19,6 @@ export class AddemployeeComponent {
       employeeId:['',[Validators.required]],
       newPassword:['', [Validators.required]],
       confirmPassword:['',[Validators.required]],
-      roles:['',[Validators.required]]
 
     })
 
@@ -32,8 +31,12 @@ export class AddemployeeComponent {
             lastName: this.addEmployeeForm.get('lastName')?.value,
             mailID: this.addEmployeeForm.get('mailID')?.value,
             employeeId: this.addEmployeeForm.get('employeeId')?.value,
+<<<<<<< HEAD
             newPassword: this.addEmployeeForm.get('newPassword')?.value,
             roles:this.addEmployeeForm.get("roles")?.value,
+=======
+            password: this.addEmployeeForm.get('newPassword')?.value,
+>>>>>>> c88583577e02a8045305f892e4a5b96d274b1a83
           }
           this.service.postEmployee(requestBody).subscribe((result: any)=>{
             console.log(result);
