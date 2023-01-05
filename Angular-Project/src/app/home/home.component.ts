@@ -44,12 +44,10 @@ export class HomeComponent {
            this.router.navigateByUrl('/employee');
           }
           else if(result.statusCodeValue==200 && result.body=="Password Mismatch"){
-           this.passwrong=true;
-           this.detailswrong=false;
+            alert('Password mismatch');
             }
-            else if(result.statusCodeValue=404){
-              this.passwrong=false;
-            this.detailswrong=true;
+            else if(result.statusCodeValue==404){
+             alert('Wrong details');
             }
         
           })
