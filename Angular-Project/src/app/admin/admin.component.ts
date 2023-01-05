@@ -20,7 +20,7 @@ export class AdminComponent implements OnInit {
   }
 
   getEmployeeList(){
-
+    
     this.serviceData.getEmployeeList().subscribe((result: any)=>{
       this.employeeList= result;
       

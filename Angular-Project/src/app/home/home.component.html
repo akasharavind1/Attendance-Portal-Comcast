@@ -21,13 +21,12 @@
     <label for="psw" ><b>Password:</b></label>
     <input required type="password" placeholder="Enter Password" name="psw" required formControlName="password" > 
     </div>
-    <small *ngIf="validateemployee.controls['password'].dirty && validateemployee.hasError('required','password') ">*Password Id is required</small>
     <br>
     <div class="errormessage" *ngIf="passwrong">
       *Password is wrong.
     </div>
     <br><div class="detailswrong" *ngIf="detailswrong">
-      *Enter the vaild credentials.
+      *Enter vaild credentials.
     </div> 
     <button type="submit" (click)="login()">Login</button><br>
     <button [routerLink]="'/addemployee'" type="submit"  >SignUp</button><br><br>

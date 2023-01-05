@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import { AdminComponent } from '../admin/admin.component';
+import { EmployeeComponent } from '../employee/employee.component';
 
 
 @Component({
@@ -34,8 +35,13 @@ export class HomeComponent {
           }
           this.serviceData?.postLogin(requestBody).subscribe((result: any)=>{
             console.log(result);
-           if(result.statusCodeValue==200 && result.body.message=="User retrieved successfully"){
+           if(result.statusCodeValue==200 && result.body.roles=="admin" &&  result.body.message=="User retrieved successfully"){
+            console.log(result);
            this.router.navigateByUrl('/admin');
+          }
+          else if(result.statusCodeValue==200 && result.body.roles=="user" &&  result.body.message=="User retrieved successfully"){
+            console.log(result);
+           this.router.navigateByUrl('/employee');
           }
           else if(result.statusCodeValue==200 && result.body=="Password Mismatch"){
            this.passwrong=true;

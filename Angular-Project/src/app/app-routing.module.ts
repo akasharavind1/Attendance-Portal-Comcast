@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent} from '../app/admin/admin.component';
 import { AddemployeeComponent } from './addemployee/addemployee.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 const routes: Routes = [
   {
@@ -14,8 +15,10 @@ const routes: Routes = [
   },
   {
     path:'addemployee',component: AddemployeeComponent
+  },
+  {
+    path:'employee',component: EmployeeComponent
   }
-
 ];
 
 @NgModule({

@@ -9,6 +9,8 @@ import { FooterComponent } from './footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { AddemployeeComponent } from './addemployee/addemployee.component';
 import { HttpClientModule } from '@angular/common/http';
+import { provideOAuthClient } from 'angular-oauth2-oidc';
+import { EmployeeComponent } from './employee/employee.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,14 +19,15 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     AdminComponent,
     AddemployeeComponent,
+    EmployeeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [provideOAuthClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
