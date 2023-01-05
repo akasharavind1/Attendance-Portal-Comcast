@@ -11,8 +11,7 @@
 <form [formGroup]="validateemployee" >
    
   <div class="container" >
-
-    {{validateemployee.value |json}}<br>
+<br>
 
     <div>
     <label for="uname"><b>Mail ID:</b></label>
@@ -24,7 +23,12 @@
     </div>
     <small *ngIf="validateemployee.controls['password'].dirty && validateemployee.hasError('required','password') ">*Password Id is required</small>
     <br>
-    <br>
+    <div class="errormessage" *ngIf="passwrong">
+      *Password is wrong.
+    </div>
+    <br><div class="detailswrong" *ngIf="detailswrong">
+      *Enter the vaild credentials.
+    </div> 
     <button type="submit" (click)="login()">Login</button><br>
     <button [routerLink]="'/addemployee'" type="submit"  >SignUp</button><br><br>
     <input type="checkbox" checked="checked" name="remember"><label>Remember me</label> 
