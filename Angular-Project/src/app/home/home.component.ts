@@ -13,11 +13,12 @@ import { EmployeeComponent } from '../employee/employee.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+click: any;
 
   constructor (private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){}
 
     //this is formbuilder method 
-
+   over="login";
     passwrong=false;
     detailswrong=false;
     validateemployee = this.form.group({
@@ -25,7 +26,7 @@ export class HomeComponent {
       password:['',Validators.required]
 
     })
-    error_message="The accout exists on database";
+    
     login(){
 
       if(true){
@@ -53,5 +54,4 @@ export class HomeComponent {
           })
         }
     }
-
   }

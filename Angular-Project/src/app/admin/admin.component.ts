@@ -11,6 +11,7 @@ export class AdminComponent implements OnInit {
 
     // url="http://localhost:8080/api/v1/employee";
     employeeList:any;
+   employees: any;
   constructor(private serviceData:ServicefilesService, private httpClient:HttpClient){
     this.employeeList=[];
   }
