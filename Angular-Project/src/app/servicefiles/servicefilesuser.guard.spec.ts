@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ServicefilesGuard } from './servicefiles.guard';
+import { ServicefilesuserGuard } from './servicefilesuser.guard';
 
-describe('ServicefilesGuard', () => {
-  let guard: ServicefilesGuard;
+describe('ServicefilesuserGuard', () => {
+  let guard: ServicefilesuserGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(ServicefilesGuard);
+    guard = TestBed.inject(ServicefilesuserGuard);
   });
 
   it('should be created', () => {

@@ -16,7 +16,7 @@ export class HomeComponent {
 click: any;
 
   constructor (private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){}
-
+   
     //this is formbuilder method 
       passwrong=false;
     detailswrong=false;
@@ -38,12 +38,14 @@ click: any;
             console.log(result);
            if(result.statusCodeValue==200 && result.body.roles=="admin" &&  result.body.message=="User retrieved successfully"){
             console.log(result);
-            localStorage.setItem('token',"AH2EjtcmoURSXm2RhZ8ihnJrsty-7Ewm3NEnJDM-Atw9ewbIPvuarglows0vtaCV33b4z3PpM5RsMklbpe0aNPK5_BanGxmp_JSsOEtZYuf4m3cHTtKnxpQeonN07XDK-DUPKAaRwLfY")
-            this.validateemployee.value.email=="admin@gmail.com"? localStorage.setItem('userType','admin'): localStorage.setItem('userType','admin')
+            localStorage.setItem('tokenadmin',"AH2EjtcmoURSXm2RhZ8ihnJrsty-7Ewm3NEnJDM-Atw9ewbIPvuarglows0vtaCV33b4z3PpM5RsMklbpe0aNPK5_BanGxmp_JSsOEtZYuf4m3cHTtKnxpQeonN07XDK-DUPKAaRwLfY")
+           localStorage.setItem('ROLE','ADMIN')
             this.router.navigateByUrl('/admin');
           }
           else if(result.statusCodeValue==200 && result.body.roles=="user" &&  result.body.message=="User retrieved successfully"){
             console.log(result);
+            localStorage.setItem('tokenuser',"7Ewm3NEnJDM")
+           localStorage.setItem('ROLE','USER')
            this.router.navigateByUrl('/employee');
           }
           else if(result.statusCodeValue==200 && result.body=="Password Mismatch"){

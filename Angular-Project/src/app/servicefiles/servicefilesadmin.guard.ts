@@ -7,13 +7,12 @@ import { ServicefilesService } from './servicefiles.service';
 })
 export class ServicefilesGuard implements CanActivate {
   constructor(private auth: ServicefilesService, private router:Router){
-
   }
   canActivate(){
-   if(this.auth.IsloggedIn()){
+   if(this.auth.IsLoggedAdmin()){
     return true;
    }
    this.router.navigate(['home']);
    return false;
-  } 
+}
 }

@@ -7,8 +7,11 @@ import { Injectable } from '@angular/core';
 export class ServicefilesService {
   constructor(private http:HttpClient) {
     }
-    IsloggedIn(){
-     return !!localStorage.getItem("token");
+    IsLoggedAdmin(){
+     return !!localStorage.getItem("tokenadmin");
+    }
+    IsLoggedUser(){
+      return !!localStorage.getItem("tokenuser");
     }
     getEmployeeList(){
       return this.http.get("http://localhost:8080/api/v1/getLogin")
