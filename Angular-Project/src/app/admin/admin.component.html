@@ -19,8 +19,7 @@
     <td>{{employees.mailId}}</td>&nbsp;
    <td>{{employees.employeeId}}</td>&nbsp;
     <td>{{employees.roles}}</td>
-    <td><button class="btn-edit" (click)="onEditClicked()">Edit</button></td>
-    <td><button class="btn-edit" (click)="onDeleteClicked()">Delete</button></td>
+    <td><button class="btn-edit" [routerLink]="'/update'" >Edit</button></td>
 </tr>
 </table>
 

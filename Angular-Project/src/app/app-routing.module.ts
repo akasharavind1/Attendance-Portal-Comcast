@@ -6,6 +6,7 @@ import { AdminComponent} from '../app/admin/admin.component';
 import { AddemployeeComponent } from './addemployee/addemployee.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { ServicefilesGuard } from './servicefiles/servicefiles.guard';
+import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,11 @@ const routes: Routes = [
   },
   {
     path:'employee',component: EmployeeComponent
+  },
+  {
+    path:'update',component: UpdateComponent
   }
+
 ];
 
 @NgModule({

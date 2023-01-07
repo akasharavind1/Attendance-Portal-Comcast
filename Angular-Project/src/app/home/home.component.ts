@@ -38,7 +38,7 @@ click: any;
             console.log(result);
            if(result.statusCodeValue==200 && result.body.roles=="admin" &&  result.body.message=="User retrieved successfully"){
             console.log(result);
-            localStorage.setItem('token',"abcdefghijklmnopqrstuvwxyz")
+            localStorage.setItem('token',"AH2EjtcmoURSXm2RhZ8ihnJrsty-7Ewm3NEnJDM-Atw9ewbIPvuarglows0vtaCV33b4z3PpM5RsMklbpe0aNPK5_BanGxmp_JSsOEtZYuf4m3cHTtKnxpQeonN07XDK-DUPKAaRwLfY")
             this.validateemployee.value.email=="admin@gmail.com"? localStorage.setItem('userType','admin'): localStorage.setItem('userType','admin')
             this.router.navigateByUrl('/admin');
           }
