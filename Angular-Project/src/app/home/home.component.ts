@@ -18,16 +18,16 @@ click: any;
   constructor (private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){}
 
     //this is formbuilder method 
-   over="login";
-    passwrong=false;
+      passwrong=false;
     detailswrong=false;
+  
     validateemployee = this.form.group({
       email:['', Validators.required],
       password:['',Validators.required]
 
     })
     
-    login(){
+    login(): void{
 
       if(true){
           let requestBody={
@@ -38,7 +38,9 @@ click: any;
             console.log(result);
            if(result.statusCodeValue==200 && result.body.roles=="admin" &&  result.body.message=="User retrieved successfully"){
             console.log(result);
-           this.router.navigateByUrl('/admin');
+            localStorage.setItem('token',"abcdefghijklmnopqrstuvwxyz")
+            this.validateemployee.value.email=="admin@gmail.com"? localStorage.setItem('userType','admin'): localStorage.setItem('userType','admin')
+            this.router.navigateByUrl('/admin');
           }
           else if(result.statusCodeValue==200 && result.body.roles=="user" &&  result.body.message=="User retrieved successfully"){
             console.log(result);

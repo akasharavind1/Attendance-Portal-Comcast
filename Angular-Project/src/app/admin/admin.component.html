@@ -1,4 +1,5 @@
 <br>
+<button type="submit" [routerLink]="'/home'"  (click)="logout()" >logout</button><br>
 <h1>Employee Details:</h1>
 <br>
 <br>
@@ -15,11 +16,13 @@
 <tr *ngFor="let employees of employeeList">
     <td>{{employees.firstName}}</td>&nbsp;
     <td>{{employees.lastName}}</td>&nbsp;
-    <td>{{employees.mailID}}</td>&nbsp;
+    <td>{{employees.mailId}}</td>&nbsp;
    <td>{{employees.employeeId}}</td>&nbsp;
     <td>{{employees.roles}}</td>
-
+    <td><button class="btn-edit" (click)="onEditClicked()">Edit</button></td>
+    <td><button class="btn-edit" (click)="onDeleteClicked()">Delete</button></td>
 </tr>
 </table>
 
+<router-outlet></router-outlet>
 
