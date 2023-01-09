@@ -43,7 +43,7 @@ click: any;
            localStorage.setItem('ROLE','ADMIN')
             this.router.navigateByUrl('/admin');
           }
-          else if(result.statusCodeValue==200 && result.body.roles=="user" &&  result.body.message=="User retrieved successfully"){
+          else if(result.statusCodeValue==200 && result.body.roles=="User" &&  result.body.message=="User retrieved successfully"){
             console.log(result);
             localStorage.setItem('tokenuser',"7Ewm3NEnJDM")
            localStorage.setItem('ROLE','USER')
