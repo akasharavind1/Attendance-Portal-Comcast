@@ -14,6 +14,7 @@ import { EmployeeComponent } from '../employee/employee.component';
 })
 export class HomeComponent {
 click: any;
+  classList: any;
 
   constructor (private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){}
    
@@ -58,4 +59,8 @@ click: any;
           })
         }
     }
+  //   show = false;
+  //   password() {
+  //     this.show = !this.show;
+  // }
   }

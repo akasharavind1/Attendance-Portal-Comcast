@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { provideOAuthClient } from 'angular-oauth2-oidc';
 import { EmployeeComponent } from './employee/employee.component';
 import { UpdateComponent } from './update/update.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,7 @@ import { UpdateComponent } from './update/update.component';
     AdminComponent,
     AddemployeeComponent,
     EmployeeComponent,
-    UpdateComponent
+    UpdateComponent,
   ],
   imports: [
     BrowserModule,
