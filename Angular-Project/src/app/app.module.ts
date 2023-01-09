@@ -9,7 +9,6 @@ import { FooterComponent } from './footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { AddemployeeComponent } from './addemployee/addemployee.component';
 import { HttpClientModule } from '@angular/common/http';
-import { provideOAuthClient } from 'angular-oauth2-oidc';
 import { EmployeeComponent } from './employee/employee.component';
 import { UpdateComponent } from './update/update.component';
 
@@ -30,7 +29,7 @@ import { UpdateComponent } from './update/update.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [provideOAuthClient()],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
