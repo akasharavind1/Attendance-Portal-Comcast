@@ -16,7 +16,7 @@ export class AddemployeeComponent {
     addEmployeeForm= this.form.group({
       firstName:['',[Validators.required]],
       lastName:[''],
-      mailId:['',[Validators.required]],
+      mailID:['',[Validators.required]],
       employeeId:['',[Validators.required]],
       newPassword:['', [Validators.required]],
       confirmPassword:['',[Validators.required]],
@@ -30,9 +30,9 @@ export class AddemployeeComponent {
           let requestBody={
             firstName: this.addEmployeeForm.get('firstName')?.value,
             lastName: this.addEmployeeForm.get('lastName')?.value,
-            mailId: this.addEmployeeForm.get('mailId')?.value,
+            mailID: this.addEmployeeForm.get('mailID')?.value,
             employeeId: this.addEmployeeForm.get('employeeId')?.value,
-            password: this.addEmployeeForm.get('newPassword')?.value,
+            newPassword: this.addEmployeeForm.get('newPassword')?.value,
             roles:this.addEmployeeForm.get('roles')?.value
           }
           this.service.postEmployee(requestBody).subscribe((result: any)=>{
