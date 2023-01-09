@@ -12,14 +12,15 @@ export class AdminComponent implements OnInit {
 
     // url="http://localhost:8080/api/v1/employee";
     employeeList:any;
-   employees: any;
-
+  
   constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router){
     this.employeeList=[];
+
   }
 
   ngOnInit(): void{
     this.getEmployeeList()
+  
   }
 
   getEmployeeList(){
@@ -28,8 +29,13 @@ export class AdminComponent implements OnInit {
       this.employeeList= result;
       
     })
-  
 }  
+delete(employees: any){
+  this.serviceData.deleteEmployee(employees.id).subscribe((Response) => {
+      console.log(Response);
+      this.getEmployeeList();
+    } )
+}
 logout(){
   localStorage.removeItem('tokenadmin');
   localStorage.clear();

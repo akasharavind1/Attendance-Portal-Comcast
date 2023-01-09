@@ -6,6 +6,7 @@
 <table class="table">
 <tr>
     <th>First Name:</th>&nbsp;
+    <!-- <th>Id:</th>&nbsp; -->
     <th>Last Name:</th>&nbsp;
     <th>Email:</th>&nbsp;
     <th>Employee Id:</th>&nbsp;
@@ -13,8 +14,11 @@
 </tr>
 
 <br>
+
 <tr *ngFor="let employees of employeeList">
+
     <td>{{employees.firstName}}</td>&nbsp;
+    <!-- <td>{{employees.id}}</td>&nbsp; -->
     <td>{{employees.lastName}}</td>&nbsp;
 <<<<<<< HEAD
     <td>{{employees.mailID}}</td>&nbsp;
@@ -25,6 +29,7 @@
 >>>>>>> ce69a89efc74c1d44c6f01a194fc39cfa9d6778c
     <td>{{employees.roles}}</td>
     <td><button class="btn-edit" [routerLink]="'/update'" >Edit</button></td>
+    <td><button class="btn-edit" (click)="delete(employees)" >Delete</button></td>
 </tr>
 </table>
 
