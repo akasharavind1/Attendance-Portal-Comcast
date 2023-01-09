@@ -1,1 +1,22 @@
-<p>employee works!</p>
+<br>
+wqfiegh
+<br>
+
+<table class="table">
+  <tr>
+    <th>Details</th>
+    <th>Description</th>
+  </tr>
+  <tr *ngFor="let employees of employeeList">
+    <td>Employee Name:</td>
+    <td>{{employees.firstName}}+{{employees.lastName}}</td>&nbsp;
+    </tr>
+  <tr *ngFor="let employees of employeeList">
+    <td>Employee Id:</td>
+    <td>{{employees.employeeId}}</td>&nbsp;
+  </tr> 
+  <tr *ngFor="let employees of employeeList">
+    <td>Mail Id:</td>
+    <td>{{employees.mailID}}</td>&nbsp;  </tr> 
+</table>
+
