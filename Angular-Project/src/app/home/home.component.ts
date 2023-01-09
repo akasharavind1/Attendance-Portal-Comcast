@@ -37,14 +37,13 @@ click: any;
           }
           this.serviceData?.postLogin(requestBody).subscribe((result: any)=>{
             console.log(result);
-            this.router.navigate(['/'])
            if(result.statusCodeValue==200 && result.body.roles=="admin" &&  result.body.message=="User retrieved successfully"){
             console.log(result);
             localStorage.setItem('tokenadmin',"AH2EjtcmoURSXm2RhZ8ihnJrsty-7Ewm3NEnJDM-Atw9ewbIPvuarglows0vtaCV33b4z3PpM5RsMklbpe0aNPK5_BanGxmp_JSsOEtZYuf4m3cHTtKnxpQeonN07XDK-DUPKAaRwLfY")
            localStorage.setItem('ROLE','ADMIN')
             this.router.navigateByUrl('/admin');
           }
-          else if(result.statusCodeValue==200 && result.body.roles=="User" &&  result.body.message=="User retrieved successfully"){
+          else if(result.statusCodeValue==200 && result.body.roles=="user" &&  result.body.message=="User retrieved successfully"){
             console.log(result);
             localStorage.setItem('tokenuser',"7Ewm3NEnJDM")
            localStorage.setItem('ROLE','USER')
