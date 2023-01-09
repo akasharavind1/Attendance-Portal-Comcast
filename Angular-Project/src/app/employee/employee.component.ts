@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import { HttpClient } from '@angular/common/http';
+<<<<<<< HEAD
 import { Router } from '@angular/router';
+=======
+>>>>>>> 1c00d422fccad25f924d18a392b63de1496d7858
 
 
 @Component({
@@ -23,10 +26,13 @@ export class EmployeeComponent {
       
     })
   }
+<<<<<<< HEAD
   logout(){
     localStorage.removeItem('tokenuser');
     localStorage.clear();
         this.router.navigate(['/home']);
    };
+=======
+>>>>>>> 1c00d422fccad25f924d18a392b63de1496d7858
 
 }
