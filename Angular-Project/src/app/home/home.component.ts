@@ -23,8 +23,8 @@ click: any;
     detailswrong=false;
   
     validateemployee = this.form.group({
-      email:['', Validators.required],
-      password:['',Validators.required]
+      mailID:['', Validators.required],
+      newPassword:['',Validators.required]
 
     })
     
@@ -32,8 +32,8 @@ click: any;
 
       if(true){
           let requestBody={
-            mailId: this.validateemployee.get('email')?.value,
-            password: this.validateemployee.get('password')?.value,
+            mailID: this.validateemployee.get('mailID')?.value,
+            newPassword: this.validateemployee.get('newPassword')?.value,
           }
           this.serviceData?.postLogin(requestBody).subscribe((result: any)=>{
             console.log(result);
