@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import { HttpClient } from '@angular/common/http';
+<<<<<<< HEAD
+import { Router } from '@angular/router';
+=======
+>>>>>>> 1c00d422fccad25f924d18a392b63de1496d7858
 
 
 @Component({
@@ -11,8 +15,8 @@ import { HttpClient } from '@angular/common/http';
 export class EmployeeComponent {
  
   employeeList:any;
-  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient){
-    this.employeeList=[];
+  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router){
+  this.employeeList=[];
   }
 
   getEmployeeList(){
@@ -22,5 +26,13 @@ export class EmployeeComponent {
       
     })
   }
+<<<<<<< HEAD
+  logout(){
+    localStorage.removeItem('tokenuser');
+    localStorage.clear();
+        this.router.navigate(['/home']);
+   };
+=======
+>>>>>>> 1c00d422fccad25f924d18a392b63de1496d7858
 
 }
