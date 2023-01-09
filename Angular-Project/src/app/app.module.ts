@@ -10,6 +10,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AddemployeeComponent } from './addemployee/addemployee.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeComponent } from './employee/employee.component';
+import { UpdateComponent } from './update/update.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { EmployeeComponent } from './employee/employee.component';
     AdminComponent,
     AddemployeeComponent,
     EmployeeComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

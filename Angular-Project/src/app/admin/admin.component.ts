@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 
 @Component({
@@ -11,7 +12,9 @@ export class AdminComponent implements OnInit {
 
     // url="http://localhost:8080/api/v1/employee";
     employeeList:any;
-  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient){
+   employees: any;
+
+  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router){
     this.employeeList=[];
   }
 
@@ -26,6 +29,10 @@ export class AdminComponent implements OnInit {
       
     })
   
-
-
-}}
+}  
+logout(){
+  localStorage.removeItem('tokenadmin');
+  localStorage.clear();
+      this.router.navigate(['/home']);
+ };
+}
