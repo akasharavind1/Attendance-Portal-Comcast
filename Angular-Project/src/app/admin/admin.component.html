@@ -10,26 +10,27 @@
     <th>Last Name:</th>&nbsp;
     <th>Email:</th>&nbsp;
     <th>Employee Id:</th>&nbsp;
+    <th>Attendance %</th>
+    <th>Flag</th>
     <th>Roles:</th>
 </tr>
 
 <br>
 
-<tr *ngFor="let employees of employeeList">
+<tr *ngFor="let employee of employeeList">
 
-    <td>{{employees.firstName}}</td>&nbsp;
+    <td>{{employee.firstName}}</td>&nbsp;
     <!-- <td>{{employees.id}}</td>&nbsp; -->
-    <td>{{employees.lastName}}</td>&nbsp;
-    <td>{{employees.mailID}}</td>&nbsp;
-    <td>{{employees.employeeId}}</td>&nbsp;
-<<<<<<< HEAD
-=======
-    <td>{{employees.mailId}}</td>&nbsp;
-   <td>{{employees.employeeId}}</td>&nbsp;
->>>>>>> 4812251803f0d08250c06041615de89ef6a395d8
-    <td>{{employees.roles}}</td>
-    <td><button class="btn-edit" [routerLink]="'/update'" >Edit</button></td>
-    <td><button class="btn-edit" (click)="delete(employees)" >Delete</button></td>
+    <td>{{employee.lastName}}</td>&nbsp;
+
+    <td>{{employee.mailID}}</td>&nbsp;
+    <td>{{employee.employeeId}}</td>&nbsp;
+    <td></td>
+    <td></td>
+    <td>{{employee.roles}}</td>
+    
+    <td><button class="btn-edit" [routerLink]="'/update'" [queryParams]="{id:employee.employeeId}">Edit</button></td>
+    <td><button class="btn-edit" (click)="delete(employee)" >Delete</button></td>
 </tr>
 </table>
 

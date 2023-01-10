@@ -15,7 +15,6 @@ export class AdminComponent implements OnInit {
   
   constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router){
     this.employeeList=[];
-
   }
 
   ngOnInit(): void{
