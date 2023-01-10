@@ -23,8 +23,8 @@ click: any;
     detailswrong=false;
   
     validateemployee = this.form.group({
-      mailID:['', Validators.required],
-      newPassword:['',Validators.required]
+      mailId:['', Validators.required],
+      password:['',Validators.required]
 
     })
     
@@ -32,12 +32,11 @@ click: any;
 
       if(true){
           let requestBody={
-            mailID: this.validateemployee.get('mailID')?.value,
-            newPassword: this.validateemployee.get('newPassword')?.value,
+            mailId: this.validateemployee.get('mailId')?.value,
+            password: this.validateemployee.get('password')?.value,
           }
           this.serviceData?.postLogin(requestBody).subscribe((result: any)=>{
             console.log(result);
-            this.router.navigate(['/'])
            if(result.statusCodeValue==200 && result.body.roles=="admin" &&  result.body.message=="User retrieved successfully"){
             console.log(result);
             localStorage.setItem('tokenadmin',"AH2EjtcmoURSXm2RhZ8ihnJrsty-7Ewm3NEnJDM-Atw9ewbIPvuarglows0vtaCV33b4z3PpM5RsMklbpe0aNPK5_BanGxmp_JSsOEtZYuf4m3cHTtKnxpQeonN07XDK-DUPKAaRwLfY")

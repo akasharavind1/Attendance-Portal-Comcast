@@ -18,7 +18,7 @@ export class AddemployeeComponent {
       lastName:[''],
       mailID:['',[Validators.required]],
       employeeId:['',[Validators.required]],
-      newPassword:['', [Validators.required]],
+      password:['', [Validators.required]],
       confirmPassword:['',[Validators.required]],
       roles: ['user']
     })
@@ -32,7 +32,7 @@ export class AddemployeeComponent {
             lastName: this.addEmployeeForm.get('lastName')?.value,
             mailID: this.addEmployeeForm.get('mailID')?.value,
             employeeId: this.addEmployeeForm.get('employeeId')?.value,
-            newPassword: this.addEmployeeForm.get('newPassword')?.value,
+            password: this.addEmployeeForm.get('password')?.value,
             roles:this.addEmployeeForm.get('roles')?.value
           }
           this.service.postEmployee(requestBody).subscribe((result: any)=>{
