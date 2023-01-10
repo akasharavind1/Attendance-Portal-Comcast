@@ -18,7 +18,7 @@ export class ServicefilesService {
       return this.http.get("http://localhost:8080/api/v1/getLogin")
     }
     getEmployee(id: number){
-      return this.http.get("http://localhost:8080/api/v1/employee/"+id)
+      return this.http.get("http://localhost:8080/api/v1/employeeInfo/"+id)
     }
     getId(){
       return this.http.get("http://localhost:8080/api/v1/getLogin")

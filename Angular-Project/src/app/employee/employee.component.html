@@ -16,17 +16,15 @@
   
   <br>
   
-  <tr>
+  <tr *ngIf="employee">
   
-      <!-- <td>{{employee.firstName}}</td>&nbsp;
-      <!-- <td>{{employees.id}}</td>&nbsp; -->
-      <!-- <td>{{employee.lastName}}</td>&nbsp;
-  
-      <td>{{employee.mailId}}</td>&nbsp;
+      <td>{{employee.firstName}}</td>&nbsp;
+      <td>{{employee.id}}</td>&nbsp; 
+      <td>{{employee.mailID}}</td>&nbsp;
       <td>{{employee.employeeId}}</td>&nbsp;
       <td></td>
       <td></td>
-      <td>{{employee.roles}}</td> --> -->
+      <td>{{employee.roles}}</td>
   </tr>
   </table>
 <router-outlet></router-outlet>

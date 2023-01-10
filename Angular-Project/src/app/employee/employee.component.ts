@@ -11,17 +11,17 @@ import { Router ,ActivatedRoute} from '@angular/router';
 })
 export class EmployeeComponent {
  id: any;
- employee=[];
-  employeeList:any;
+ employee:any;
+  // employeeList:any;
   constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
   }
   ngOnInit(): void{
-this.route.queryParams.subscribe((params)=> {
-   this.id=params['id'];
-   this.getEmployee()
-})
-  }
 
+   this.id=  this.route.snapshot.params['id'];
+   this.getEmployee();
+
+}
+ 
   getEmployee(){
 
     this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
