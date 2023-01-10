@@ -23,7 +23,10 @@ const routes: Routes = [
   },
   {
     path:'update',component: UpdateComponent
-  }
+  },
+  {
+    path:'employee',component: EmployeeComponent,canActivate:[ServicefilesuserGuard]
+  },
 
 ];
 
