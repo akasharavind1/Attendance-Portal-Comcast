@@ -19,7 +19,7 @@
     </div>
     <div>
     <label for="psw" ><b>Password:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-    <input required type="password" class="inputbox" placeholder="Enter your Password" name="psw" required formControlName="newPassword" > 
+    <input required type="password" class="inputbox" placeholder="Enter your Password" name="psw" required formControlName="password" > 
     </div>
     <!-- <button (click)="password()">{{show ? 'Hide' : 'Show'}}</button> -->
     <div class="errormessage" *ngIf="passwrong">
@@ -28,10 +28,12 @@
     <br><div class="detailswrong" *ngIf="detailswrong">
       *Enter vaild credentials.
     </div> 
-    <button type="submit" class="box-1" (click)="login()" >Login</button><br>
+    <div *ngFor="let employee of employeeList">
+    <button type="submit" class="box-1" (click)="login(employee)" >Login</button><br>
     <button [routerLink]="'/addemployee'" type="submit" class="box-1"  >SignUp</button><br><br>
     <input type="checkbox" checked="checked" name="remember"><label>Remember me</label> 
   </div>
+</div>
   <div class="container" style="background-color:#faf8f8">
     <span class="psw"> <a href="#">Forgot password?</a></span>
   </div>

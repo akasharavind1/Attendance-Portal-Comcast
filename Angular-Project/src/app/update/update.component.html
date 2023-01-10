@@ -2,19 +2,17 @@
 
 <form [formGroup]="addEmployeeForm">
   
-    <div class="container" >
+    <div class="container">
       
 
       <label for="fname"><b>First Name::</b></label>
       <input type="text" placeholder="Enter your First Name" name="fname" required formControlName="firstName" >
-
       <label for="lname"><b>Last Name:</b></label>
-      <input required type="text" placeholder="Enter your Last Name(Optional)" name="lname" required formControlName="lastName">
-  
-      <label for="emp id"><b> Employee ID:</b></label>
-      <input required type="text" placeholder="Enter your Employee Id" name="email" required formControlName="employeeId">  
-
-      <button (click)="onSubmit(employeeId)" type="submit" >Submit</button><br>
-    </div>
-    
+     <input required type="text" placeholder="Enter your Last Name(Optional)" name="lname" required formControlName="lastName"> 
+     <div *ng = "let employee of employeeList">
+     <button (click)="onSubmit(employee)" type="submit" >Submit</button><br>
+</div>
+     </div>
+ 
   </form>
+  

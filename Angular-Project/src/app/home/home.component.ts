@@ -16,24 +16,30 @@ export class HomeComponent {
 click: any;
   classList: any;
 
-  constructor (private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){}
-   
+  constructor (private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){
+    this.employeeList=[];
+  }
+  ngOnInit(): void{
+    this.getEmployeeList()
+  
+  }
+  employeeList:any;
     //this is formbuilder method 
       passwrong=false;
     detailswrong=false;
   
     validateemployee = this.form.group({
       mailID:['', Validators.required],
-      newPassword:['',Validators.required]
+      password:['',Validators.required]
 
     })
     
-    login(): void{
+    login(employee:any): void{
 
       if(true){
           let requestBody={
             mailID: this.validateemployee.get('mailID')?.value,
-            newPassword: this.validateemployee.get('newPassword')?.value,
+            password: this.validateemployee.get('password')?.value,
           }
           this.serviceData?.postLogin(requestBody).subscribe((result: any)=>{
             console.log(result);
@@ -47,7 +53,7 @@ click: any;
             console.log(result);
             localStorage.setItem('tokenuser',"7Ewm3NEnJDM")
            localStorage.setItem('ROLE','USER')
-           this.router.navigateByUrl('/employee');
+           this.router.navigateByUrl('/employee/'+result.body.id);
           }
           else if(result.statusCodeValue==200 && result.body=="Password Mismatch"){
             this.passwrong=true;
@@ -59,6 +65,13 @@ click: any;
           })
         }
     }
+    getEmployeeList(){
+    
+      this.serviceData.getEmployeeList().subscribe((result: any)=>{
+        this.employeeList= result;
+        
+      })
+  }  
   //   show = false;
   //   password() {
   //     this.show = !this.show;

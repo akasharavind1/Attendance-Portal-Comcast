@@ -19,7 +19,7 @@ const routes: Routes = [
     path:'addemployee',component: AddemployeeComponent
   },
   {
-    path:'employee',component: EmployeeComponent,canActivate:[ServicefilesuserGuard]
+    path:'employee/:id',component: EmployeeComponent,canActivate:[ServicefilesuserGuard]
   },
   {
     path:'update',component: UpdateComponent
