@@ -19,10 +19,7 @@ export class AddemployeeComponent {
       mailID:['',[Validators.required]],
       employeeId:['',[Validators.required]],
       password:['', [Validators.required]],
-<<<<<<< HEAD
       confirmPassword:['',[Validators.required]],
-=======
->>>>>>> 9c9d65e1fa14b60ae89f18840d402d1d15bc8884
       roles: ['user']
     })
 

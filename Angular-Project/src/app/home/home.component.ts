@@ -29,11 +29,7 @@ click: any;
     detailswrong=false;
   
     validateemployee = this.form.group({
-<<<<<<< HEAD
-      mailId:['', Validators.required],
-=======
       mailID:['', Validators.required],
->>>>>>> 9c9d65e1fa14b60ae89f18840d402d1d15bc8884
       password:['',Validators.required]
 
     })
@@ -42,11 +38,7 @@ click: any;
 
       if(true){
           let requestBody={
-<<<<<<< HEAD
-            mailId: this.validateemployee.get('mailId')?.value,
-=======
             mailID: this.validateemployee.get('mailID')?.value,
->>>>>>> 9c9d65e1fa14b60ae89f18840d402d1d15bc8884
             password: this.validateemployee.get('password')?.value,
           }
           this.serviceData?.postLogin(requestBody).subscribe((result: any)=>{

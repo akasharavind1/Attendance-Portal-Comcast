@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import { HttpClient } from '@angular/common/http';
-<<<<<<< HEAD
-import { Router } from '@angular/router';
-=======
-import { ActivatedRoute, Router,  } from '@angular/router';
->>>>>>> 9c9d65e1fa14b60ae89f18840d402d1d15bc8884
+import { Router ,ActivatedRoute} from '@angular/router';
 
 
 @Component({
