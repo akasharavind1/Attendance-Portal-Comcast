@@ -4,4 +4,31 @@
 <br>
 
 DATE PICKER: <input type="date" [value]="TodayDate" >
-<router-outlet></router-outlet>
+<table class="table">
+  <tr>
+      <th>First Name:</th>&nbsp;
+      <!-- <th>Id:</th>&nbsp; -->
+      <th>Last Name:</th>&nbsp;
+      <th>Email:</th>&nbsp;
+      <th>Employee Id:</th>&nbsp;
+      <th>Attendance %</th>
+      <th>Flag</th>
+      <th>Roles:</th>
+  </tr>
+  
+  <br>
+  
+  <tr *ngIf="employee">
+  
+      <td>{{employee.firstName}}</td>&nbsp;
+      <td>{{employee.id}}</td>&nbsp; 
+      <td>{{employee.mailID}}</td>&nbsp;
+      <td>{{employee.employeeId}}</td>&nbsp;
+      <td></td>
+      <td></td>
+      <td>{{employee.roles}}</td>
+  </tr>
+  </table>
+
+  <p>{{today | date:'yyyy-MM-dd'}}</p>
+  <router-outlet></router-outlet>

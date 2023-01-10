@@ -18,7 +18,7 @@ export class ServicefilesService {
       return this.http.get("http://localhost:8080/api/v1/getLogin")
     }
     getEmployee(id: number){
-      return this.http.get("http://localhost:8080/api/v1/employee/"+id)
+      return this.http.get("http://localhost:8080/api/v1/employeeInfo/"+id)
     }
     getId(){
       return this.http.get("http://localhost:8080/api/v1/getLogin")
@@ -29,8 +29,8 @@ export class ServicefilesService {
     postLogin(body:any){
             return this.http.post("http://localhost:8080/api/v1/login",body)
           }
-    updateEmployee(empId: string, body:any){
-            return this.http.post("http://localhost:8080/api/v1/update?empID="+empId,body)
+    updateEmployee( body:any){
+            return this.http.put("http://localhost:8080/api/v1/update",body)
           }
     postId(id:number){
             return this.http.post("http://localhost:8080/api/v1/postId?id=",id);
