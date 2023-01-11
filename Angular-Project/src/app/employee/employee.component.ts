@@ -16,14 +16,7 @@ export class EmployeeComponent {
  id: any;
  employee:any;
   // employeeList:any;
-<<<<<<< HEAD
-
-  today = new Date();
-  
-  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
-=======
   constructor(private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
->>>>>>> a46df84 (date(post))
   }
   ngOnInit(): void{
    this.id=  this.route.snapshot.params['id'];
