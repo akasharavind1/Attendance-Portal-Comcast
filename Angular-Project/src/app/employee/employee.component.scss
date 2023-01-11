@@ -15,3 +15,12 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
+.mat-calendar-body-cell.selected
+{
+  background-color:red!important;
+  border-radius: 50%
+}
+.drop-calendar
+{
+  width:30rem
+}

@@ -11,7 +11,16 @@ import { AddemployeeComponent } from './addemployee/addemployee.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeComponent } from './employee/employee.component';
 import { UpdateComponent } from './update/update.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,14 +30,23 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AdminComponent,
     AddemployeeComponent,
     EmployeeComponent,
-    UpdateComponent,
+    UpdateComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule,
+    MatMenuModule,
+    BrowserAnimationsModule
+    
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
