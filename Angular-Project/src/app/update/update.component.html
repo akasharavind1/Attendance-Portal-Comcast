@@ -1,15 +1,23 @@
 <h1>Sign in:</h1>
 
-<form [formGroup]="addEmployeeForm">
+<form [formGroup]="editEmployee">
   
     <div class="container">
       
 
       <label for="fname"><b>First Name::</b></label>
-      <input type="text" placeholder="Enter your First Name" name="fname" required formControlName="firstName" >
+      <input type="text"  name="fname" required formControlName="firstName" >
       <label for="lname"><b>Last Name:</b></label>
      <input required type="text" placeholder="Enter your Last Name(Optional)" name="lname" required formControlName="lastName"> 
-     <button (click)="onSubmit()" type="submit" >Submit</button><br>
+     <label for="Email"><b>E-mail Id </b></label>
+     <input type="text"  name="Email" required formControlName="Email" >
+     <label for="EmployeeId"><b>EmployeeId </b></label>
+     <input type="text"  name="EmployeeId" required formControlName="EmployeeId">
+     <label for="roles"><b>Roles </b></label>
+     <input type="text"  name="roles" required formControlName="roles">
+
+    
+     <button (click)="UpdateData()" type="submit" >Submit</button><br>
 </div>
      
   </form>

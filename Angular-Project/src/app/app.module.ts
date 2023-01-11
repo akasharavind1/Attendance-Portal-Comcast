@@ -11,7 +11,7 @@ import { AddemployeeComponent } from './addemployee/addemployee.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeComponent } from './employee/employee.component';
 import { UpdateComponent } from './update/update.component';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +28,7 @@ import { UpdateComponent } from './update/update.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

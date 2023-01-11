@@ -1,5 +1,5 @@
 <br>
-<button type="submit" [routerLink]="'/home'"  (click)="logout()" >logout</button><br>
+<button type="submit" [routerLink]="'/home'"(click)="logout()" ><i  class="fa fa-sign-out" >logout</i></button><br>
 <h1>Employee Details:</h1>
 <br>
 <br>
@@ -29,10 +29,9 @@
     <td></td>
     <td>{{employee.roles}}</td>
     
-    <td><button class="btn-edit" [routerLink]="'/update'" >Edit</button></td>
-    <td><button class="btn-edit" (click)="delete(employee)" >Delete</button></td>
+    <a routerLink="/update/{{employee.id}}"><i class="fa fa-edit"></i></a>
+    <td><button class="delete button"(click)="delete(employee)"><i class="fa fa-trash" >&nbsp;</i></button> 
 </tr>
 </table>
-
 <router-outlet></router-outlet>
 

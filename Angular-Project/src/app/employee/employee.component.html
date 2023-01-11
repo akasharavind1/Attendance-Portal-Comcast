@@ -3,7 +3,7 @@
 <button type="submit" [routerLink]="'/home'"  (click)="logout()" >logout</button><br>
 <br>
 
-DATE PICKER: <input type="date" [value]="TodayDate" >
+<!-- DATE PICKER: <input type="date" [value]="TodayDate" > -->
 <table class="table">
   <tr>
       <th>First Name:</th>&nbsp;
@@ -30,5 +30,5 @@ DATE PICKER: <input type="date" [value]="TodayDate" >
   </tr>
   </table>
 
-  <p>{{today | date:'yyyy-MM-dd'}}</p>
+  <!-- <p>{{today | date:'yyyy-MM-dd'}}</p> -->
   <router-outlet></router-outlet>

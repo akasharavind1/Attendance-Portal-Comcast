@@ -29,6 +29,7 @@ export class AdminComponent implements OnInit {
       
     })
 }  
+
 delete(employees: any){
   this.serviceData.deleteEmployee(employees.id).subscribe((Response) => {
       console.log(Response);
