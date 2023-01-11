@@ -33,6 +33,7 @@ UpdateData(){
       }
      this.serviceData.updateEmployee(this.id,requestBody).subscribe((result: any)=>{ 
       console.log(result);
+      this.router.navigate(['/admin']);
       })
     }
 }
