@@ -15,8 +15,8 @@ export class UpdateComponent {
 editEmployee= this.form.group({
 firstName:['',[Validators.required, Validators.minLength(2)]],
 lastName:[''],
-Email:['',[Validators.required]],
-EmployeeId:['',[Validators.required]],
+mailID:['',[Validators.required]],
+employeeId:['',[Validators.required]],
 roles:['',[Validators.required]]
 })
 id:any;
@@ -27,8 +27,8 @@ UpdateData(){
       let requestBody={
         firstName: this.editEmployee.get('firstName')?.value,
         lastName: this.editEmployee.get('lastName')?.value,
-        Email: this.editEmployee.get('Email')?.value,
-        EmployeeId: this.editEmployee.get('EmployeeId')?.value,
+        mailID: this.editEmployee.get('mailID')?.value,
+        employeeId: this.editEmployee.get('employeeId')?.value,
         roles: this.editEmployee.get('roles')?.value,
       }
      this.serviceData.updateEmployee(this.id,requestBody).subscribe((result: any)=>{ 
