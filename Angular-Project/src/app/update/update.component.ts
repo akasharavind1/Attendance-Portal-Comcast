@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 @Component({
@@ -43,7 +43,16 @@ ngOnInit(): void{
 }
   getEmployee(){
     this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
-      this.employee= result;     
-    })
-}
-}
+      this.employee= result;    
+      console.log(result); 
+      // this.editEmployee.get('firstName').setValue(result.firstName);
+      this.editEmployee.patchValue({
+        firstName: result.firstName,
+        lastName: result.lastName,
+        employeeId: result.employeeId,
+        mailID: result.mailID,
+        roles: result.roles,       
+      })
+      
+})
+}}
