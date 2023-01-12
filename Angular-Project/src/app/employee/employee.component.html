@@ -30,5 +30,17 @@
   </tr>
   </table>
 
+  <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <mat-icon>Balendar_today</mat-icon>
+  </button>
+  <mat-menu #appMenu="matMenu">
+      <div (click)="$event.stopPropagation()">
+          <mat-calendar #calendar 
+             (selectedChange)="select($event,calendar)" 
+              [dateClass]="isSelected">
+          </mat-calendar>
+      </div>
+  </mat-menu>
+
   <!-- <p>{{today | date:'yyyy-MM-dd'}}</p> -->
   <router-outlet></router-outlet>
