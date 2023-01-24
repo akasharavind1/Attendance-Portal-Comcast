@@ -19,7 +19,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MbscModule, MbscProvider } from "ack-angular-mobiscroll";
-import { DatePickerAllModule } from '@syncfusion/ej2-angular-calendars';
+// import { DatePickerAllModule } from '@syncfusion/ej2-angular-calendars';
 
 
 @NgModule({

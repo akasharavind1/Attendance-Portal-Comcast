@@ -18,9 +18,10 @@ tr:nth-child(even) {
 .mat-calendar-body-cell.selected
 {
   background-color:red!important;
-  border-radius: 50%
+  border-radius: 50%;
+  // width:auto;
 }
 .drop-calendar
 {
-  width:30rem
+  width:30rem;
 }
