@@ -41,6 +41,20 @@
           </mat-calendar>
       </div>
   </mat-menu> 
+  <!-- {{daysSelected|json}} -->
+
+  <table>
+    <tr>
+      <th>Dates selected:</th>
+    </tr>
+    <tr *ngFor="let dates of daysSelected">
+      <td>{{dates}}</td>
+    </tr>
+  </table>
+
+  <button class="button" (click)="passTheDates()">
+    SUBMIT
+  </button>
   <!-- <mbsc-datepicker [(ngModel)]="myBirthday"  placeholder="Please select..." /> -->
   <!-- <mbsc-datepicker
     [controls]="['calendar']"

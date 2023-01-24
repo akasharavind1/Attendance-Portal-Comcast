@@ -26,6 +26,9 @@ export class ServicefilesService {
     postEmployee(body:any){
       return this.http.post("http://localhost:8080/api/v1/signup",body)
     }
+    postDates(body:any,id: number ){
+      return this.http.post("http://localhost:8080/api/v1/postDates/"+id,body)
+    }
     postLogin(body:any){
             return this.http.post("http://localhost:8080/api/v1/login",body)
           }

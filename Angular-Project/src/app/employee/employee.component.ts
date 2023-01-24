@@ -19,6 +19,7 @@ import { MbscModule } from 'ack-angular-mobiscroll';
 export class EmployeeComponent {
  id: any;
  employee:any;
+  
   // employeeList:any;
   constructor(private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
   }
@@ -69,6 +70,20 @@ select(event: any, calendar: any) {
   calendar.updateTodaysDate();
 }
 
+passTheDates(){
+
+  // let requestBody={
+  //     values:this.daysSelected,
+  //     employeeId:this.id
+  // }
+
+      this.serviceData.postDates(this.daysSelected,this.id).subscribe((result: any)=>{
+        console.log(result);
+        // this.router.navigate(['/home']);
+       
+      })
+  
+}
 
   // addDate(){
 
