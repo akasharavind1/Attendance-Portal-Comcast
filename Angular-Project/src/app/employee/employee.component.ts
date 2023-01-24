@@ -7,6 +7,7 @@ import { AddemployeeComponent } from '../addemployee/addemployee.component';
 import { trigger, state, style, transition, animate } from '@angular/animations'; 
 import { ViewEncapsulation } from '@angular/core';
 
+import { MbscModule } from 'ack-angular-mobiscroll';
 
 
 @Component({
@@ -19,22 +20,30 @@ export class EmployeeComponent {
  id: any;
  employee:any;
   // employeeList:any;
-  constructor(private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
+  constructor(private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
   }
   ngOnInit(): void{
+    
    this.id=  this.route.snapshot.params['id'];
    this.getEmployee();
   
 }
 
-  //just for checking purpose
+  // just for checking purpose
   postemployee = this.form.group({
     dates:[''],
   
   })
+ 
+
 
   daysSelected: any[] = [];
 event: any;
+days: any;
+
+// fetchData(){
+//   console.log(this.days);
+// }
 
 isSelected:any = (event: any) => {
   const date =
@@ -61,20 +70,20 @@ select(event: any, calendar: any) {
 }
 
 
-  addDate(){
+  // addDate(){
 
-    if(true){
-        let requestBody=this.postemployee.get('dates')?.value;
+  //   if(true){
+  //       let requestBody=this.postemployee.get('dates')?.value;
           
-          this.serviceData?.postDate(requestBody).subscribe((result: any)=>{
-          console.log(result);
+  //         this.serviceData?.postDate(requestBody).subscribe((result: any)=>{
+  //         console.log(result);
         
         
-        })
+  //       })
        
         
-      }
-  }
+  //     }
+  // }
  
   getEmployee(){
 

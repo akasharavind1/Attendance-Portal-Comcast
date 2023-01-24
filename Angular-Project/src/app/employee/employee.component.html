@@ -31,16 +31,33 @@
   </table>
 
   <button mat-icon-button [matMenuTriggerFor]="appMenu">
-    <mat-icon>Balendar_today</mat-icon>
-  </button>
-  <mat-menu #appMenu="matMenu">
+    <mat-icon>Calendar_today</mat-icon>
+  </button> 
+   <mat-menu #appMenu="matMenu">
       <div (click)="$event.stopPropagation()">
           <mat-calendar #calendar 
              (selectedChange)="select($event,calendar)" 
               [dateClass]="isSelected">
           </mat-calendar>
       </div>
-  </mat-menu>
+  </mat-menu> 
+  <!-- <mbsc-datepicker [(ngModel)]="myBirthday"  placeholder="Please select..." /> -->
+  <!-- <mbsc-datepicker
+    [controls]="['calendar']"
+    [selectMultiple]="false">
+</mbsc-datepicker> -->
+<!-- <input [matDatepicker]="basicDatepicker">
+<mat-datepicker-toggle [for]="basicDatepicker">
+  <mat-icon matDatepickerToggleIcon>
+      mouse
+  </mat-icon>
+</mat-datepicker-toggle>
+<mat-datepicker #basicDatepicker></mat-datepicker> -->
+
+  <!-- Date: <input type="date" [(ngModel)]="days">
+  fetch data:<button type="button" (click)="fetchData()"></button> -->
+
+
 
   <!-- <p>{{today | date:'yyyy-MM-dd'}}</p> -->
   <router-outlet></router-outlet>

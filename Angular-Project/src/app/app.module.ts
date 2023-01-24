@@ -16,7 +16,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MbscModule, MbscProvider } from "ack-angular-mobiscroll";
+import { DatePickerAllModule } from '@syncfusion/ej2-angular-calendars';
 
 
 @NgModule({
@@ -42,8 +45,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatIconModule,
     MatMenuModule,
     BrowserAnimationsModule,
-    
-    
+    FormsModule,
+    MbscModule,
     
   ],
   providers: [],
