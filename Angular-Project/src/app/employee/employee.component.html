@@ -30,10 +30,10 @@
   </tr>
   </table>
 
-  <button mat-icon-button [matMenuTriggerFor]="appMenu">
-    <mat-icon>Calendar_today</mat-icon>
+  <button class="button" [matMenuTriggerFor]="appMenu">
+    MAKE SCHEDULE
   </button> 
-   <mat-menu #appMenu="matMenu">
+   <mat-menu class="matmenu" #appMenu="matMenu">
       <div (click)="$event.stopPropagation()">
           <mat-calendar #calendar 
              (selectedChange)="select($event,calendar)" 
