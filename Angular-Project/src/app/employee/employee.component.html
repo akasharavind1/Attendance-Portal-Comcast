@@ -1,6 +1,6 @@
 <br>
 <br>
-<button type="submit" [routerLink]="'/home'"  (click)="logout()" >logout</button><br>
+<button type="submit" class="button" style="float: right;" [routerLink]="'/home'"  (click)="logout()" >LogOut</button><br>
 <br>
 
 <!-- DATE PICKER: <input type="date" [value]="TodayDate" > -->
@@ -29,6 +29,8 @@
       <td>{{employee.roles}}</td>
   </tr>
   </table>
+  <br>
+  <br>
 
   <button class="button" [matMenuTriggerFor]="appMenu">
     MAKE SCHEDULE
@@ -39,10 +41,11 @@
              (selectedChange)="select($event,calendar)" 
               [dateClass]="isSelected">
           </mat-calendar>
-      </div>
+      </div><br><br>
+      <button class="btn">OK</button>
   </mat-menu> 
   <!-- {{daysSelected|json}} -->
-
+<br><br>
   <table>
     <tr>
       <th>Dates selected:</th>
