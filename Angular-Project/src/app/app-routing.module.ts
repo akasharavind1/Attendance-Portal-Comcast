@@ -8,6 +8,9 @@ import { EmployeeComponent } from './employee/employee.component';
 import { UpdateComponent } from './update/update.component';
 import { ServicefilesGuard } from './servicefiles/servicefilesadmin.guard';
 import { ServicefilesuserGuard } from './servicefiles/servicefilesuser.guard';
+import { ServicefilesuseridcheckGuard } from './servicefiles/servicefilesuseridcheck.guard';
+import { DetailemployeeComponent } from './detailemployee/detailemployee.component';
+
 const routes: Routes = [
   {
     path:'admin', component:AdminComponent,canActivate:[ServicefilesGuard]
@@ -22,7 +25,10 @@ const routes: Routes = [
     path:'employee/:id',component: EmployeeComponent,canActivate:[ServicefilesuserGuard]
   },
   {
-    path:'update/:id',component: UpdateComponent
+    path:'update/:id',component: UpdateComponent,canActivate:[ServicefilesGuard]
+  },
+  {
+    path:'detailemployee/:id',component: DetailemployeeComponent
   },
 
 ];

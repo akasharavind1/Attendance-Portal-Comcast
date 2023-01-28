@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import { AdminComponent } from '../admin/admin.component';
 import { EmployeeComponent } from '../employee/employee.component';
@@ -15,11 +15,13 @@ import { EmployeeComponent } from '../employee/employee.component';
 export class HomeComponent {
 click: any;
   classList: any;
-
-  constructor (private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){
+  id:any;
+  constructor (private route: ActivatedRoute, private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){
     this.employeeList=[];
+    
   }
   ngOnInit(): void{
+    this.id=  this.route.snapshot.params['id'];
     this.getEmployeeList()
   
   }
@@ -27,6 +29,7 @@ click: any;
     //this is formbuilder method 
       passwrong=false;
     detailswrong=false;
+    schedule=false;
   
     validateemployee = this.form.group({
       mailID:['', Validators.required],
@@ -45,15 +48,21 @@ click: any;
             console.log(result);
            if(result.statusCodeValue==200 && result.body.roles=="admin" &&  result.body.message=="User retrieved successfully"){
             console.log(result);
-            localStorage.setItem('tokenadmin',"AH2EjtcmoURSXm2RhZ8ihnJrsty-7Ewm3NEnJDM-Atw9ewbIPvuarglows0vtaCV33b4z3PpM5RsMklbpe0aNPK5_BanGxmp_JSsOEtZYuf4m3cHTtKnxpQeonN07XDK-DUPKAaRwLfY")
-           localStorage.setItem('ROLE','ADMIN')
+            localStorage.setItem('tokenadmin',"AH2EjtcmoURSXm2RhZ8ihnJrsty")
+          //  localStorage.setItem('ROLE','ADMIN')
             this.router.navigateByUrl('/admin');
           }
           else if(result.statusCodeValue==200 && result.body.roles=="user" &&  result.body.message=="User retrieved successfully"){
             console.log(result);
             localStorage.setItem('tokenuser',"7Ewm3NEnJDM")
-           localStorage.setItem('ROLE','USER')
+           localStorage.setItem('idd',result.body.id)
+           
+          //  if(this.id==localStorage.getItem('idd')){
+           
            this.router.navigateByUrl('/employee/'+result.body.id);
+           console.log(result.body.id);
+           this.schedule==true;
+          //  }
           }
           else if(result.statusCodeValue==200 && result.body=="Password Mismatch"){
             this.passwrong=true;

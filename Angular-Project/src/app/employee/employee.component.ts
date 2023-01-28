@@ -19,14 +19,19 @@ import { MbscModule } from 'ack-angular-mobiscroll';
 export class EmployeeComponent {
  id: any;
  employee:any;
+ employeeList:any;
+ employee2:any;
+ empId:any;
   
   // employeeList:any;
   constructor(private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
+    this.employeeList=[];
   }
   ngOnInit(): void{
     
    this.id=  this.route.snapshot.params['id'];
-   this.getEmployee();
+   this.employeeList=[];
+   this.getEmployeeList();
   
 }
 
@@ -103,12 +108,29 @@ passTheDates(){
   getEmployee(){
 
     this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
-      this.employee= result;     
+      this.employee= result;  
+      this.empId=result.employeeId;
+         
     })
   }
-  logout(){
+  getEmployeeList(){
+    
+    this.serviceData.getEmployeeList().subscribe((result: any)=>{
+      this.employeeList= result;
+      console.log(this.employeeList);
+      
+    })
+} 
+  getDates(){  
+    this.serviceData.getDates(this.empId).subscribe((result: any)=>{
+      console.log(this.empId);
+      this.employee2=result;
+      console.log(this.employee2)
+    })
+  }
+  logout(){ 
     localStorage.removeItem('tokenuser');
-    localStorage.clear();
+    localStorage.removeItem('idd');
         this.router.navigate(['/home']);
    };
   }

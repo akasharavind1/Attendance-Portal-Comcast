@@ -2,34 +2,38 @@
 <br>
 <button type="submit" [routerLink]="'/home'"  (click)="logout()" >logout</button><br>
 <br>
-
-<!-- DATE PICKER: <input type="date" [value]="TodayDate" > -->
+<h1>Employee Details:</h1>
+<br>
+<br>
 <table class="table">
-  <tr>
-      <th>First Name:</th>&nbsp;
-      <!-- <th>Id:</th>&nbsp; -->
-      <th>Last Name:</th>&nbsp;
-      <th>Email:</th>&nbsp;
-      <th>Employee Id:</th>&nbsp;
-      <th>Attendance %</th>
-      <th>Flag</th>
-      <th>Roles:</th>
-  </tr>
-  
-  <br>
-  
-  <tr *ngIf="employee">
-  
-      <td>{{employee.firstName}}</td>&nbsp;
-      <td>{{employee.id}}</td>&nbsp; 
-      <td>{{employee.mailID}}</td>&nbsp;
-      <td>{{employee.employeeId}}</td>&nbsp;
-      <td></td>
-      <td></td>
-      <td>{{employee.roles}}</td>
-  </tr>
-  </table>
+<tr>
+    <th>First Name:</th>&nbsp;
+    <!-- <th>Id:</th>&nbsp; -->
+    <th>Last Name:</th>&nbsp;
+    <th>Email:</th>&nbsp;
+    <th>Employee Id:</th>&nbsp;
+    <th>Attendance %</th>
+    <th>Flag</th>
+    <th>Roles:</th>
+</tr>
 
+<br>
+
+<tr *ngFor="let employee of employeeList">
+
+  
+      <td>{{employee.firstName}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;
+    <!-- <td>{{employees.id}}</td>&nbsp; -->
+    
+    <td>{{employee.lastName}}</td>&nbsp;
+
+    <td>{{employee.mailID}}</td>&nbsp;
+    <td>{{employee.employeeId}}</td>&nbsp;
+    <td></td>
+    <td></td>
+    <td>{{employee.roles}}</td>
+</tr>
+</table>
   <button class="button" [matMenuTriggerFor]="appMenu">
     MAKE SCHEDULE
   </button> 
@@ -74,4 +78,10 @@
 
 
   <!-- <p>{{today | date:'yyyy-MM-dd'}}</p> -->
+  <button class="button" (click)="getDates()">
+   CHECK SELECTED DATES
+  </button> 
+  <tr * ngIf="employee2">
+  <td>{{employee2.dates}}</td>
+  </tr>
   <router-outlet></router-outlet>

@@ -19,8 +19,10 @@
 
 <tr *ngFor="let employee of employeeList">
 
-    <td>{{employee.firstName}}</td>&nbsp;
+  
+      <td>{{employee.firstName}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;
     <!-- <td>{{employees.id}}</td>&nbsp; -->
+    
     <td>{{employee.lastName}}</td>&nbsp;
 
     <td>{{employee.mailID}}</td>&nbsp;
@@ -31,6 +33,7 @@
     
     <a routerLink="/update/{{employee.id}}"><i class="fa fa-edit"></i></a>
     <td><button class="delete button"(click)="delete(employee)"><i class="fa fa-trash" >&nbsp;</i></button> 
+        </td>
 </tr>
 </table>
 <router-outlet></router-outlet>

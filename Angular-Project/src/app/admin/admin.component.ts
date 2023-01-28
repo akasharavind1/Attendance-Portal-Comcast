@@ -12,13 +12,15 @@ export class AdminComponent implements OnInit {
 
     // url="http://localhost:8080/api/v1/employee";
     employeeList:any;
-  
+    details:any;
   constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router){
     this.employeeList=[];
+    // this.details=[];
   }
 
   ngOnInit(): void{
-    this.getEmployeeList()
+    this.getEmployeeList();
+    // this.details();
   
   }
 
@@ -29,6 +31,11 @@ export class AdminComponent implements OnInit {
       
     })
 }  
+// getdetails(individual:any){
+//   this.serviceData.getdetails(individual.id).subscribe((result: any)=>{
+//     this.details= result;
+// })
+// }
 
 delete(employees: any){
   this.serviceData.deleteEmployee(employees.id).subscribe((Response) => {
@@ -38,7 +45,6 @@ delete(employees: any){
 }
 logout(){
   localStorage.removeItem('tokenadmin');
-  localStorage.clear();
       this.router.navigate(['/home']);
  };
 }

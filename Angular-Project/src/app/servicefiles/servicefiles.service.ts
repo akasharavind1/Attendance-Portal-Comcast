@@ -9,19 +9,36 @@ export class ServicefilesService {
     }
    
     IsLoggedAdmin(){
+      if(localStorage.getItem("tokenadmin")=="AH2EjtcmoURSXm2RhZ8ihnJrsty"){
      return !!localStorage.getItem("tokenadmin");
     }
+    return null;
+  }
     IsLoggedUser(){
+      if(localStorage.getItem("tokenuser")=="7Ewm3NEnJDM"){   
       return !!localStorage.getItem("tokenuser");
     }
-    getEmployeeList(){
+    return null;
+  }
+    IsLoggedUserId()
+   { 
+    return !!localStorage.getItem("id");
+  }
+  
+     getEmployeeList(){
       return this.http.get("http://localhost:8080/api/v1/getLogin")
     }
     getEmployee(id: number){
       return this.http.get("http://localhost:8080/api/v1/employeeInfo/"+id)
     }
+    getDates(empId: number){
+      return this.http.get("http://localhost:8080/api/v1/getDates/"+empId)
+    }
     getId(){
       return this.http.get("http://localhost:8080/api/v1/getLogin")
+    }
+    getdetails(id: number){
+      return this.http.delete("http://localhost:8080/api/v1/getdetails/"+id);
     }
     postEmployee(body:any){
       return this.http.post("http://localhost:8080/api/v1/signup",body)
