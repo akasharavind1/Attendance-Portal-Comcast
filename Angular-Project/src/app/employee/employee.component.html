@@ -61,21 +61,7 @@
     SUBMIT
   </button>
   <br>
-  <br>
-  <br>
-  <table class="table" style="float: right;">
-    <tr>
-        <th>First Name:</th>&nbsp;
-        <th>Last Name:</th>&nbsp;
-        <th>Email:</th>&nbsp;
-        <th>Employee Id:</th>&nbsp;
-    </tr>
-    </table>
-
-
-
-
-    
+  <br>    
   <router-outlet></router-outlet>
 
 
@@ -97,15 +83,11 @@
 
 
 
-<<<<<<< HEAD
   <!-- <p>{{today | date:'yyyy-MM-dd'}}</p> -->
   <button class="button" (click)="getDates()">
-   CHECK SELECTED DATES
+   <tr><th>CHECK SELECTED DATES</th>
   </button> 
-  <tr * ngIf="employee2">
-  <td>{{employee2.dates}}</td>
+  <tr *ngFor="let employee22 of employee2">
+  <td>{{employee22.date}}</td>
   </tr>
   <router-outlet></router-outlet>
-=======
-  <!-- <p>{{today | date:'yyyy-MM-dd'}}</p> -->
->>>>>>> cca694b479b356608aea83522bc517ac4342a7d5

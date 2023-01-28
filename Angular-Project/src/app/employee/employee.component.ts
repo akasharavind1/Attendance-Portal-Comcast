@@ -22,15 +22,18 @@ export class EmployeeComponent {
  employeeList:any;
  employee2:any;
  empId:any;
+ temp:any;
   
   // employeeList:any;
   constructor(private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
     this.employeeList=[];
+    this.employee2=[];
   }
   ngOnInit(): void{
     
    this.id=  this.route.snapshot.params['id'];
    this.employeeList=[];
+   this.employee2=[];
    this.getEmployeeList();
   
 }
@@ -82,45 +85,42 @@ passTheDates(){
   //     employeeId:this.id
   // }
 
-      this.serviceData.postDates(this.daysSelected,this.id).subscribe((result: any)=>{
+      this.serviceData.postDates(this.daysSelected,this.empId).subscribe((result: any)=>{
         console.log(result);
         // this.router.navigate(['/home']);
        
       })
   
 }
-
-  // addDate(){
-
-  //   if(true){
-  //       let requestBody=this.postemployee.get('dates')?.value;
-          
-  //         this.serviceData?.postDate(requestBody).subscribe((result: any)=>{
-  //         console.log(result);
-        
-        
-  //       })
-       
-        
-  //     }
-  // }
- 
-  getEmployee(){
-
-    this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
-      this.employee= result;  
-      this.empId=result.employeeId;
-         
-    })
-  }
   getEmployeeList(){
     
     this.serviceData.getEmployeeList().subscribe((result: any)=>{
       this.employeeList= result;
+      // this.id=result.body.id;
       console.log(this.employeeList);
-      
+      console.log(this.id);
+      // this.temp=this.id;
+      // console.log(this.temp);
+    })
+    this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
+      this.employee= result;  
+      // console.log(this.temp);
+      this.empId=result.employeeId;
+         console.log(this.empId);
+         console.log(this.employee);
     })
 } 
+  // getEmployee(){
+
+  //   this.serviceData.getEmployee(this.temp).subscribe((result: any)=>{
+  //     this.employee= result;  
+  //     console.log(this.temp);
+  //     this.empId=result.employeeId;
+  //        console.log(this.empId);
+  //        console.log(this.employee);
+  //   })
+  // }
+ 
   getDates(){  
     this.serviceData.getDates(this.empId).subscribe((result: any)=>{
       console.log(this.empId);

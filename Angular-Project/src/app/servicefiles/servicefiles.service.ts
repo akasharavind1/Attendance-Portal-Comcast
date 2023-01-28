@@ -28,7 +28,7 @@ export class ServicefilesService {
      getEmployeeList(){
       return this.http.get("http://localhost:8080/api/v1/getLogin")
     }
-    getEmployee(id: number){
+    getEmployee(id: any){
       return this.http.get("http://localhost:8080/api/v1/employeeInfo/"+id)
     }
     getDates(empId: number){
@@ -43,7 +43,7 @@ export class ServicefilesService {
     postEmployee(body:any){
       return this.http.post("http://localhost:8080/api/v1/signup",body)
     }
-    postDates(body:any,id: number ){
+    postDates(body:any,id: any ){
       return this.http.post("http://localhost:8080/api/v1/postDates/"+id,body)
     }
     postLogin(body:any){
@@ -58,7 +58,7 @@ export class ServicefilesService {
     deleteEmployee(id:number){
       return this.http.delete("http://localhost:8080/api/v1/delete?id="+id);
     }
-    postDate(dates: any){
-      return this.http.post("http://localhost:8080/api/v1/postDate?dates=",dates);
-    }
+    // postDate(dates: any){
+    //   return this.http.post("http://localhost:8080/api/v1/postDate?dates=",dates);
+    // }
     }
