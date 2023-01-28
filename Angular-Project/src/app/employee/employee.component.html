@@ -1,11 +1,12 @@
 <br>
 <br>
-<button type="submit" [routerLink]="'/home'"  (click)="logout()" >logout</button><br>
+<button type="submit" class="button" style="float: right;" [routerLink]="'/home'"  (click)="logout()" >LogOut</button><br>
 <br>
 <h1>Employee Details:</h1>
 <br>
 <br>
 <table class="table">
+<<<<<<< HEAD
 <tr>
     <th>First Name:</th>&nbsp;
     <!-- <th>Id:</th>&nbsp; -->
@@ -16,6 +17,34 @@
     <th>Flag</th>
     <th>Roles:</th>
 </tr>
+=======
+  <tr>
+      <th>First Name:</th>&nbsp;
+      <!-- <th>Id:</th>&nbsp; -->
+      <th>Last Name:</th>&nbsp;
+      <th>Email:</th>&nbsp;
+      <th>Employee Id:</th>&nbsp;
+      <th>Attendance %</th>
+      <th>Flag</th>
+      <th>Roles:</th>
+  </tr>
+  
+  <br>
+  
+  <tr *ngIf="employee">
+  
+      <td>{{employee.firstName}}</td>&nbsp;
+      <td>{{employee.id}}</td>&nbsp; 
+      <td>{{employee.mailID}}</td>&nbsp;
+      <td>{{employee.employeeId}}</td>&nbsp;
+      <td></td>
+      <td></td>
+      <td>{{employee.roles}}</td>
+  </tr>
+  </table>
+  <br>
+  <br>
+>>>>>>> cca694b479b356608aea83522bc517ac4342a7d5
 
 <br>
 
@@ -43,10 +72,11 @@
              (selectedChange)="select($event,calendar)" 
               [dateClass]="isSelected">
           </mat-calendar>
-      </div>
+      </div><br><br>
+      <button class="btn">OK</button>
   </mat-menu> 
   <!-- {{daysSelected|json}} -->
-
+<br><br>
   <table>
     <tr>
       <th>Dates selected:</th>
@@ -59,6 +89,25 @@
   <button class="button" (click)="passTheDates()">
     SUBMIT
   </button>
+  <br>
+  <br>
+  <br>
+  <table class="table" style="float: right;">
+    <tr>
+        <th>First Name:</th>&nbsp;
+        <th>Last Name:</th>&nbsp;
+        <th>Email:</th>&nbsp;
+        <th>Employee Id:</th>&nbsp;
+    </tr>
+    </table>
+
+
+
+
+    
+  <router-outlet></router-outlet>
+
+
   <!-- <mbsc-datepicker [(ngModel)]="myBirthday"  placeholder="Please select..." /> -->
   <!-- <mbsc-datepicker
     [controls]="['calendar']"
@@ -77,6 +126,7 @@
 
 
 
+<<<<<<< HEAD
   <!-- <p>{{today | date:'yyyy-MM-dd'}}</p> -->
   <button class="button" (click)="getDates()">
    CHECK SELECTED DATES
@@ -85,3 +135,6 @@
   <td>{{employee2.dates}}</td>
   </tr>
   <router-outlet></router-outlet>
+=======
+  <!-- <p>{{today | date:'yyyy-MM-dd'}}</p> -->
+>>>>>>> cca694b479b356608aea83522bc517ac4342a7d5
