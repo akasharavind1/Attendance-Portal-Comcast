@@ -59,7 +59,7 @@ click: any;
            
           //  if(this.id==localStorage.getItem('idd')){
            
-           this.router.navigateByUrl('/employee/'+result.body.id);
+           this.router.navigateByUrl('/employee/'+result.body.id);  
            console.log(result.body.id);
            this.schedule==true;
           //  }

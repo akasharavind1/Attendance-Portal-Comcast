@@ -16,7 +16,7 @@ const routes: Routes = [
     path:'admin', component:AdminComponent,canActivate:[ServicefilesGuard]
   },
   { 
-    path:'home', component: HomeComponent
+    path:'', component: HomeComponent
   },
   {
     path:'addemployee',component: AddemployeeComponent

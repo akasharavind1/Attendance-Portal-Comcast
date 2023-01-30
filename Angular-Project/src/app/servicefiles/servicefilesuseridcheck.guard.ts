@@ -13,7 +13,7 @@ export class ServicefilesuseridcheckGuard implements CanActivateChild {
    if(this.auth.IsLoggedUserId()){
     return true;
    }
-   this.router.navigate(['home']);
+   this.router.navigate(['']);
    return false;
 }
 }

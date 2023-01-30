@@ -1,5 +1,5 @@
 <br>
-<button type="submit" style="float: right;" [routerLink]="'/home'"(click)="logout()" ><i  class="fa fa-sign-out" >Logout</i></button><br>
+<button type="submit" style="float: right;" [routerLink]="'/'"(click)="logout()" ><i  class="fa fa-sign-out" >Logout</i></button><br>
 <h1>Employee Details:</h1>
 <br>
 <br>
@@ -20,19 +20,19 @@
 <tr *ngFor="let employee of employeeList">
 
   
-      <td>{{employee.firstName}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;
+      <td [title]="'Click the icon to view details'" >{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;
     <!-- <td>{{employees.id}}</td>&nbsp; -->
     
-    <td>{{employee.lastName}}</td>&nbsp;
+    <td [title]="employee.lastName">{{employee.lastName | uppercase}}</td>&nbsp;
 
     <td>{{employee.mailID}}</td>&nbsp;
     <td>{{employee.employeeId}}</td>&nbsp;
     <td></td>
     <td></td>
-    <td>{{employee.roles}}</td>
+    <td>{{employee.roles | uppercase}}</td>
     
-    <a routerLink="/update/{{employee.id}}"><i class="fa fa-edit"></i></a>
-    <td><button class="delete button"(click)="delete(employee)"><i class="fa fa-trash" >&nbsp;</i></button> 
+    <a [title]="'Click here to update'" routerLink="/update/{{employee.id}}"><i class="fa fa-edit">EDIT</i></a>
+    <td [title]="'Click here to delete '"><button class="delete button"(click)="delete(employee)"><i class="fa fa-trash" >&nbsp;</i>DELETE</button> 
         </td>
 </tr>
 </table>

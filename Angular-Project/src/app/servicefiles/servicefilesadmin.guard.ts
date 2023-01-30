@@ -12,7 +12,7 @@ export class ServicefilesGuard implements CanActivate {
    if(this.auth.IsLoggedAdmin()){
     return true;
    }
-   this.router.navigate(['home']);
+   this.router.navigate(['']);
    return false;
 }
 }

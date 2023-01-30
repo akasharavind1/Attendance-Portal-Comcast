@@ -13,7 +13,7 @@ export class ServicefilesuserGuard implements CanActivate {
    if(this.auth.IsLoggedUser()){
     return true;
    }
-   this.router.navigate(['home']);
+   this.router.navigate(['']);
    return false;
 }
   // canActivated(){

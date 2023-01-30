@@ -1,10 +1,11 @@
 <br>
 <br>
-<button type="submit" class="button" style="float: right;" [routerLink]="'/home'"  (click)="logout()" >LogOut</button><br>
+<button type="submit" class="button" style="float: right;" [routerLink]="'/'"  (click)="logout()" >LogOut</button><br>
 <br>
 <h1>Employee Details:</h1>
 <br>
 <br>
+<h2>{{fn | uppercase}}</h2><br>
 <table class="table">
 <tr>
     <th>First Name:</th>&nbsp;
@@ -19,19 +20,20 @@
 
 <br>
 
+
 <tr *ngFor="let employee of employeeList">
 
   
-      <td>{{employee.firstName}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;
+      <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;
     <!-- <td>{{employees.id}}</td>&nbsp; -->
     
-    <td>{{employee.lastName}}</td>&nbsp;
+    <td>{{employee.lastName | uppercase}}</td>&nbsp;
 
     <td>{{employee.mailID}}</td>&nbsp;
     <td>{{employee.employeeId}}</td>&nbsp;
+    <td> </td>
     <td></td>
-    <td></td>
-    <td>{{employee.roles}}</td>
+    <td>{{employee.roles | uppercase}}</td>
 </tr>
 </table>
   <button class="button" [matMenuTriggerFor]="appMenu">
@@ -85,9 +87,12 @@
 
   <!-- <p>{{today | date:'yyyy-MM-dd'}}</p> -->
   <button class="button" (click)="getDates()">
+    {{successmsg}}
    <tr><th>CHECK SELECTED DATES</th>
   </button> 
+  <table>
   <tr *ngFor="let employee22 of employee2">
-  <td>{{employee22.date}}</td>
+  <td>{{employee22.date | date : 'fullDate' | uppercase}}</td>
   </tr>
+</table>
   <router-outlet></router-outlet>

@@ -37,7 +37,7 @@ export class AddemployeeComponent {
           }
           this.service.postEmployee(requestBody).subscribe((result: any)=>{
             console.log(result);
-            this.router.navigate(['/home']);
+            this.router.navigate(['/']);
            
           })
         }

@@ -17,14 +17,14 @@
   
   <tr *ngIf="employee">
   
-    <td>{{employee.firstName}}
+    <td>{{employee.firstName | uppercase}}
       <a routerLink="/employee/{{employee.id}}"></a></td>&nbsp;
-      <td>{{employee.id}}</td>&nbsp; 
+      <td>{{employee.lastName | uppercase}}</td>&nbsp; 
       <td>{{employee.mailID}}</td>&nbsp;
       <td>{{employee.employeeId}}</td>&nbsp;
       <td></td>
       <td></td>
-      <td>{{employee.roles}}</td>
+      <td>{{employee.roles | uppercase}}</td>
   </tr>
   </table>
   <button class="button" (click)="getDates()">
@@ -36,6 +36,8 @@
    <!-- <button class="button" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i>
    BACK
    </button>  -->
+   <table>
    <tr *ngFor="let employee22 of employee2">
-   <td>{{employee22.date}}</td>
+   <td>{{employee22.date  | date : 'fullDate' | uppercase}}</td>
    </tr>
+  </table>

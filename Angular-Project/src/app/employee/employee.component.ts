@@ -23,6 +23,8 @@ export class EmployeeComponent {
  employee2:any;
  empId:any;
  temp:any;
+ fn: any;
+ successmsg:any;
   
   // employeeList:any;
   constructor(private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
@@ -49,6 +51,7 @@ export class EmployeeComponent {
   daysSelected: any[] = [];
 event: any;
 days: any;
+
 
 // fetchData(){
 //   console.log(this.days);
@@ -90,12 +93,14 @@ passTheDates(){
         // this.router.navigate(['/home']);
        
       })
-  
+    this.successmsg="Successfully Updated";
 }
   getEmployeeList(){
     
     this.serviceData.getEmployeeList().subscribe((result: any)=>{
       this.employeeList= result;
+
+
       // this.id=result.body.id;
       console.log(this.employeeList);
       console.log(this.id);
@@ -103,7 +108,8 @@ passTheDates(){
       // console.log(this.temp);
     })
     this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
-      this.employee= result;  
+      this.employee= result; 
+      this.fn=result.firstName; 
       // console.log(this.temp);
       this.empId=result.employeeId;
          console.log(this.empId);
@@ -131,6 +137,6 @@ passTheDates(){
   logout(){ 
     localStorage.removeItem('tokenuser');
     localStorage.removeItem('idd');
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
    };
   }

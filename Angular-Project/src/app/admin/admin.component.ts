@@ -45,6 +45,6 @@ delete(employees: any){
 }
 logout(){
   localStorage.removeItem('tokenadmin');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
  };
 }
