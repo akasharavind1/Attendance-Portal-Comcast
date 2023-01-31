@@ -10,6 +10,7 @@ import { ServicefilesGuard } from './servicefiles/servicefilesadmin.guard';
 import { ServicefilesuserGuard } from './servicefiles/servicefilesuser.guard';
 import { ServicefilesuseridcheckGuard } from './servicefiles/servicefilesuseridcheck.guard';
 import { DetailemployeeComponent } from './detailemployee/detailemployee.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,9 @@ const routes: Routes = [
   },
   {
     path:'detailemployee/:id',component: DetailemployeeComponent
+  },
+  { 
+    path:'**', component: PagenotfoundComponent,
   },
 
 ];

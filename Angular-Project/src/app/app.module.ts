@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MbscModule, MbscProvider } from "ack-angular-mobiscroll";
 import { DetailemployeeComponent } from './detailemployee/detailemployee.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 // import { DatePickerAllModule } from '@syncfusion/ej2-angular-calendars';
 
 
@@ -33,7 +34,8 @@ import { DetailemployeeComponent } from './detailemployee/detailemployee.compone
     AddemployeeComponent,
     EmployeeComponent,
     UpdateComponent,
-    DetailemployeeComponent
+    DetailemployeeComponent,
+    PagenotfoundComponent
     
   ],
   imports: [

@@ -37,26 +37,13 @@ export class EmployeeComponent {
    this.employeeList=[];
    this.employee2=[];
    this.getEmployeeList();
-  
 }
-
-  // just for checking purpose
   postemployee = this.form.group({
     dates:[''],
-  
   })
- 
-
-
   daysSelected: any[] = [];
 event: any;
 days: any;
-
-
-// fetchData(){
-//   console.log(this.days);
-// }
-
 isSelected:any = (event: any) => {
   const date =
     event.getFullYear() +
@@ -68,30 +55,28 @@ isSelected:any = (event: any) => {
 };
 
 select(event: any, calendar: any) {
-  const date =
+  const date = 
     event.getFullYear() +
     "-" +
     ("00" + (event.getMonth() + 1)).slice(-2) +
     "-" +
     ("00" + event.getDate()).slice(-2);
+    // new Date(event.getFullYear() +
+    // "-" +
+    // ("00" + (event.getMonth() + 1)).slice(-2) +
+    // "-" +
+    // ("00" + event.getDate()).slice(-2));
   const index = this.daysSelected.findIndex(x => x == date);
   if (index < 0) this.daysSelected.push(date);
   else this.daysSelected.splice(index, 1);
-
+ 
   calendar.updateTodaysDate();
 }
 
 passTheDates(){
 
-  // let requestBody={
-  //     values:this.daysSelected,
-  //     employeeId:this.id
-  // }
-
-      this.serviceData.postDates(this.daysSelected,this.empId).subscribe((result: any)=>{
+     this.serviceData.postDates(this.daysSelected,this.empId).subscribe((result: any)=>{
         console.log(result);
-        // this.router.navigate(['/home']);
-       
       })
     this.successmsg="Successfully Updated";
 }
@@ -99,13 +84,8 @@ passTheDates(){
     
     this.serviceData.getEmployeeList().subscribe((result: any)=>{
       this.employeeList= result;
-
-
-      // this.id=result.body.id;
       console.log(this.employeeList);
       console.log(this.id);
-      // this.temp=this.id;
-      // console.log(this.temp);
     })
     this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
       this.employee= result; 
@@ -116,17 +96,7 @@ passTheDates(){
          console.log(this.employee);
     })
 } 
-  // getEmployee(){
 
-  //   this.serviceData.getEmployee(this.temp).subscribe((result: any)=>{
-  //     this.employee= result;  
-  //     console.log(this.temp);
-  //     this.empId=result.employeeId;
-  //        console.log(this.empId);
-  //        console.log(this.employee);
-  //   })
-  // }
- 
   getDates(){  
     this.serviceData.getDates(this.empId).subscribe((result: any)=>{
       console.log(this.empId);

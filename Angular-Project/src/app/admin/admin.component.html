@@ -10,8 +10,8 @@
     <th>Last Name:</th>&nbsp;
     <th>Email:</th>&nbsp;
     <th>Employee Id:</th>&nbsp;
-    <th>Attendance %</th>
-    <th>Flag</th>
+    <!-- <th>Attendance %</th>
+    <th>Flag</th> -->
     <th>Roles:</th>
 </tr>
 
@@ -27,8 +27,8 @@
 
     <td>{{employee.mailID}}</td>&nbsp;
     <td>{{employee.employeeId}}</td>&nbsp;
-    <td></td>
-    <td></td>
+    <!-- <td></td>
+    <td></td> -->
     <td>{{employee.roles | uppercase}}</td>
     
     <a [title]="'Click here to update'" routerLink="/update/{{employee.id}}"><i class="fa fa-edit">EDIT</i></a>
