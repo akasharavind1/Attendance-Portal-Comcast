@@ -22,7 +22,8 @@
       <!-- <div class ="text-danger" *ngIf="addEmployeeForm.get('password')?.touched"> *Password is required</div> -->
       <div class=passnotice>* Enter Minimum 8 Characters for password </div><br>
       <label for="confirmpsw"><b>Confirm Password:</b></label>
-      <input required type="password" placeholder="Confirm your Password" name="confirmpsw" required formControlName="confirmPassword" (ngModelChange)="validatePassword()" >
+      <!-- <input required type="password" placeholder="Confirm your Password" name="confirmpsw" required formControlName="confirmPassword" (ngModelChange)="validatePassword()" > -->
+      <input required type="password" placeholder="Confirm your Password" name="confirmpsw" required formControlName="confirmPassword"  >
       
       <div class="errormessage" *ngIf="errormsgpass">
       <h2>  *Password doesn't match.</h2>

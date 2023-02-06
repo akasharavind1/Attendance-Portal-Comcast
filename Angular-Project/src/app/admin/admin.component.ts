@@ -2,16 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
-<<<<<<< HEAD
 import {MatDialog} from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
-=======
-import { MatDialog } from '@angular/material/dialog';
-import { DialogboxComponent } from '../dialogbox/dialogbox.component';
-// import { MatDialog } from '@angular/material';
-
-
->>>>>>> 6686bbc2fd16bbc6caf5f78bba207a166666ca82
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -29,12 +21,7 @@ export class AdminComponent implements OnInit {
     // url="http://localhost:8080/api/v1/employee";
     employeeList:any;
     details:any;
-<<<<<<< HEAD
   constructor(public dialog: MatDialog,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router){
-=======
-
-  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router,public dialog: MatDialog){
->>>>>>> 6686bbc2fd16bbc6caf5f78bba207a166666ca82
     this.employeeList=[];
     // this.details=[];
   }
@@ -75,7 +62,7 @@ logout(){
   localStorage.removeItem('tokenadmin');
       this.router.navigate(['/']);
  };
-<<<<<<< HEAD
+// <<<<<<< HEAD
 //  openDialog() {
 //   const dialogRef = this.dialog.open(DialogComponent);
 
@@ -83,7 +70,7 @@ logout(){
 //     console.log(`Dialog result: ${result}`);
 //   });
 // }
-=======
+// =======
 
 
 
@@ -95,5 +82,5 @@ logout(){
   
 }
 
->>>>>>> 6686bbc2fd16bbc6caf5f78bba207a166666ca82
+// >>>>>>> 6686bbc2fd16bbc6caf5f78bba207a166666ca82
 }
