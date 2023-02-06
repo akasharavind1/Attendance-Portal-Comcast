@@ -41,15 +41,22 @@ export class AddemployeeComponent implements OnInit {
 
 
     onSubmit(){
+<<<<<<< HEAD
       this.addEmployeeForm.markAllAsTouched();
       console.log(this.addEmployeeForm)
       if(true){
           let requestBody={
+=======
+
+      if(this.addEmployeeForm.invalid, this.addEmployeeForm.touched, this.addEmployeeForm.dirty){  
+        let requestBody={
+>>>>>>> 6686bbc2fd16bbc6caf5f78bba207a166666ca82
             firstName: this.addEmployeeForm.get('firstName')?.value,
             lastName: this.addEmployeeForm.get('lastName')?.value,
             mailID: this.addEmployeeForm.get('mailID')?.value,
             employeeId: this.addEmployeeForm.get('employeeId')?.value,
             password: this.addEmployeeForm.get('password')?.value,
+<<<<<<< HEAD
             confirmpassword: this.addEmployeeForm.get('confirmpassword')?.value,
             roles:this.addEmployeeForm.get('roles')?.value
          
@@ -63,10 +70,25 @@ export class AddemployeeComponent implements OnInit {
               
               })
             // }
+=======
+            roles:this.addEmployeeForm.get('roles')?.value,
+            confirmPassword:this.addEmployeeForm.get('confirmPassword')?.value
+          }
+          if(requestBody.password == requestBody.confirmPassword){
+          this.service.postEmployee(requestBody).subscribe((result: any)=>{
+            console.log(result);
+            this.router.navigate(['/']);
+           
+          })
+>>>>>>> 6686bbc2fd16bbc6caf5f78bba207a166666ca82
+        }
+        console.log("Provide valid Informtions");
         }
     }
    resetform(formvalue: any){
 formvalue.reset();
    } 
+
+
 
 }

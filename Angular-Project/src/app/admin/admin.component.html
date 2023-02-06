@@ -32,10 +32,20 @@
     <td>{{employee.roles | uppercase}}</td>
     
     <a [title]="'Click here to update'" routerLink="/update/{{employee.id}}"><i class="fa fa-edit">EDIT</i></a>
-    <td [title]="'Click here to delete '"><button class="delete button"(click)="delete(employee)"><i class="fa fa-trash" >&nbsp;</i>DELETE</button> 
+    <td [title]="'Click here to delete '"><button mat-button class="delete button"(click)="openDialog(employee)"><i class="fa fa-trash" >&nbsp;</i>DELETE</button> 
         </td>
 </tr>
 <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
 </table>
+
+<!-- <button mat-button (click)="openDialog()">opendialog</button> -->
+<ng-template  #dialogRef>
+    <h2>Are you sure?</h2>
+    <button (click)="delete({deleteEmployee})" >Confirm</button>
+
+    
+</ng-template>
+
+
 <router-outlet></router-outlet>
 

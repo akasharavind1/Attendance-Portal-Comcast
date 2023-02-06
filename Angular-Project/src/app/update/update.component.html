@@ -12,8 +12,11 @@
      <label for="EmployeeId"><b>EmployeeId </b></label>
      <input type="text"    name="EmployeeId" required formControlName="employeeId">
      <label for="roles"><b>Roles </b></label>
-     <input type="text"   name="roles" required formControlName="roles">
-     <div class="adminnote">Note: Allow admin access by entering the role as "admin"</div>
+     <select formControlName="roles" id="role" name="role">
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+     <div class="adminnote">Note: Allow admin access by choosing the role "Admin"</div>
     
      <button (click)="UpdateData()" type="submit" >Submit</button><br>
 </div>

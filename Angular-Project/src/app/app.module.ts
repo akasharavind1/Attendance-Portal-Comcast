@@ -21,6 +21,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MbscModule, MbscProvider } from "ack-angular-mobiscroll";
 import { DetailemployeeComponent } from './detailemployee/detailemployee.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { DialogboxComponent } from './dialogbox/dialogbox.component';
+// import {MatDialogModule} from "@angular/material";
+import { MatDialogModule } from '@angular/material/dialog';
 // import { DatePickerAllModule } from '@syncfusion/ej2-angular-calendars';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { DialogComponent } from './dialog/dialog.component';
@@ -38,7 +41,12 @@ import {MatDialogModule} from '@angular/material/dialog';
     UpdateComponent,
     DetailemployeeComponent,
     PagenotfoundComponent,
+<<<<<<< HEAD
     DialogComponent
+=======
+    DialogboxComponent
+    
+>>>>>>> 6686bbc2fd16bbc6caf5f78bba207a166666ca82
     
   ],
   imports: [
@@ -54,8 +62,13 @@ import {MatDialogModule} from '@angular/material/dialog';
     BrowserAnimationsModule,
     FormsModule,
     MbscModule,
+<<<<<<< HEAD
     MatFormFieldModule,
     MatDialogModule
+=======
+    MatDialogModule
+    
+>>>>>>> 6686bbc2fd16bbc6caf5f78bba207a166666ca82
   ],
   providers: [],
   bootstrap: [AppComponent]
