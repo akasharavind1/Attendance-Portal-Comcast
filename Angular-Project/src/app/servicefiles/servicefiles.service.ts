@@ -5,58 +5,59 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ServicefilesService {
-  constructor(private http:HttpClient) {
-    }
+  url="http://localhost:8080/api/v1";
+
+  constructor(private http:HttpClient) {}
    
-    IsLoggedAdmin(){
+     IsLoggedAdmin(){
       if(localStorage.getItem("tokenadmin")=="AH2EjtcmoURSXm2RhZ8ihnJrsty"){
      return !!localStorage.getItem("tokenadmin");
     }
     return null;
   }
-    IsLoggedUser(){
+     IsLoggedUser(){
       if(localStorage.getItem("tokenuser")=="7Ewm3NEnJDM"){   
       return !!localStorage.getItem("tokenuser");
     }
     return null;
   }
-    IsLoggedUserId()
+     IsLoggedUserId()
    { 
-    return !!localStorage.getItem("id");
+    return !!localStorage.getItem("idd");
   }
   
-     getEmployeeList(){
-      return this.http.get("http://localhost:8080/api/v1/getLogin")
+    getEmployeeList(){
+      return this.http.get(`${this.url}/getLogin`)
     }
     getEmployee(id: any){
-      return this.http.get("http://localhost:8080/api/v1/employeeInfo/"+id)
+      return this.http.get(`${this.url}/employeeInfo/`+id)
     }
     getDates(empId: number){
-      return this.http.get("http://localhost:8080/api/v1/getDates/"+empId)
+      return this.http.get(`${this.url}/getDates/`+empId)
     }
     getId(){
-      return this.http.get("http://localhost:8080/api/v1/getLogin")
+      return this.http.get(`${this.url}/getLogin`)
     }
     getdetails(id: number){
-      return this.http.delete("http://localhost:8080/api/v1/getdetails/"+id);
+      return this.http.delete(`${this.url}/getdetails/`+id);
     }
     postEmployee(body:any){
-      return this.http.post("http://localhost:8080/api/v1/signup",body)
+      return this.http.post(`${this.url}/signup`,body)
     }
     postDates(body:any,id: any ){
-      return this.http.post("http://localhost:8080/api/v1/postDates/"+id,body)
+      return this.http.post(`${this.url}/postDates/`+id,body)
     }
     postLogin(body:any){
-            return this.http.post("http://localhost:8080/api/v1/login",body)
+            return this.http.post(`${this.url}/login`,body);
           }
     updateEmployee(id: number, body:any){
-            return this.http.put("http://localhost:8080/api/v1/update/"+id,body);
+            return this.http.put(`${this.url}/update/`+id,body);
           }
     postId(id:number){
-            return this.http.post("http://localhost:8080/api/v1/postId?id=",id);
+            return this.http.post(`${this.url}/postId?id=`,id);
           }
     deleteEmployee(id:number){
-      return this.http.delete("http://localhost:8080/api/v1/delete?id="+id);
+      return this.http.delete(`${this.url}/delete?id=`+id);
     }
     // postDate(dates: any){
     //   return this.http.post("http://localhost:8080/api/v1/postDate?dates=",dates);

@@ -22,7 +22,9 @@ import { MbscModule, MbscProvider } from "ack-angular-mobiscroll";
 import { DetailemployeeComponent } from './detailemployee/detailemployee.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 // import { DatePickerAllModule } from '@syncfusion/ej2-angular-calendars';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { DialogComponent } from './dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     EmployeeComponent,
     UpdateComponent,
     DetailemployeeComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    DialogComponent
     
   ],
   imports: [
@@ -51,7 +54,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     BrowserAnimationsModule,
     FormsModule,
     MbscModule,
-    
+    MatFormFieldModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

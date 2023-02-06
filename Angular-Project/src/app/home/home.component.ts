@@ -16,6 +16,7 @@ export class HomeComponent {
 click: any;
   classList: any;
   id:any;
+  // isdarktheme=true;
   constructor (private route: ActivatedRoute, private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){
     this.employeeList=[];
     
@@ -23,7 +24,6 @@ click: any;
   ngOnInit(): void{
     this.id=  this.route.snapshot.params['id'];
     this.getEmployeeList()
-  
   }
   employeeList:any;
     //this is formbuilder method 

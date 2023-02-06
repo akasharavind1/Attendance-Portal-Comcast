@@ -8,7 +8,7 @@
       <input type="text" placeholder="Enter your First Name" name="fname" required formControlName="firstName">
 
       <label for="lname"><b>Last Name:</b></label>
-      <input required type="text" placeholder="Enter your Last Name(Optional)" name="lname" required formControlName="lastName">
+      <input  type="text" placeholder="Enter your Last Name(Optional)" name="lname"  formControlName="lastName">
   
       
       <label for="email"><b>Mail ID:</b></label>
@@ -18,16 +18,22 @@
       <input required type="text" placeholder="Enter your Employee Id" name="email" required formControlName="employeeId">
   
       <label for="newpsw"><b>New Password:</b></label>
-      <input required type="password" placeholder="Enter your new Password" name="newpsw" required formControlName="password" >
-
+      <input required type="password" placeholder="Enter your new Password" name="newpsw" required formControlName="password" ><br><br>
+      <!-- <div class ="text-danger" *ngIf="addEmployeeForm.get('password')?.touched"> *Password is required</div> -->
+      <div class=passnotice>* Enter Minimum 8 Characters for password </div><br>
       <label for="confirmpsw"><b>Confirm Password:</b></label>
-      <input required type="password" placeholder="Confirm your Password" name="confirmpsw" required formControlName="confirmPassword" >
+      <input required type="password" placeholder="Confirm your Password" name="confirmpsw" required formControlName="confirmPassword" (ngModelChange)="validatePassword()" >
+      
+      <div class="errormessage" *ngIf="errormsgpass">
+      <h2>  *Password doesn't match.</h2>
+      </div>
      
       <label for="role"><b>ROLE:</b></label>
       <select formControlName="roles" id="role" name="role">
         <option value="user">User</option>
       </select>
-      <button (click)="onSubmit()" type="submit" >Submit</button><br>
+      <button (click)="onSubmit()" type="submit">Submit</button><br>
+      <button (click)="resetform(addEmployeeForm)"> RESET FORM</button>
     </div>
     
   </form>
