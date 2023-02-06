@@ -26,21 +26,27 @@ export class AddemployeeComponent {
 
     onSubmit(){
 
-      if(this.addEmployeeForm.invalid, this.addEmployeeForm.touched, this.addEmployeeForm.dirty){
-          let requestBody={
+      if(this.addEmployeeForm.invalid, this.addEmployeeForm.touched, this.addEmployeeForm.dirty){  
+        let requestBody={
             firstName: this.addEmployeeForm.get('firstName')?.value,
             lastName: this.addEmployeeForm.get('lastName')?.value,
             mailID: this.addEmployeeForm.get('mailID')?.value,
             employeeId: this.addEmployeeForm.get('employeeId')?.value,
             password: this.addEmployeeForm.get('password')?.value,
-            roles:this.addEmployeeForm.get('roles')?.value
+            roles:this.addEmployeeForm.get('roles')?.value,
+            confirmPassword:this.addEmployeeForm.get('confirmPassword')?.value
           }
+          if(requestBody.password == requestBody.confirmPassword){
           this.service.postEmployee(requestBody).subscribe((result: any)=>{
             console.log(result);
             this.router.navigate(['/']);
            
           })
         }
+        console.log("Provide valid Informtions");
+        }
     }
+
+
 
 }

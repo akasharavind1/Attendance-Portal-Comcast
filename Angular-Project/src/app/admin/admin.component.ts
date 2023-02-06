@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogboxComponent } from '../dialogbox/dialogbox.component';
+// import { MatDialog } from '@angular/material';
+
 
 @Component({
   selector: 'app-admin',
@@ -10,10 +14,18 @@ import { ServicefilesService } from '../servicefiles/servicefiles.service';
 })
 export class AdminComponent implements OnInit {
 
+  fromDialog!:string;
+  deleteEmployee: any;
+
+  @ViewChild('dialogRef')
+  dialogRef!: TemplateRef<any>;
+
+
     // url="http://localhost:8080/api/v1/employee";
     employeeList:any;
     details:any;
-  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router){
+
+  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router,public dialog: MatDialog){
     this.employeeList=[];
     // this.details=[];
   }
@@ -21,6 +33,7 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void{
     this.getEmployeeList();
     // this.details();
+    this.fromDialog= "Iam the dialog";
   
   }
 
@@ -38,13 +51,29 @@ export class AdminComponent implements OnInit {
 // }
 
 delete(employees: any){
-  this.serviceData.deleteEmployee(employees.id).subscribe((Response) => {
+
+  console.log("delete",employees)
+
+  this.serviceData.deleteEmployee(employees.deleteEmployee.id).subscribe((Response) => {
       console.log(Response);
       this.getEmployeeList();
     } )
+    const dialogue= this.dialog.closeAll();
+
 }
 logout(){
   localStorage.removeItem('tokenadmin');
       this.router.navigate(['/']);
  };
+
+
+
+ openDialog(employee: any){
+  this.deleteEmployee = employee
+  console.log(this.deleteEmployee)
+
+  const dialogue= this.dialog.open(this.dialogRef);
+  
+}
+
 }
