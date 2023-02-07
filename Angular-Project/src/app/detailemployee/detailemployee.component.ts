@@ -15,6 +15,7 @@ import { MbscModule } from 'ack-angular-mobiscroll';
 })
 export class DetailemployeeComponent {
   id: any;
+  countt:any;
   employee:any;
   employee2:any;
   empId:any;
@@ -33,7 +34,13 @@ export class DetailemployeeComponent {
     this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
       this.employee= result;  
       this.empId=result.employeeId;
-         
+      this.serviceData.getDates(this.empId).subscribe((result: any)=>{
+        console.log(this.empId);
+        this.employee2=result;
+        console.log(this.employee2)
+        this.countt=result.length;
+        console.log(result.length);
+      })
     })
   }
   getDates(){  
@@ -41,8 +48,22 @@ export class DetailemployeeComponent {
       console.log(this.empId);
       this.employee2=result;
       console.log(this.employee2)
+      // this.countt=result.length;
+      // console.log(result.length);
+
     })
   }
+ 
+  // getDatesSelected(){  
+  //   this.serviceData.getDates(this.empId).subscribe((result: any)=>{
+  //     console.log(this.empId);
+  //     this.employee2=result;
+  //     console.log(this.employee2)
+  //     this.countt=result.length;
+  //     console.log(result.length);
+
+  //   })
+  // }
   // back(){
   //   if(this.admin=  this.route.snapshot.params[this.admin]){
   //     this.router.navigateByUrl('/admin');

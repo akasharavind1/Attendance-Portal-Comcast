@@ -64,6 +64,15 @@
   </button>
   <br>
   <br>    
+  <ngx-spinner
+  [name]="spinnerName"
+  [type]="spinnerType"
+  bdColor="rgba(0,0,0,0.5)"
+  size="medium"
+  color="#fff"
+  [fullScreen]="true">
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
   <router-outlet></router-outlet>
 
 

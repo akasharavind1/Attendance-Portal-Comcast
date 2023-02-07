@@ -8,8 +8,8 @@
       <th>Last Name:</th>&nbsp;
       <th>Email:</th>&nbsp;
       <th>Employee Id:</th>&nbsp;
-      <!-- <th>Attendance %</th>
-      <th>Flag</th> -->
+      <th>No.of Days Selected </th>
+      <!-- <th>Flag</th> --> 
       <th>Roles:</th>
   </tr>
   
@@ -22,8 +22,8 @@
       <td>{{employee.lastName | uppercase}}</td>&nbsp; 
       <td>{{employee.mailID}}</td>&nbsp;
       <td>{{employee.employeeId}}</td>&nbsp;
-      <!-- <td></td>
-      <td></td> -->
+      <td>{{countt}}</td>
+      <!-- <td></td>  -->
       <td>{{employee.roles | uppercase}}</td>
   </tr>
   </table>
@@ -38,6 +38,7 @@
    </button>  -->
    <table>
    <tr *ngFor="let employee22 of employee2">
-   <td>{{employee22.date  | date : 'fullDate' | uppercase}}</td>
+   <td>{{employee22.date   | date : 'fullDate' | uppercase}}</td>
    </tr>
   </table>
+  

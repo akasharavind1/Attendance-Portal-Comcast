@@ -2,14 +2,23 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent {
-  constructor (private form:FormBuilder, private serviceData:ServicefilesService, private router: Router, private route:ActivatedRoute){
+  spinnerType:string;
+  spinnerName:string;
+  constructor (private spinner: NgxSpinnerService, private form:FormBuilder, private serviceData:ServicefilesService, private router: Router, private route:ActivatedRoute){
     this.employeeList=[];
+    this.spinnerName="sp1";
+    this.spinnerType="timer";
+    this.spinner.show(this.spinnerName);
+    setTimeout(() => {
+      this.spinner.hide(this.spinnerName);
+    }, 900);
   }
   employeeList:any;
 editEmployee= this.form.group({

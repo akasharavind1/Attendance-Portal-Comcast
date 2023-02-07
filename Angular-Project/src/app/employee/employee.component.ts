@@ -8,7 +8,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { ViewEncapsulation } from '@angular/core';
 
 import { MbscModule } from 'ack-angular-mobiscroll';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-employee',
@@ -25,12 +25,21 @@ export class EmployeeComponent {
  temp:any;
  fn: any;
  successmsg:any;
-  
+  spinnerType:string;
+ spinnerName:string;
+  datesarr=[];
   // employeeList:any;
-  constructor(private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
+  constructor(private spinner: NgxSpinnerService,private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
     this.employeeList=[];
     this.employee2=[];
+    this.spinnerName="sp1";
+    this.spinnerType="timer";
+    this.spinner.show(this.spinnerName);
+    setTimeout(() => {
+      this.spinner.hide(this.spinnerName);
+    }, 900);
   }
+  
   ngOnInit(): void{
     
    this.id=  this.route.snapshot.params['id'];
@@ -94,16 +103,24 @@ passTheDates(){
       this.empId=result.employeeId;
          console.log(this.empId);
          console.log(this.employee);
-    })
-} 
+    }
+    )
+}
 
   getDates(){  
     this.serviceData.getDates(this.empId).subscribe((result: any)=>{
       console.log(this.empId);
-      this.employee2=result;
-      console.log(this.employee2)
+      this.employee2=result; 
+      console.log(this.employee2);
+      // this.daysSelected=this.employee2;
+      // this.daysSelected=(d: Date): boolean=> {
+      //   const time=d.getTime();
+      //   return !this.daysSelected.find(x=> x.getTime()==time);
+      // }
     })
   }
+ 
+
   logout(){ 
     localStorage.removeItem('tokenuser');
     localStorage.removeItem('idd');

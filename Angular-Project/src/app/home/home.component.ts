@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import { AdminComponent } from '../admin/admin.component';
 import { EmployeeComponent } from '../employee/employee.component';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -16,12 +16,21 @@ export class HomeComponent {
 click: any;
   classList: any;
   id:any;
+  spinnerType:string;
+  spinnerName:string;
   // isdarktheme=true;
-  constructor (private route: ActivatedRoute, private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){
+  constructor (private spinner: NgxSpinnerService,private route: ActivatedRoute, private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){
     this.employeeList=[];
-    
+    this.spinnerName="sp1";
+    this.spinnerType="timer";
+    this.spinner.show(this.spinnerName);
+    setTimeout(() => {
+      this.spinner.hide(this.spinnerName);
+    }, 900);
   }
   ngOnInit(): void{
+    
+
     this.id=  this.route.snapshot.params['id'];
     this.getEmployeeList()
   }
