@@ -20,15 +20,10 @@ export class AdminComponent implements OnInit {
 
   @ViewChild('dialogRef')
   dialogRef!: TemplateRef<any>;
-
-// <<<<<<< HEAD
 id: any;
-// =======
   @ViewChild('dialogRef1')
   dialogRef1!: TemplateRef<any>;
    datesarr=[];
-// >>>>>>> 8623221a37c01c6715423690200687d19ed49da0
-    // url="http://localhost:8080/api/v1/employee";
     employeeList:any;
     details:any;
   constructor(private spinner: NgxSpinnerService,public dialog: MatDialog,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router){
@@ -39,7 +34,7 @@ id: any;
     this.spinner.show(this.spinnerName);
     setTimeout(() => {
       this.spinner.hide(this.spinnerName);
-    }, 900);
+    }, 2000);
   }
 
   ngOnInit(): void{
