@@ -26,7 +26,7 @@ import { DialogboxComponent } from './dialogbox/dialogbox.component';
 // import { MatDialogModule } from '@angular/material/dialog';
 // import { DatePickerAllModule } from '@syncfusion/ej2-angular-calendars';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { DialogComponent } from './dialog/dialog.component';
+// import { DialogComponent } from './dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
@@ -41,7 +41,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     UpdateComponent,
     DetailemployeeComponent,
     PagenotfoundComponent,
-    DialogComponent
+    // DialogComponent
     
   ],
   imports: [

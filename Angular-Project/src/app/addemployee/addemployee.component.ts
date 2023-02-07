@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators , FormControl} from '@angular/forms';
-=======
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
->>>>>>> 76d157563a15e36cce919d0c571def20a560ee18
 import { Router } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 
@@ -14,17 +9,12 @@ import { ServicefilesService } from '../servicefiles/servicefiles.service';
   templateUrl: './addemployee.component.html',
   styleUrls: ['./addemployee.component.scss']
 })
-<<<<<<< HEAD
 export class AddemployeeComponent {
   passwrong=false;
   passwordNotMatch =false;
  
 
 
-=======
-export class AddemployeeComponent implements OnInit {
-  errormsgpass=false;
->>>>>>> 76d157563a15e36cce919d0c571def20a560ee18
   constructor (private form:FormBuilder, 
                private service:ServicefilesService, private router: Router){}
     addEmployeeForm= this.form.group({
@@ -70,7 +60,7 @@ export class AddemployeeComponent implements OnInit {
          
           }
             // if(requestBody.password===requestBody.confirmpassword){
-              this.errormsgpass=true;
+              // this.errormsgpass=true;
               console.log("valid")
               this.service.postEmployee(requestBody).subscribe((result: any)=>{
                 console.log(result);
@@ -80,7 +70,6 @@ export class AddemployeeComponent implements OnInit {
             // }
         }
     }
-<<<<<<< HEAD
 
 
     // password(formGroup: FormGroup) {
@@ -93,10 +82,5 @@ export class AddemployeeComponent implements OnInit {
     
 
 
-=======
-   resetform(formvalue: any){
-formvalue.reset();
-   } 
->>>>>>> 76d157563a15e36cce919d0c571def20a560ee18
 
 }
