@@ -2,11 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogboxComponent } from '../dialogbox/dialogbox.component';
-// import { MatDialog } from '@angular/material';
-
-
+import {MatDialog} from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -27,8 +24,7 @@ export class AdminComponent implements OnInit {
     // url="http://localhost:8080/api/v1/employee";
     employeeList:any;
     details:any;
-
-  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router,public dialog: MatDialog){
+  constructor(public dialog: MatDialog,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router){
     this.employeeList=[];
     // this.details=[];
   }
@@ -47,6 +43,7 @@ export class AdminComponent implements OnInit {
       
     })
 }  
+
 // getdetails(individual:any){
 //   this.serviceData.getdetails(individual.id).subscribe((result: any)=>{
 //     this.details= result;
@@ -71,6 +68,15 @@ logout(){
       const dialogue= this.dialog.closeAll();
 
  };
+// <<<<<<< HEAD
+//  openDialog() {
+//   const dialogRef = this.dialog.open(DialogComponent);
+
+//   dialogRef.afterClosed().subscribe(result => {
+//     console.log(`Dialog result: ${result}`);
+//   });
+// }
+// =======
 
  cancelDialog(){
   
@@ -95,4 +101,5 @@ logout(){
   
 }
 
+// >>>>>>> 6686bbc2fd16bbc6caf5f78bba207a166666ca82
 }

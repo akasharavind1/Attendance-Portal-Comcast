@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators , FormControl} from '@angular/forms';
+=======
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+>>>>>>> 76d157563a15e36cce919d0c571def20a560ee18
 import { Router } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 
@@ -9,48 +14,73 @@ import { ServicefilesService } from '../servicefiles/servicefiles.service';
   templateUrl: './addemployee.component.html',
   styleUrls: ['./addemployee.component.scss']
 })
+<<<<<<< HEAD
 export class AddemployeeComponent {
   passwrong=false;
   passwordNotMatch =false;
  
 
 
+=======
+export class AddemployeeComponent implements OnInit {
+  errormsgpass=false;
+>>>>>>> 76d157563a15e36cce919d0c571def20a560ee18
   constructor (private form:FormBuilder, 
                private service:ServicefilesService, private router: Router){}
     addEmployeeForm= this.form.group({
       firstName:['',[Validators.required]],
       lastName:[''],
-      mailID:['',[Validators.required]],
+      mailID:['',[Validators.required,Validators.email]],
       employeeId:['',[Validators.required]],
-      password:['', [Validators.required]],
+      password:['', [Validators.required,Validators.minLength(3)]],
       confirmPassword:['',[Validators.required]],
       roles: ['user']
     })
+    ngOnInit(): void{
+       this.addEmployeeForm.statusChanges.subscribe(data=>{
+        console.log(data);
+       })
+      // this.details();
+    
+    }
+  
+
+    // validatePassword(){
+    //   // console.log(this.addEmployeeForm.get('password')?.value)
+    //   // console.log(this.addEmployeeForm.get('confirmPassword')?.value)
+    //   if(this.addEmployeeForm.get('password')?.value == this.addEmployeeForm.get('confirmPassword')?.value){
+    //     this.addEmployeeForm.get('confirmPassword')?.setValidators([Validators.requiredTrue])
+    //   }
+    // }
 
    
     
     onSubmit(){
-
-      if(this.addEmployeeForm.invalid, this.addEmployeeForm.touched, this.addEmployeeForm.dirty){  
-        let requestBody={
+      this.addEmployeeForm.markAllAsTouched();
+      console.log(this.addEmployeeForm)
+      if(true){
+          let requestBody={
             firstName: this.addEmployeeForm.get('firstName')?.value,
             lastName: this.addEmployeeForm.get('lastName')?.value,
             mailID: this.addEmployeeForm.get('mailID')?.value,
             employeeId: this.addEmployeeForm.get('employeeId')?.value,
             password: this.addEmployeeForm.get('password')?.value,
-            roles:this.addEmployeeForm.get('roles')?.value,
-            confirmPassword:this.addEmployeeForm.get('confirmPassword')?.value
+            confirmpassword: this.addEmployeeForm.get('confirmpassword')?.value,
+            roles:this.addEmployeeForm.get('roles')?.value
+         
           }
-          if(requestBody.password == requestBody.confirmPassword){
-          this.service.postEmployee(requestBody).subscribe((result: any)=>{
-            console.log(result);
-            this.router.navigate(['/']);
-           
-          })
-        }
-        console.log("Provide valid Informtions");
+            // if(requestBody.password===requestBody.confirmpassword){
+              this.errormsgpass=true;
+              console.log("valid")
+              this.service.postEmployee(requestBody).subscribe((result: any)=>{
+                console.log(result);
+                this.router.navigate(['/']);
+              
+              })
+            // }
         }
     }
+<<<<<<< HEAD
 
 
     // password(formGroup: FormGroup) {
@@ -63,5 +93,10 @@ export class AddemployeeComponent {
     
 
 
+=======
+   resetform(formvalue: any){
+formvalue.reset();
+   } 
+>>>>>>> 76d157563a15e36cce919d0c571def20a560ee18
 
 }
