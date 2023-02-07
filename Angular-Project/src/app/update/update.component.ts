@@ -1,14 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent {
-  constructor (private form:FormBuilder, private serviceData:ServicefilesService, private router: Router, private route:ActivatedRoute){
+
+  fromDialog!:string;
+  updateEmployee: any;
+
+  @ViewChild('dialogRef')
+  dialogRef!: TemplateRef<any>;
+
+  constructor (private form:FormBuilder, private serviceData:ServicefilesService, private router: Router, private route:ActivatedRoute, public dialog: MatDialog){
     this.employeeList=[];
   }
   employeeList:any;
@@ -23,6 +32,7 @@ id:any;
 employee:any;
 UpdateData(){
 
+
   if(true){
       let requestBody={
         firstName: this.editEmployee.get('firstName')?.value,
@@ -35,6 +45,7 @@ UpdateData(){
       console.log(result);
       this.router.navigate(['/admin']);
       })
+      const dialogue= this.dialog.closeAll();
     }
 }
 ngOnInit(): void{  
@@ -56,4 +67,16 @@ ngOnInit(): void{
       
 })
 }
+
+openDialog(){
+
+const dialogue= this.dialog.open(this.dialogRef);
+  
+}
+cancelDialog(){
+  
+  const dialogue= this.dialog.closeAll();
+}
+
+
 }

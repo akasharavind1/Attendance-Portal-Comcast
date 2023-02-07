@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators , FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 
@@ -10,6 +10,10 @@ import { ServicefilesService } from '../servicefiles/servicefiles.service';
   styleUrls: ['./addemployee.component.scss']
 })
 export class AddemployeeComponent {
+  passwrong=false;
+  passwordNotMatch =false;
+ 
+
 
   constructor (private form:FormBuilder, 
                private service:ServicefilesService, private router: Router){}
@@ -23,7 +27,8 @@ export class AddemployeeComponent {
       roles: ['user']
     })
 
-
+   
+    
     onSubmit(){
 
       if(this.addEmployeeForm.invalid, this.addEmployeeForm.touched, this.addEmployeeForm.dirty){  
@@ -46,6 +51,16 @@ export class AddemployeeComponent {
         console.log("Provide valid Informtions");
         }
     }
+
+
+    // password(formGroup: FormGroup) {
+    //   const password = this.addEmployeeForm.get('password')?.value;
+    //   const confirmpsw = this.addEmployeeForm.get('confirmpassword')?.value;
+    //   if( password === confirmpsw ){
+    //     this.passwordNotMatch =true;
+    //   }
+    // }
+    
 
 
 

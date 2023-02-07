@@ -20,6 +20,9 @@ export class AdminComponent implements OnInit {
   @ViewChild('dialogRef')
   dialogRef!: TemplateRef<any>;
 
+  @ViewChild('dialogRef1')
+  dialogRef1!: TemplateRef<any>;
+
 
     // url="http://localhost:8080/api/v1/employee";
     employeeList:any;
@@ -64,7 +67,23 @@ delete(employees: any){
 logout(){
   localStorage.removeItem('tokenadmin');
       this.router.navigate(['/']);
+      
+      const dialogue= this.dialog.closeAll();
+
  };
+
+ cancelDialog(){
+  
+  const dialogue= this.dialog.closeAll();
+}
+
+
+ openDialog1(){
+
+  const dialogue= this.dialog.open(this.dialogRef1);
+ 
+    
+  }
 
 
 

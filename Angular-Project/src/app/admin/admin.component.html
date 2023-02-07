@@ -1,5 +1,5 @@
 <br>
-<button type="submit" style="float: right;" [routerLink]="'/'"(click)="logout()" ><i  class="fa fa-sign-out" >Logout</i></button><br>
+<button type="submit" style="float: right;" (click)="openDialog1()" ><i  class="fa fa-sign-out" >Logout</i></button><br>
 <h1>Employee Details:</h1>
 <br>
 <br>
@@ -38,12 +38,24 @@
 </table>
 
 <!-- <button mat-button (click)="openDialog()">opendialog</button> -->
+
 <ng-template  #dialogRef>
     <h2>Are you sure?</h2>
     <button (click)="delete({deleteEmployee})" >Confirm</button>
+    <button routerLink="/admin"> Cancel </button>
 
     
 </ng-template>
+
+
+<ng-template #dialogRef1>
+    <h2 >Are you sure?</h2>
+    <button (click)="logout()" >Logout</button>
+    <button (click)="cancelDialog()"> Cancel </button>
+
+    
+</ng-template>
+
 
 
 <router-outlet></router-outlet>
