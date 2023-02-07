@@ -25,6 +25,7 @@ export class EmployeeComponent {
  temp:any;
  fn: any;
  successmsg:any;
+ 
   
   // employeeList:any;
   constructor(private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){

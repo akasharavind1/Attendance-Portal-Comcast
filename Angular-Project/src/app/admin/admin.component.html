@@ -42,8 +42,8 @@
 
 <ng-template  #dialogRef>
     <h2>Are you sure?</h2>
-    <button (click)="delete({deleteEmployee})" >Confirm</button>
-    <button routerLink="/admin"> Cancel </button>
+    <button  (click)="delete({deleteEmployee})" >Confirm</button>
+    <button routerLink="/admin" (click)="cancelDialog()"> Cancel </button>
 
     
 </ng-template>

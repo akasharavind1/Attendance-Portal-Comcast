@@ -68,15 +68,7 @@ logout(){
       const dialogue= this.dialog.closeAll();
 
  };
-// <<<<<<< HEAD
-//  openDialog() {
-//   const dialogRef = this.dialog.open(DialogComponent);
 
-//   dialogRef.afterClosed().subscribe(result => {
-//     console.log(`Dialog result: ${result}`);
-//   });
-// }
-// =======
 
  cancelDialog(){
   
@@ -101,5 +93,5 @@ logout(){
   
 }
 
-// >>>>>>> 6686bbc2fd16bbc6caf5f78bba207a166666ca82
+
 }
