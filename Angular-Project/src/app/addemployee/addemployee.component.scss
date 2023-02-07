@@ -38,10 +38,7 @@ h1{
  input.ng-invalid.ng-touched.ng-dirty{ 
   border: 2px red solid;
 }
-// input.ng-invalid.ng-touched.ng-invalid{ 
-//   border: 2px red solid;
-// }
-.passnotice{
-  background-color: red;
-  color: #f1f1f1;
+
+.errormessage{
+  color: red;
 }

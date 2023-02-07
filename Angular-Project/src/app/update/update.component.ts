@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
@@ -11,7 +13,13 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class UpdateComponent {
   spinnerType:string;
   spinnerName:string;
-  constructor (private spinner: NgxSpinnerService, private form:FormBuilder, private serviceData:ServicefilesService, private router: Router, private route:ActivatedRoute){
+
+  fromDialog!:string;
+
+  @ViewChild('dialogRef')
+  dialogRef!: TemplateRef<any>;
+
+  constructor (private spinner: NgxSpinnerService,private form:FormBuilder, private serviceData:ServicefilesService, private router: Router, private route:ActivatedRoute, public dialog: MatDialog){
     this.employeeList=[];
     this.spinnerName="sp1";
     this.spinnerType="timer";
@@ -32,6 +40,7 @@ id:any;
 employee:any;
 UpdateData(){
 
+
   if(true){
       let requestBody={
         firstName: this.editEmployee.get('firstName')?.value,
@@ -44,6 +53,7 @@ UpdateData(){
       console.log(result);
       this.router.navigate(['/admin']);
       })
+      const dialogue= this.dialog.closeAll();
     }
 }
 ngOnInit(): void{  
@@ -65,4 +75,16 @@ ngOnInit(): void{
       
 })
 }
+
+openDialog(){
+
+const dialogue= this.dialog.open(this.dialogRef);
+  
+}
+cancelDialog(){
+  
+  const dialogue= this.dialog.closeAll();
+}
+
+
 }

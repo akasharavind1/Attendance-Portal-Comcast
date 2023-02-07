@@ -1,43 +1,12 @@
 <br>
-<br>
 <button type="submit" class="button" style="float: right;" [routerLink]="'/'"  (click)="logout()" >LogOut</button><br>
-<br>
-<h1>Employee Details:</h1>
-<br>
-<br>
+
 <h2>Hi {{fn | uppercase}}</h2><br>
-<table class="table">
-<tr>
-    <th>First Name:</th>&nbsp;
-    <!-- <th>Id:</th>&nbsp; -->
-    <th>Last Name:</th>&nbsp;
-    <th>Email:</th>&nbsp;
-    <th>Employee Id:</th>&nbsp;
-    <!-- <th>Attendance %</th>
-    <th>Flag</th> -->
-    <th>Roles:</th>
-</tr>
 
-<br>
-
-
-<tr *ngFor="let employee of employeeList">
-
-  
-      <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;
-    <!-- <td>{{employees.id}}</td>&nbsp; -->
-    
-    <td>{{employee.lastName | uppercase}}</td>&nbsp;
-
-    <td>{{employee.mailID}}</td>&nbsp;
-    <td>{{employee.employeeId}}</td>&nbsp;
-    <!-- <td> </td>
-    <td></td> -->
-    <td>{{employee.roles | uppercase}}</td>
-</tr>
-</table>
   <button class="button" [matMenuTriggerFor]="appMenu">
     MAKE SCHEDULE
+    <h5>(Pick the dates)</h5>
+   
   </button> 
    <mat-menu class="matmenu" #appMenu="matMenu">
       <div (click)="$event.stopPropagation()">
@@ -104,4 +73,40 @@
   <td>{{employee22.date | date : 'fullDate' | uppercase}}</td>
   </tr>
 </table>
+<br>
+<br>
+<br>
+<br>
+<h1>Employee Details:</h1>
+
+<table class="table">
+  <tr>
+      <th>First Name:</th>&nbsp;
+      <!-- <th>Id:</th>&nbsp; -->
+      <th>Last Name:</th>&nbsp;
+      <th>Email:</th>&nbsp;
+      <th>Employee Id:</th>&nbsp;
+      <!-- <th>Attendance %</th>
+      <th>Flag</th> -->
+      <th>Roles:</th>
+  </tr>
+  
+  <br>
+  
+  
+  <tr *ngFor="let employee of employeeList">
+  
+    
+        <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;
+      <!-- <td>{{employees.id}}</td>&nbsp; -->
+      
+      <td>{{employee.lastName | uppercase}}</td>&nbsp;
+  
+      <td>{{employee.mailID}}</td>&nbsp;
+      <td>{{employee.employeeId}}</td>&nbsp;
+      <!-- <td> </td>
+      <td></td> -->
+      <td>{{employee.roles | uppercase}}</td>
+  </tr>
+  </table>
   <router-outlet></router-outlet>

@@ -3,7 +3,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import {MatDialog} from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
+// import { DialogComponent } from '../dialog/dialog.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -21,7 +21,13 @@ export class AdminComponent implements OnInit {
   @ViewChild('dialogRef')
   dialogRef!: TemplateRef<any>;
 
+// <<<<<<< HEAD
 id: any;
+// =======
+  @ViewChild('dialogRef1')
+  dialogRef1!: TemplateRef<any>;
+   datesarr=[];
+// >>>>>>> 8623221a37c01c6715423690200687d19ed49da0
     // url="http://localhost:8080/api/v1/employee";
     employeeList:any;
     details:any;
@@ -88,16 +94,24 @@ delete(employees: any){
 logout(){
   localStorage.removeItem('tokenadmin');
       this.router.navigate(['/']);
- };
-// <<<<<<< HEAD
-//  openDialog() {
-//   const dialogRef = this.dialog.open(DialogComponent);
+      
+      const dialogue= this.dialog.closeAll();
 
-//   dialogRef.afterClosed().subscribe(result => {
-//     console.log(`Dialog result: ${result}`);
-//   });
-// }
-// =======
+ };
+
+
+ cancelDialog(){
+  
+  const dialogue= this.dialog.closeAll();
+}
+
+
+ openDialog1(){
+
+  const dialogue= this.dialog.open(this.dialogRef1);
+ 
+    
+  }
 
 
 
@@ -109,5 +123,5 @@ logout(){
   
 }
 
-// >>>>>>> 6686bbc2fd16bbc6caf5f78bba207a166666ca82
+
 }

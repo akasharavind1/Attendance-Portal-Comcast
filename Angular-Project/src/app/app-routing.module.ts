@@ -11,7 +11,7 @@ import { ServicefilesuserGuard } from './servicefiles/servicefilesuser.guard';
 import { ServicefilesuseridcheckGuard } from './servicefiles/servicefilesuseridcheck.guard';
 import { DetailemployeeComponent } from './detailemployee/detailemployee.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { DialogComponent } from './dialog/dialog.component';
+// import { DialogComponent } from './dialog/dialog.component';
 const routes: Routes = [
   {
     path:'admin', component:AdminComponent,canActivate:[ServicefilesGuard]

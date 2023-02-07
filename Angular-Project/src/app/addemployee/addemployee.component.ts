@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators , FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 
@@ -9,8 +9,12 @@ import { ServicefilesService } from '../servicefiles/servicefiles.service';
   templateUrl: './addemployee.component.html',
   styleUrls: ['./addemployee.component.scss']
 })
-export class AddemployeeComponent implements OnInit {
-  errormsgpass=false;
+export class AddemployeeComponent {
+  passwrong=false;
+  passwordNotMatch =false;
+ 
+
+
   constructor (private form:FormBuilder, 
                private service:ServicefilesService, private router: Router){}
     addEmployeeForm= this.form.group({
@@ -39,7 +43,8 @@ export class AddemployeeComponent implements OnInit {
     //   }
     // }
 
-
+   
+    
     onSubmit(){
       this.addEmployeeForm.markAllAsTouched();
       console.log(this.addEmployeeForm)
@@ -55,7 +60,7 @@ export class AddemployeeComponent implements OnInit {
          
           }
             // if(requestBody.password===requestBody.confirmpassword){
-              this.errormsgpass=true;
+              // this.errormsgpass=true;
               console.log("valid")
               this.service.postEmployee(requestBody).subscribe((result: any)=>{
                 console.log(result);
@@ -65,8 +70,17 @@ export class AddemployeeComponent implements OnInit {
             // }
         }
     }
-   resetform(formvalue: any){
-formvalue.reset();
-   } 
+
+
+    // password(formGroup: FormGroup) {
+    //   const password = this.addEmployeeForm.get('password')?.value;
+    //   const confirmpsw = this.addEmployeeForm.get('confirmpassword')?.value;
+    //   if( password === confirmpsw ){
+    //     this.passwordNotMatch =true;
+    //   }
+    // }
+    
+
+
 
 }

@@ -26,7 +26,7 @@ import { DialogboxComponent } from './dialogbox/dialogbox.component';
 // import { MatDialogModule } from '@angular/material/dialog';
 // import { DatePickerAllModule } from '@syncfusion/ej2-angular-calendars';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { DialogComponent } from './dialog/dialog.component';
+// import { DialogComponent } from './dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import { DateCountPipe } from './pipes/date-count.pipe';
@@ -43,7 +43,7 @@ import { DateCountPipe } from './pipes/date-count.pipe';
     UpdateComponent,
     DetailemployeeComponent,
     PagenotfoundComponent,
-    DialogComponent,
+    // DialogComponent,
     DateCountPipe
     
   ],

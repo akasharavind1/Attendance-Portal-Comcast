@@ -18,7 +18,8 @@
     </select>
      <div class="adminnote">Note: Allow admin access by choosing the role "Admin"</div>
     
-     <button (click)="UpdateData()" type="submit" >Submit</button><br>
+     <button (click)="openDialog()" type="submit" >Submit</button><br>
+     <button routerLink="/admin" type="submit" >Close</button><br>
 </div>
 <ngx-spinner
   [name]="spinnerName"
@@ -31,4 +32,12 @@
 </ngx-spinner>
      
   </form>
+
+  <ng-template  #dialogRef>
+    <h2>Are you sure?</h2>
+    <button (click)="UpdateData()" >Confirm</button>
+    <button (click)="cancelDialog()"> Cancel </button>
+    
+</ng-template>
+
   
