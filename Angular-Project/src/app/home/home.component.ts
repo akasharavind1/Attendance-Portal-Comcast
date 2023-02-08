@@ -26,7 +26,7 @@ click: any;
     this.spinner.show(this.spinnerName);
     setTimeout(() => {
       this.spinner.hide(this.spinnerName);
-    }, 2000);
+    }, 1000);
   }
   ngOnInit(): void{
     
