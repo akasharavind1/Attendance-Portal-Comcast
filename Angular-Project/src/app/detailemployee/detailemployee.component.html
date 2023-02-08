@@ -9,7 +9,7 @@
       <th>Email:</th>&nbsp;
       <th>Employee Id:</th>&nbsp;
       <th>No.of Days Selected </th>
-      <!-- <th>Flag</th> --> 
+      <th>Flag</th> 
       <th>Roles:</th>
   </tr>
   
@@ -23,13 +23,19 @@
       <td>{{employee.mailID}}</td>&nbsp;
       <td>{{employee.employeeId}}</td>&nbsp;
       <td>{{countt}}</td>
-      <!-- <td></td>  -->
+      <td>
+        <ng-container [ngSwitch]="true">
+          <ng-container *ngSwitchCase="this.flag==0">green flag</ng-container>
+          <ng-container *ngSwitchCase="this.flag==1">yellow flag</ng-container>
+          <ng-container *ngSwitchCase="this.flag==2">red flag</ng-container>
+        </ng-container>
+      </td> 
       <td>{{employee.roles | uppercase}}</td>
   </tr>
   </table>
-  <button class="button" (click)="getDates()">
-    CHECK SELECTED DATES
-   </button> 
+  <!-- <button class="button" (click)="getDates()">
+    CHECK AVAILABILITY
+   </button>  -->
    <br>
    <br>
    <br>

@@ -64,12 +64,6 @@
   </button>
   <br>
   <br>    
-<<<<<<< HEAD
- 
-  <br>
-  <br>
-
-=======
   <ngx-spinner
   [name]="spinnerName"
   [type]="spinnerType"
@@ -80,7 +74,6 @@
   <p style="color: white">Loading...</p>
 </ngx-spinner>
   <router-outlet></router-outlet>
->>>>>>> ee862b35cb0820a90016ecce621551b352fc6dfd
 
 
   <!-- <mbsc-datepicker [(ngModel)]="myBirthday"  placeholder="Please select..." /> -->
@@ -107,7 +100,7 @@
    <tr><th>CHECK SELECTED DATES</th>
   </button> 
   <table>
-  <tr *ngFor="let employee22 of employee2">
+  <tr *ngFor="let employee22 of employeedates">
   <td>{{employee22.date | date : 'fullDate' | uppercase}}</td>
   </tr>
 </table>

@@ -21,7 +21,7 @@ export class EmployeeComponent {
  id: any;
  employee:any;
  employeeList:any;
- employee2:any;
+ employeedates:any;
  empId:any;
  temp:any;
  fn: any;
@@ -32,24 +32,20 @@ export class EmployeeComponent {
   // employeeList:any;
   constructor(private spinner: NgxSpinnerService,private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
     this.employeeList=[];
-    this.employee2=[];
-<<<<<<< HEAD
-    this.employee=[];
-=======
+    this.employeedates=[];
     this.spinnerName="sp1";
     this.spinnerType="timer";
     this.spinner.show(this.spinnerName);
     setTimeout(() => {
       this.spinner.hide(this.spinnerName);
     }, 2000);
->>>>>>> ee862b35cb0820a90016ecce621551b352fc6dfd
   }
   
   ngOnInit(): void{
     
    this.id=  this.route.snapshot.params['id'];
    this.employeeList=[];
-   this.employee2=[];
+   this.employeedates=[];
    this.getEmployeeList();
    this.getEmployee();
 }
@@ -118,8 +114,8 @@ passTheDates(){
   getDates(){  
     this.serviceData.getDates(this.empId).subscribe((result: any)=>{
       console.log(this.empId);
-      this.employee2=result; 
-      console.log(this.employee2);
+      this.employeedates=result; 
+      console.log(this.employeedates);
       // this.daysSelected=this.employee2;
       // this.daysSelected=(d: Date): boolean=> {
       //   const time=d.getTime();
@@ -127,6 +123,10 @@ passTheDates(){
       // }
     })
   }
+
+  // flagCraetor(){
+
+  // }
  
 
   logout(){ 
