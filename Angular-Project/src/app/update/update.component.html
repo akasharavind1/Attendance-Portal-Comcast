@@ -21,6 +21,15 @@
      <button (click)="openDialog()" type="submit" >Submit</button><br>
      <button routerLink="/admin" type="submit" >Close</button><br>
 </div>
+<ngx-spinner
+  [name]="spinnerName"
+  [type]="spinnerType"
+  bdColor="rgba(0,0,0,0.5)"
+  size="medium"
+  color="#fff"
+  [fullScreen]="true">
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
      
   </form>
 

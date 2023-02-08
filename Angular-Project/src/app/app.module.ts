@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule} from '@angular/forms';
@@ -28,6 +28,8 @@ import { DialogboxComponent } from './dialogbox/dialogbox.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 // import { DialogComponent } from './dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {NgxSpinnerModule} from 'ngx-spinner';
+import { DateCountPipe } from './pipes/date-count.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     UpdateComponent,
     DetailemployeeComponent,
     PagenotfoundComponent,
-    // DialogComponent
+    // DialogComponent,
+    DateCountPipe
     
   ],
   imports: [
@@ -57,6 +60,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     BrowserAnimationsModule,
     FormsModule,
     MbscModule,
+    NgxSpinnerModule,
 // <<<<<<< HEAD
     MatFormFieldModule,
     MatDialogModule
@@ -66,6 +70,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 // >>>>>>> 6686bbc2fd16bbc6caf5f78bba207a166666ca82
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

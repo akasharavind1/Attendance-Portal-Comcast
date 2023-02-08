@@ -2,6 +2,7 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -10,15 +11,22 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent {
+  spinnerType:string;
+  spinnerName:string;
 
   fromDialog!:string;
-  updateEmployee: any;
 
   @ViewChild('dialogRef')
   dialogRef!: TemplateRef<any>;
 
-  constructor (private form:FormBuilder, private serviceData:ServicefilesService, private router: Router, private route:ActivatedRoute, public dialog: MatDialog){
+  constructor (private spinner: NgxSpinnerService,private form:FormBuilder, private serviceData:ServicefilesService, private router: Router, private route:ActivatedRoute, public dialog: MatDialog){
     this.employeeList=[];
+    this.spinnerName="sp1";
+    this.spinnerType="timer";
+    this.spinner.show(this.spinnerName);
+    setTimeout(() => {
+      this.spinner.hide(this.spinnerName);
+    }, 2000);
   }
   employeeList:any;
 editEmployee= this.form.group({

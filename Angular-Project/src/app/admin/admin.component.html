@@ -10,8 +10,8 @@
     <th>Last Name:</th>&nbsp;
     <th>Email:</th>&nbsp;
     <th>Employee Id:</th>&nbsp;
-    <!-- <th>Attendance %</th>
-    <th>Flag</th> -->
+    <!-- <th>No. of Selected</th> -->
+    <!-- <th>Flag</th>  -->
     <th>Roles:</th>
 </tr>
 
@@ -27,8 +27,8 @@
 
     <td>{{employee.mailID}}</td>&nbsp;
     <td>{{employee.employeeId}}</td>&nbsp;
-    <!-- <td></td>
-    <td></td> -->
+    <!-- <td>{{countt}}</td>&nbsp; -->
+    <!-- <td></td>  -->
     <td>{{employee.roles | uppercase}}</td>
     
     <a [title]="'Click here to update'" routerLink="/update/{{employee.id}}"><i class="fa fa-edit">EDIT</i></a>
@@ -42,11 +42,21 @@
 
 <ng-template  #dialogRef>
     <h2>Are you sure?</h2>
-    <button  (click)="delete({deleteEmployee})" >Confirm</button>
-    <button routerLink="/admin" (click)="cancelDialog()"> Cancel </button>
+    <button (click)="delete({deleteEmployee})" >Confirm</button>
+    <button>CANCEL</button>
 
     
 </ng-template>
+<ng-content></ng-content>
+<ngx-spinner
+  [name]="spinnerName"
+  [type]="spinnerType"
+  bdColor="rgba(0,0,0,0.5)"
+  size="medium"
+  color="#fff"
+  [fullScreen]="true">
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
 
 
 <ng-template #dialogRef1>
