@@ -26,31 +26,36 @@ id: any;
    datesarr=[];
     employeeList:any;
     details:any;
+    searchtext:any;
   constructor(private spinner: NgxSpinnerService,public dialog: MatDialog,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router){
     this.employeeList=[];
     // this.details=[];
     this.spinnerName="sp1";
     this.spinnerType="timer";
-    this.spinner.show(this.spinnerName);
-    setTimeout(() => {
-      this.spinner.hide(this.spinnerName);
-    }, 1250);
+    // this.spinner.show(this.spinnerName);
+    // setTimeout(() => {
+    //   this.spinner.hide(this.spinnerName);
+    // }, 1250);
   }
 
   ngOnInit(): void{
     this.getEmployeeList();
+    
     // this.getEmployee();
     // this.details();
     this.fromDialog= "I am the dialog";
   }
-
+  
   getEmployeeList(){
+
+    this.spinner.show(this.spinnerName);
     this.serviceData.getEmployeeList().subscribe((result: any)=>{
       this.employeeList= result;
       this.id=result.id;
       console.log(this.id);
       console.log(this.employeeList);
     })
+    this.spinner.hide(this.spinnerName);
 }  
 // employee: any;
 // empId: any;

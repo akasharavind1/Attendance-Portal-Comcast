@@ -3,6 +3,13 @@
 <h1>Employee Details:</h1>
 <br>
 <br>
+<div class="container">
+    <div class="search">
+        <input type ="text" style="height: 50px;font-size:14pt;" size="100"  [(ngModel)]="searchtext" placeholder="        SEARCH">
+    </div>
+</div>
+<br>
+<br>
 <table class="table">
 <tr>
     <th>First Name:</th>&nbsp;
@@ -17,7 +24,7 @@
 
 <br>
 
-<tr *ngFor="let employee of employeeList">
+<tr *ngFor="let employee of employeeList | filter:searchtext">
 
   
       <td [title]="'Click the icon to view details'" >{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;
