@@ -7,7 +7,6 @@ import { AddemployeeComponent } from '../addemployee/addemployee.component';
 import { trigger, state, style, transition, animate } from '@angular/animations'; 
 import { ViewEncapsulation } from '@angular/core';
 // import { MatDatepicker } from '@angular/material/datepicker';
-
 import { MbscModule } from 'ack-angular-mobiscroll';
 import { NgxSpinnerService } from 'ngx-spinner';
 

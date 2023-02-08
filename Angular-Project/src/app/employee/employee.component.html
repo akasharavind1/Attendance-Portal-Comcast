@@ -27,18 +27,23 @@
     <!-- <td> </td> -->
     <td>
       <ng-container [ngSwitch]="true">
-        <ng-container *ngSwitchCase="this.flag==0">green flag</ng-container>
-        <ng-container *ngSwitchCase="this.flag==1">yellow flag</ng-container>
-        <ng-container *ngSwitchCase="this.flag==2">red flag</ng-container>
+        <ng-container *ngSwitchCase="this.flag==0"><img class="img" src="assets/img/greenflag.png"  ></ng-container>
+        <ng-container *ngSwitchCase="this.flag==1"><img class="img" src="assets/img/yellowflag.jpg"  ></ng-container>
+        <ng-container *ngSwitchCase="this.flag==2"><img class="img" src="assets/img/redflag.jpg"  ></ng-container>
       </ng-container>
     </td> 
     <td>{{employee.roles | uppercase}}</td>
 </tr>
 
 <br>
-
-
 </table>
+
+<div style="float: right;">
+  <div><img class="img" src="assets/img/greenflag.png" > Great Attendance </div>
+  <div><img class="img" src="assets/img/yellowflag.jpg" > Attention required</div>
+  <div><img class="img" src="assets/img/redflag.jpg" > Low Attendance </div>
+  
+</div>
 
   <button class="button" [matMenuTriggerFor]="appMenu">
     MAKE SCHEDULE
