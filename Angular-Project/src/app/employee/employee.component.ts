@@ -32,6 +32,7 @@ export class EmployeeComponent {
   constructor(private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
     this.employeeList=[];
     this.employee2=[];
+    this.employee=[];
   }
   ngOnInit(): void{
     
@@ -39,6 +40,7 @@ export class EmployeeComponent {
    this.employeeList=[];
    this.employee2=[];
    this.getEmployeeList();
+   this.getEmployee();
 }
   postemployee = this.form.group({
     dates:[''],
@@ -88,7 +90,9 @@ passTheDates(){
       this.employeeList= result;
       console.log(this.employeeList);
       console.log(this.id);
-    })
+    })}
+
+    getEmployee(){
     this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
       this.employee= result; 
       this.fn=result.firstName; 
