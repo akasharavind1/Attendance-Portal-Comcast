@@ -5,6 +5,7 @@ import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import {MatDialog} from '@angular/material/dialog';
 // import { DialogComponent } from '../dialog/dialog.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin',
@@ -27,7 +28,7 @@ id: any;
     employeeList:any;
     details:any;
     searchtext:any;
-  constructor(private spinner: NgxSpinnerService,public dialog: MatDialog,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router){
+  constructor(private matSnackBar: MatSnackBar,private spinner: NgxSpinnerService,public dialog: MatDialog,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router){
     this.employeeList=[];
     // this.details=[];
     this.spinnerName="sp1";
@@ -89,17 +90,34 @@ delete(employees: any){
       console.log(Response);
       this.getEmployeeList();
     } )
+    this.matSnackBar.open("DELETED SUCCESSFULLY ...!✔👍", "Okay!", {
+      duration: 2500,
+      horizontalPosition: "center",
+      verticalPosition: "top",
+      // direction: "rtl"
+    })
     const dialogue= this.dialog.closeAll();
 }
 logout(){
   localStorage.removeItem('tokenadmin');
       this.router.navigate(['/']);
-      
+      this.matSnackBar.open("LOGGED OUT SUCCESSFULLY ...!✔👍", "Okay!", {
+        duration: 2500,
+        horizontalPosition: "center",
+        verticalPosition: "top",
+        // direction: "rtl"
+      })
       const dialogue= this.dialog.closeAll();
 
  };
-
-
+// snack(){
+//  this.matSnackBar.open("USER DETAILS✔👍", "Okay!", {
+//   duration: 2500,
+//   horizontalPosition: "center",
+//   verticalPosition: "top",
+//   // direction: "rtl"
+// })
+// }
  cancelDialog(){
   
   const dialogue= this.dialog.closeAll();

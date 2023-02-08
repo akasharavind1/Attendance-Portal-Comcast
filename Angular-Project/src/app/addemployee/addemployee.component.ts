@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators , FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class AddemployeeComponent {
  
 
 
-  constructor (private form:FormBuilder, 
+  constructor (private matSnackBar: MatSnackBar,private form:FormBuilder, 
                private service:ServicefilesService, private router: Router){}
     addEmployeeForm= this.form.group({
       firstName:['',[Validators.required]],
@@ -60,16 +61,22 @@ export class AddemployeeComponent {
          
           }
         
-            if(this.passwordNotMatch ==true){
+            // if(this.passwordNotMatch ==true){
               
               console.log("if cond")
               this.service.postEmployee(requestBody).subscribe((result: any)=>{
                 console.log(result);
                 this.router.navigate(['/']);
+                this.matSnackBar.open("USER ADDED SUCCESSFULLY ...!✔👍", "Okay!", {
+                  duration: 2500,
+                  horizontalPosition: "center",
+                  verticalPosition: "top",
+                  // direction: "rtl"
+                })
               
               })
             // }
-        }
+        // }
     }
   }
 

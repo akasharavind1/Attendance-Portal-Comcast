@@ -9,6 +9,7 @@ import { ViewEncapsulation } from '@angular/core';
 // import { MatDatepicker } from '@angular/material/datepicker';
 import { MbscModule } from 'ack-angular-mobiscroll';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-employee',
@@ -33,7 +34,7 @@ export class EmployeeComponent {
   countt: any;
 
   // employeeList:any;
-  constructor(private spinner: NgxSpinnerService,private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
+  constructor(private matSnackBar: MatSnackBar,private spinner: NgxSpinnerService,private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
     this.employeeList=[];
     this.employeedates=[];
     this.spinnerName="sp1";
@@ -64,7 +65,7 @@ isSelected:any = (event: any) => {
     "-" +
     ("00" + (event.getMonth() + 1)).slice(-2) +
     "-" +
-    ("00" + event.getDate()).slice(-2);
+    ("00" + event.getDate()).slice(-2)+this.employeedates;
   return this.daysSelected.find(x => x == date) ? "selected" : null;
 };
 
@@ -92,7 +93,12 @@ passTheDates(){
      this.serviceData.postDates(this.daysSelected,this.empId).subscribe((result: any)=>{
         console.log(result);
       })
-    this.successmsg="Successfully Updated";
+      this.matSnackBar.open("DATES ADDED SUCCESSFULLY ...!✔👍", "Okay!", {
+        duration: 2500,
+        horizontalPosition: "center",
+        verticalPosition: "top",
+        // direction: "rtl"
+      })
 }
   getEmployeeList(){
     // this.serviceData.getEmployeeList().subscribe((result: any)=>{
@@ -129,6 +135,12 @@ passTheDates(){
     this.serviceData.getDates(this.empId).subscribe((result: any)=>{
       console.log(this.empId);
       this.employeedates=result; 
+      this.matSnackBar.open("RETRIEVED SUCCESSFULLY ...!✔👍", "Okay!", {
+        duration: 3500,
+        horizontalPosition: "center",
+        verticalPosition: "top",
+        // direction: "rtl"
+      })
       console.log(this.employeedates);
       // this.daysSelected=this.employee2;
       // this.daysSelected=(d: Date): boolean=> {
@@ -167,5 +179,11 @@ passTheDates(){
     localStorage.removeItem('tokenuser');
     localStorage.removeItem('idd');
         this.router.navigate(['/']);
+        this.matSnackBar.open("LOGGED OUT SUCCESSFULLY ...!✔👍", "Okay!", {
+          duration: 2500,
+          horizontalPosition: "center",
+          verticalPosition: "top",
+          // direction: "rtl"
+        })
    };
   }

@@ -1,5 +1,5 @@
 <br>
-<button type="submit" class="button" style="float: right;" [routerLink]="'/'"  (click)="logout()" >LogOut</button><br>
+<button type="submit" style="float: right;" [routerLink]="'/'"  (click)="logout()" mat-raised-button color="warn">LogOut</button><br>
 
 <h2> &nbsp; Hi {{fn | uppercase}}</h2>
 
@@ -45,9 +45,8 @@
   
 </div>
 
-  <button class="button" [matMenuTriggerFor]="appMenu">
+  <button [matMenuTriggerFor]="appMenu" mat-raised-button color="primary">
     MAKE SCHEDULE
-    <h5>(Pick the dates)</h5>
    
   </button> 
    <mat-menu class="matmenu" #appMenu="matMenu">
@@ -65,12 +64,13 @@
     <tr>
       <th>Dates selected:</th>
     </tr>
+    <br>
     <tr *ngFor="let dates of daysSelected">
       <td>{{dates}}</td>
     </tr>
   </table>
 
-  <button class="button" (click)="passTheDates()">
+  <button  (click)="passTheDates()" mat-raised-button color="accent">
     SUBMIT
   </button>
   <br>
@@ -106,10 +106,11 @@
 
 
   <!-- <p>{{today | date:'yyyy-MM-dd'}}</p> -->
-  <button class="button" (click)="getDates()">
-    {{successmsg}}
+  <button (click)="getDates()" mat-raised-button color="primary">
    <tr><th>CHECK SELECTED DATES</th>
   </button> 
+  <br>
+  <br>
   <table>
   <tr *ngFor="let employee22 of employeedates">
   <td>{{employee22.date | date : 'fullDate' | uppercase}}</td>
@@ -151,4 +152,5 @@
       <td>{{employee.roles | uppercase}}</td>
   </tr>
   </table>
+  
   <router-outlet></router-outlet>

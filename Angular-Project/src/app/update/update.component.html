@@ -11,15 +11,17 @@
      <input type="text"  name="Email" required formControlName="mailID" >
      <label for="EmployeeId"><b>EmployeeId </b></label>
      <input type="text"    name="EmployeeId" required formControlName="employeeId">
-     <label for="roles"><b>Roles </b></label>
+     <label for="roles"><b>Roles </b></label><br>
      <select formControlName="roles" id="role" name="role">
-      <option value="user">User</option>
+      <option value="user" >User</option>
       <option value="admin">Admin</option>
     </select>
-     <div class="adminnote">Note: Allow admin access by choosing the role "Admin"</div>
-    
-     <button (click)="openDialog()" type="submit" >Submit</button><br>
-     <button routerLink="/admin" type="submit" >Close</button><br>
+     <!-- <div class="adminnote">Note: Allow admin access by choosing the role "Admin"</div> -->
+    <br>
+    <br>
+    <br>
+     <button (click)="openDialog()"  type="submit"mat-raised-button color="primary" >Submit</button><br>
+     <button routerLink="/admin" type="submit"mat-raised-button color="warn" >Close</button><br>
 </div>
 <ngx-spinner
   [name]="spinnerName"
@@ -30,13 +32,11 @@
   [fullScreen]="true">
   <p style="color: white">Loading...</p>
 </ngx-spinner>
-     
   </form>
-
   <ng-template  #dialogRef>
     <h2>Are you sure?</h2>
-    <button (click)="UpdateData()" >Confirm</button>
-    <button (click)="cancelDialog()"> Cancel </button>
+    <button (click)="UpdateData()" mat-raised-button color="primary"  >Confirm</button>
+    <button (click)="cancelDialog()" mat-raised-button color="warn"> Cancel </button>
     
 </ng-template>
 

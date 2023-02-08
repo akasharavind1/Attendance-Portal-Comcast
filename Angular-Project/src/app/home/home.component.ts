@@ -6,6 +6,7 @@ import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import { AdminComponent } from '../admin/admin.component';
 import { EmployeeComponent } from '../employee/employee.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ click: any;
   spinnerType:string;
   spinnerName:string;
   // isdarktheme=true;
-  constructor (private spinner: NgxSpinnerService,private route: ActivatedRoute, private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){
+  constructor (private matSnackBar: MatSnackBar,private spinner: NgxSpinnerService,private route: ActivatedRoute, private form:FormBuilder,private router:Router, private serviceData:ServicefilesService){
     this.employeeList=[];
     this.spinnerName="sp1";
     this.spinnerType="timer";
@@ -45,6 +46,7 @@ click: any;
       password:['',Validators.required]
 
     })
+   
     
     login(): void{
 
@@ -57,16 +59,30 @@ click: any;
             console.log(result);
            if(result.statusCodeValue==200 && result.body.roles=="admin" &&  result.body.message=="User retrieved successfully"){
             console.log(result);
-            localStorage.setItem('tokenadmin',"AH2EjtcmoURSXm2RhZ8ihnJrsty")
+            localStorage.setItem('tokenadmin',"AH2EjtcmoURSXm2RhZ8ihnJrsty");
           //  localStorage.setItem('ROLE','ADMIN')
+          this.matSnackBar.open("LOGGINED SUCCESSFULLY ...!✔👍", "Okay!", {
+            duration: 1500,
+            horizontalPosition: "center",
+            verticalPosition: "top",
+            // direction: "rtl"
+          })
             this.router.navigateByUrl('/admin');
           }
           else if(result.statusCodeValue==200 && result.body.roles=="user" &&  result.body.message=="User retrieved successfully"){
             console.log(result);
             localStorage.setItem('tokenuser',"7Ewm3NEnJDM")
-           localStorage.setItem('idd',result.body.id)
+           localStorage.setItem('idd',result.body.id);
            
           //  if(this.id==localStorage.getItem('idd')){
+            
+              this.matSnackBar.open("LOGGINED SUCCESSFULLY ...!✔👍", "Okay!", {
+                duration: 1500,
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                // direction: "rtl"
+              })
+            
            
            this.router.navigateByUrl('/employee/'+result.body.id);  
            console.log(result.body.id);

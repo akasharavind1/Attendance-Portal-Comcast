@@ -32,6 +32,7 @@ import {NgxSpinnerModule} from 'ngx-spinner';
 import { DateCountPipe } from './pipes/date-count.pipe';
 import{ ResolveGuardGuard} from './servicefiles/resolve-guard.guard'
 import{Ng2SearchPipeModule }from 'ng2-search-filter'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +65,8 @@ import{Ng2SearchPipeModule }from 'ng2-search-filter'
     NgxSpinnerModule,
     Ng2SearchPipeModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
 // =======
     // MatDialogModule
     

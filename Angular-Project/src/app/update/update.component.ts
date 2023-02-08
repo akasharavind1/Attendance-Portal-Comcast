@@ -4,7 +4,7 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatDialog } from '@angular/material/dialog';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
@@ -19,7 +19,7 @@ export class UpdateComponent {
   @ViewChild('dialogRef')
   dialogRef!: TemplateRef<any>;
 
-  constructor (private spinner: NgxSpinnerService,private form:FormBuilder, private serviceData:ServicefilesService, private router: Router, private route:ActivatedRoute, public dialog: MatDialog){
+  constructor (  private matSnackBar: MatSnackBar,private spinner: NgxSpinnerService,private form:FormBuilder, private serviceData:ServicefilesService, private router: Router, private route:ActivatedRoute, public dialog: MatDialog){
     this.employeeList=[];
     this.spinnerName="sp1";
     this.spinnerType="timer";
@@ -51,6 +51,13 @@ UpdateData(){
       }
      this.serviceData.updateEmployee(this.id,requestBody).subscribe((result: any)=>{ 
       console.log(result);
+      // this._toastr.success('Division Updated Successfully', 'Success!');
+      this.matSnackBar.open("UPDATED SUCCESSFULLY ...!✔👍", "Okay!", {
+        duration: 1500,
+        horizontalPosition: "center",
+        verticalPosition: "top",
+        // direction: "rtl"
+      })
       this.router.navigate(['/admin']);
       })
       const dialogue= this.dialog.closeAll();
