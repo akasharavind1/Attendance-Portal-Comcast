@@ -1,7 +1,38 @@
 <br>
 <button type="submit" class="button" style="float: right;" [routerLink]="'/'"  (click)="logout()" >LogOut</button><br>
 
-<h2>Hi {{fn | uppercase}}</h2><br>
+<h2> &nbsp; Hi {{fn | uppercase}}</h2>
+
+<table>
+  <tr>
+    <th>First Name:</th>&nbsp;
+    <!-- <th>Id:</th>&nbsp; -->
+    <th>Last Name:</th>&nbsp;
+    <th>Email:</th>&nbsp;
+    <th>Employee Id:</th>&nbsp;
+     <!-- <th>Attendance %</th> -->
+    <th>Flag</th> 
+    <th>Roles:</th>
+</tr>
+  <tr *ngIf="employee">
+
+  
+    <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></td>&nbsp;
+    <!-- <td>{{employees.id}}</td>&nbsp; -->
+    
+    <td>{{employee.lastName | uppercase}}</td>&nbsp;
+
+    <td>{{employee.mailID}}</td>&nbsp;
+    <td>{{employee.employeeId}}</td>&nbsp;
+    <!-- <td> </td> -->
+    <td></td>
+    <td>{{employee.roles | uppercase}}</td>
+</tr>
+
+<br>
+
+
+</table>
 
   <button class="button" [matMenuTriggerFor]="appMenu">
     MAKE SCHEDULE
@@ -69,7 +100,7 @@
    <tr><th>CHECK SELECTED DATES</th>
   </button> 
   <table>
-  <tr *ngFor="let employee22 of employee2">
+  <tr *ngFor="let employee22 of employeedates">
   <td>{{employee22.date | date : 'fullDate' | uppercase}}</td>
   </tr>
 </table>
@@ -97,7 +128,7 @@
   <tr *ngFor="let employee of employeeList">
   
     
-        <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;
+      <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;
       <!-- <td>{{employees.id}}</td>&nbsp; -->
       
       <td>{{employee.lastName | uppercase}}</td>&nbsp;

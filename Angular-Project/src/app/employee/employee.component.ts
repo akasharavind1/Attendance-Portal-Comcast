@@ -21,7 +21,7 @@ export class EmployeeComponent {
  id: any;
  employee:any;
  employeeList:any;
- employee2:any;
+ employeedates:any;
  empId:any;
  temp:any;
  fn: any;
@@ -32,7 +32,7 @@ export class EmployeeComponent {
   // employeeList:any;
   constructor(private spinner: NgxSpinnerService,private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
     this.employeeList=[];
-    this.employee2=[];
+    this.employeedates=[];
     this.spinnerName="sp1";
     this.spinnerType="timer";
     this.spinner.show(this.spinnerName);
@@ -45,9 +45,9 @@ export class EmployeeComponent {
     
    this.id=  this.route.snapshot.params['id'];
    this.employeeList=[];
-   this.employee2=[];
+   this.employeedates=[];
    this.getEmployeeList();
-  
+   this.getEmployee();
 }
   postemployee = this.form.group({
     dates:[''],
@@ -92,13 +92,19 @@ passTheDates(){
     this.successmsg="Successfully Updated";
 }
   getEmployeeList(){
-    
     // this.serviceData.getEmployeeList().subscribe((result: any)=>{
     //   this.employeeList= result;
     //   console.log(this.employeeList);
     //   console.log(this.id);
     // })
     this.employeeList=this.route.snapshot.data['data'];
+    this.serviceData.getEmployeeList().subscribe((result: any)=>{
+      this.employeeList= result;
+      console.log(this.employeeList);
+      console.log(this.id);
+    })}
+
+    getEmployee(){
     this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
       this.employee= result; 
       this.fn=result.firstName; 
@@ -113,8 +119,8 @@ passTheDates(){
   getDates(){  
     this.serviceData.getDates(this.empId).subscribe((result: any)=>{
       console.log(this.empId);
-      this.employee2=result; 
-      console.log(this.employee2);
+      this.employeedates=result; 
+      console.log(this.employeedates);
       // this.daysSelected=this.employee2;
       // this.daysSelected=(d: Date): boolean=> {
       //   const time=d.getTime();
@@ -122,6 +128,10 @@ passTheDates(){
       // }
     })
   }
+
+  // flagCraetor(){
+
+  // }
  
 
   logout(){ 

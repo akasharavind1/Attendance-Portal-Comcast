@@ -9,7 +9,7 @@
       <th>Email:</th>&nbsp;
       <th>Employee Id:</th>&nbsp;
       <th>No.of Days Selected </th>
-      <!-- <th>Flag</th> --> 
+      <th>Flag</th> 
       <th>Roles:</th>
   </tr>
   
@@ -23,7 +23,13 @@
       <td>{{employee.mailID}}</td>&nbsp;
       <td>{{employee.employeeId}}</td>&nbsp;
       <td>{{countt}}</td>
-      <!-- <td></td>  -->
+      <td>
+        <ng-container [ngSwitch]="true">
+          <ng-container *ngSwitchCase="this.flag==0">green flag</ng-container>
+          <ng-container *ngSwitchCase="this.flag==1">yellow flag</ng-container>
+          <ng-container *ngSwitchCase="this.flag==2">red flag</ng-container>
+        </ng-container>
+      </td> 
       <td>{{employee.roles | uppercase}}</td>
   </tr>
   </table>
@@ -41,7 +47,7 @@
    <th><h3>{{employee22.date   | date : 'fullDate' | uppercase}}</h3></th>
    </tr>
   </table>
-  <ngx-spinner
+  <!-- <ngx-spinner
   [name]="spinnerName"
   [type]="spinnerType"
   bdColor="rgba(0,0,0,0.5)"
@@ -49,5 +55,5 @@
   color="#fff"
   [fullScreen]="true">
   <p style="color: white">Loading...</p>
-</ngx-spinner>
+</ngx-spinner> -->
   
