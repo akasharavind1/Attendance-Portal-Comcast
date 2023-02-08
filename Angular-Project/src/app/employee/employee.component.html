@@ -25,7 +25,13 @@
     <td>{{employee.mailID}}</td>&nbsp;
     <td>{{employee.employeeId}}</td>&nbsp;
     <!-- <td> </td> -->
-    <td></td>
+    <td>
+      <ng-container [ngSwitch]="true">
+        <ng-container *ngSwitchCase="this.flag==0">green flag</ng-container>
+        <ng-container *ngSwitchCase="this.flag==1">yellow flag</ng-container>
+        <ng-container *ngSwitchCase="this.flag==2">red flag</ng-container>
+      </ng-container>
+    </td> 
     <td>{{employee.roles | uppercase}}</td>
 </tr>
 
