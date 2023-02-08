@@ -38,7 +38,7 @@ export class EmployeeComponent {
     this.spinner.show(this.spinnerName);
     setTimeout(() => {
       this.spinner.hide(this.spinnerName);
-    }, 2000);
+    }, 1250);
   }
   
   ngOnInit(): void{
@@ -47,6 +47,7 @@ export class EmployeeComponent {
    this.employeeList=[];
    this.employee2=[];
    this.getEmployeeList();
+  
 }
   postemployee = this.form.group({
     dates:[''],
@@ -92,11 +93,12 @@ passTheDates(){
 }
   getEmployeeList(){
     
-    this.serviceData.getEmployeeList().subscribe((result: any)=>{
-      this.employeeList= result;
-      console.log(this.employeeList);
-      console.log(this.id);
-    })
+    // this.serviceData.getEmployeeList().subscribe((result: any)=>{
+    //   this.employeeList= result;
+    //   console.log(this.employeeList);
+    //   console.log(this.id);
+    // })
+    this.employeeList=this.route.snapshot.data['data'];
     this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
       this.employee= result; 
       this.fn=result.firstName; 

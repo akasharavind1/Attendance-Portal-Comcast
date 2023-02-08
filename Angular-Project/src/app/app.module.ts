@@ -30,6 +30,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import { DateCountPipe } from './pipes/date-count.pipe';
+import{ ResolveGuardGuard} from './servicefiles/resolve-guard.guard'
 
 @NgModule({
   declarations: [
@@ -69,7 +70,7 @@ import { DateCountPipe } from './pipes/date-count.pipe';
     
 // >>>>>>> 6686bbc2fd16bbc6caf5f78bba207a166666ca82
   ],
-  providers: [],
+  providers: [ResolveGuardGuard],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

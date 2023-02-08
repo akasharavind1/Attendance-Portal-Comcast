@@ -6,7 +6,7 @@ import { ServicefilesService } from './servicefiles.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ServicefilesuserGuard implements CanActivate {
+export class ServicefilesuserGuard implements CanActivate{
   constructor(private auth: ServicefilesService, private router:Router){
   }
   canActivate(){
