@@ -11,6 +11,7 @@ import { ServicefilesuserGuard } from './servicefiles/servicefilesuser.guard';
 import { ServicefilesuseridcheckGuard } from './servicefiles/servicefilesuseridcheck.guard';
 import { DetailemployeeComponent } from './detailemployee/detailemployee.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ResolveGuardGuard } from './servicefiles/resolve-guard.guard';
 // import { DialogComponent } from './dialog/dialog.component';
 const routes: Routes = [
   {
@@ -26,7 +27,10 @@ const routes: Routes = [
     path:'addemployee',component: AddemployeeComponent
   },
   {
-    path:'employee/:id',component: EmployeeComponent,canActivate:[ServicefilesuserGuard]
+    path:'employee/:id',component: EmployeeComponent,canActivate:[ServicefilesuserGuard],
+    resolve:{
+      data: ResolveGuardGuard,
+    }
   },
   {
     path:'update/:id',component: UpdateComponent,canActivate:[ServicefilesGuard]

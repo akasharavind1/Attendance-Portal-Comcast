@@ -26,7 +26,7 @@ export class UpdateComponent {
     this.spinner.show(this.spinnerName);
     setTimeout(() => {
       this.spinner.hide(this.spinnerName);
-    }, 2000);
+    }, 1250);
   }
   employeeList:any;
 editEmployee= this.form.group({

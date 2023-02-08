@@ -42,7 +42,7 @@ export class EmployeeComponent {
     this.spinner.show(this.spinnerName);
     setTimeout(() => {
       this.spinner.hide(this.spinnerName);
-    }, 2000);
+    }, 1250);
   }
   
   ngOnInit(): void{
@@ -96,7 +96,12 @@ passTheDates(){
     this.successmsg="Successfully Updated";
 }
   getEmployeeList(){
-    
+    // this.serviceData.getEmployeeList().subscribe((result: any)=>{
+    //   this.employeeList= result;
+    //   console.log(this.employeeList);
+    //   console.log(this.id);
+    // })
+    this.employeeList=this.route.snapshot.data['data'];
     this.serviceData.getEmployeeList().subscribe((result: any)=>{
       this.employeeList= result;
       console.log(this.employeeList);
