@@ -59,9 +59,10 @@ export class AddemployeeComponent {
             roles:this.addEmployeeForm.get('roles')?.value
          
           }
-            // if(requestBody.password===requestBody.confirmpassword){
-              // this.errormsgpass=true;
-              console.log("valid")
+        
+            if(this.passwordNotMatch ==true){
+              
+              console.log("if cond")
               this.service.postEmployee(requestBody).subscribe((result: any)=>{
                 console.log(result);
                 this.router.navigate(['/']);
@@ -70,16 +71,18 @@ export class AddemployeeComponent {
             // }
         }
     }
+  }
 
-
-    // password(formGroup: FormGroup) {
-    //   const password = this.addEmployeeForm.get('password')?.value;
-    //   const confirmpsw = this.addEmployeeForm.get('confirmpassword')?.value;
-    //   if( password === confirmpsw ){
-    //     this.passwordNotMatch =true;
-    //   }
-    // }
+    password(formGroup: FormGroup) {
+      console.log("hii from if cond");
+      const password = this.addEmployeeForm.get('password')?.value;
+      const confirmpsw = this.addEmployeeForm.get('confirmpassword')?.value;
+      if( password === confirmpsw ){
+        this.passwordNotMatch =true;
+      }
+    }
     
+
 
 
 
