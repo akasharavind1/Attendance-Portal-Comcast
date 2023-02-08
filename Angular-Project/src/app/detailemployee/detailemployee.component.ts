@@ -21,6 +21,7 @@ export class DetailemployeeComponent {
   admin:any;
   flag:any;
   nos:any;
+  
   constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
   }
   ngOnInit(): void{

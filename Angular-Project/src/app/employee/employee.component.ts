@@ -7,7 +7,6 @@ import { AddemployeeComponent } from '../addemployee/addemployee.component';
 import { trigger, state, style, transition, animate } from '@angular/animations'; 
 import { ViewEncapsulation } from '@angular/core';
 // import { MatDatepicker } from '@angular/material/datepicker';
-
 import { MbscModule } from 'ack-angular-mobiscroll';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -29,6 +28,10 @@ export class EmployeeComponent {
   spinnerType:string;
  spinnerName:string;
   datesarr=[];
+  flag:any;
+  nos:any;
+  countt: any;
+
   // employeeList:any;
   constructor(private spinner: NgxSpinnerService,private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
     this.employeeList=[];
@@ -104,17 +107,23 @@ passTheDates(){
       console.log(this.id);
     })}
 
-    getEmployee(){
-    this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
-      this.employee= result; 
-      this.fn=result.firstName; 
+  getEmployee(){
+    this.serviceData.getEmployee(this.id).subscribe((resp: any)=>{
+      this.employee= resp; 
+      this.fn=resp.firstName; 
       // console.log(this.temp);
-      this.empId=result.employeeId;
+      this.empId=resp.employeeId;
          console.log(this.empId);
          console.log(this.employee);
-    }
-    )
-}
+
+         this.serviceData.getDates(this.empId).subscribe((resp: any)=>{
+          this.countt=resp.length;
+          this.flagCreator();
+        })
+      }
+    )}
+
+
 
   getDates(){  
     this.serviceData.getDates(this.empId).subscribe((result: any)=>{
@@ -129,9 +138,29 @@ passTheDates(){
     })
   }
 
-  // flagCraetor(){
+  flagCreator(){
+    console.log("hello funct");
+    console.log("count is:"+this.countt);
+    this.nos=this.countt
+    console.log(this.nos);
 
-  // }
+    switch(true){
+
+    case this.countt>=18 :
+        this.flag=0; //green flag
+        console.log("Green flag")
+        break;
+    case this.countt>=16:
+        this.flag=1;  //yellow flag
+        console.log("yellow flag")
+        break;
+    case this.countt<12:
+        this.flag=2;   //red flag
+        console.log("red flag")
+        break;
+    }
+}
+
  
 
   logout(){ 
