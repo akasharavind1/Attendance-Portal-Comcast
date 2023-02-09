@@ -29,6 +29,7 @@ export class DetailemployeeComponent {
     this.getEmployee();
     this.admin="admin";
     // this.nos=this.countt;
+    this.numberOfDaysOnMonth ();
  }
   getEmployee(){
     this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
@@ -61,6 +62,15 @@ export class DetailemployeeComponent {
         break;
     }
 }
+
+ numberOfDaysOnMonth () {
+  let h = new Date()
+  h.setMonth(h.getMonth() + 1)
+  h.setDate(h.getDate() - 1)
+  return h.getDate()
+  console.log(h.getDate());
+};
+
   // getDates(){
   //   this.serviceData.getDates(this.empId).subscribe((result: any)=>{
   //     console.log(this.empId);
