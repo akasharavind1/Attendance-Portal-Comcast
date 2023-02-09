@@ -13,6 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AddemployeeComponent {
   passwrong=false;
   passwordNotMatch =false;
+  show_button: Boolean = false;
+  show_eye: Boolean = false;
  
 
 
@@ -88,8 +90,10 @@ export class AddemployeeComponent {
         this.passwordNotMatch =true;
       }
     }
-    
-
+    showPassword() {
+      this.show_button = !this.show_button;
+      this.show_eye = !this.show_eye;
+    }
 
 
 
