@@ -29,7 +29,7 @@ export class DetailemployeeComponent {
     this.getEmployee();
     this.admin="admin";
     // this.nos=this.countt;
-    this.numberOfDaysOnMonth ();
+  
  }
   getEmployee(){
     this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
@@ -48,28 +48,21 @@ export class DetailemployeeComponent {
     this.nos=this.countt
     console.log(this.nos);
     switch(true){
-    case this.countt>=18 :
+    case this.countt>=14 :
         this.flag=0; //green flag
         console.log("Green flag")
         break;
-    case this.countt>=16:
+    case this.countt>=9:
         this.flag=1;  //yellow flag
         console.log("yellow flag")
         break;
-    case this.countt<12:
+    case this.countt<5:
         this.flag=2;   //red flag
         console.log("red flag")
         break;
     }
 }
 
- numberOfDaysOnMonth () {
-  let h = new Date()
-  h.setMonth(h.getMonth() + 1)
-  h.setDate(h.getDate() - 1)
-  return h.getDate()
-  console.log(h.getDate());
-};
 
   // getDates(){
   //   this.serviceData.getDates(this.empId).subscribe((result: any)=>{

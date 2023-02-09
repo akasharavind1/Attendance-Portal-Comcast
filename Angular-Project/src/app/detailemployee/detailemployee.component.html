@@ -1,5 +1,4 @@
 <br>
-
 <!-- DATE PICKER: <input type="date" [value]="TodayDate" > -->
 <table class="table">
   <tr>
@@ -25,9 +24,9 @@
       <td >{{countt}}</td>
       <td>
         <ng-container [ngSwitch]="true">
-          <ng-container *ngSwitchCase="this.flag==0">green flag</ng-container>
-          <ng-container *ngSwitchCase="this.flag==1">yellow flag</ng-container>
-          <ng-container *ngSwitchCase="this.flag==2">red flag</ng-container>
+          <ng-container *ngSwitchCase="this.flag==0"><img class="img" src="assets/img/greenflag.png"  ></ng-container>
+          <ng-container *ngSwitchCase="this.flag==1"><img class="img" src="assets/img/yellowflag.jpg"  ></ng-container>
+          <ng-container *ngSwitchCase="this.flag==2"><img class="img" src="assets/img/redflag.jpg"  ></ng-container>
         </ng-container>
       </td> 
       <td>{{employee.roles | uppercase}}</td>
@@ -42,6 +41,7 @@
    <!-- <button class="button" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i>
    BACK
    </button>  -->
+   <h2> Employee Availability:</h2>
    <table>
    <tr *ngFor="let employee22 of employee2">
    <th><h3>{{employee22.date   | date : 'fullDate' | uppercase}}</h3></th>
