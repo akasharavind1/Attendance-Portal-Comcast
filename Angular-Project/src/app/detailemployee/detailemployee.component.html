@@ -9,7 +9,6 @@
       <th>Employee Id:</th>&nbsp;
       <th>No.of Days Selected </th>
       <th>Flag</th> 
-      <th>Roles:</th>
   </tr>
   
   <br>
@@ -23,15 +22,22 @@
       <td>{{employee.employeeId}}</td>&nbsp;
       <td >{{countt}}</td>
       <td>
-        <ng-container [ngSwitch]="true">
+        <ng-container  [ngClass]="{'green': this.flag==0 ,
+        'yellow': this.flag==1 , 
+        'red': this.flag==2}" [ngSwitch]="true">
           <ng-container *ngSwitchCase="this.flag==0"><img class="img" src="assets/img/greenflag.png"  ></ng-container>
-          <ng-container *ngSwitchCase="this.flag==1"><img class="img" src="assets/img/yellowflag.jpg"  ></ng-container>
+          <ng-container *ngSwitchCase="this.flag==1"><img class="img" src="assets/img/yellowflag.jpg" ></ng-container>
           <ng-container *ngSwitchCase="this.flag==2"><img class="img" src="assets/img/redflag.jpg"  ></ng-container>
         </ng-container>
       </td> 
-      <td>{{employee.roles | uppercase}}</td>
   </tr>
   </table>
+  <div style="float: right;">
+    <div><img class="img" src="assets/img/greenflag.png" > Great Attendance </div>
+    <div><img class="img" src="assets/img/yellowflag.jpg" > Attention required</div>
+    <div><img class="img" src="assets/img/redflag.jpg" > Low Attendance </div>
+    
+  </div>
   <!-- <button class="button" (click)="getDates()"> -->
     <!-- CHECK SELECTED DATES
    </button>  -->
@@ -41,12 +47,16 @@
    <!-- <button class="button" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i>
    BACK
    </button>  -->
+
+   
    <h2> Employee Availability:</h2>
    <table>
    <tr *ngFor="let employee22 of employee2">
    <th><h3>{{employee22.date   | date : 'fullDate' | uppercase}}</h3></th>
    </tr>
   </table>
+
+
   <!-- <ngx-spinner
   [name]="spinnerName"
   [type]="spinnerType"

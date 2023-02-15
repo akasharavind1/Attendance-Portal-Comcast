@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import { HttpClient } from '@angular/common/http';
 import { Router ,ActivatedRoute} from '@angular/router';
@@ -10,6 +10,7 @@ import { ViewEncapsulation } from '@angular/core';
 import { MbscModule } from 'ack-angular-mobiscroll';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-employee',
@@ -32,9 +33,19 @@ export class EmployeeComponent {
   flag:any;
   nos:any;
   countt: any;
+  fromDialog!:string;
+  selectedDates:any;
+  dateref = new Date('2023/02/14')
+ 
+  
+  
+
+    @ViewChild('dialogRef1')
+  dialogRef1!: TemplateRef<any>;
+
 
   // employeeList:any;
-  constructor(private matSnackBar: MatSnackBar,private spinner: NgxSpinnerService,private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
+  constructor(private matSnackBar: MatSnackBar,private spinner: NgxSpinnerService,private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute, public dialog: MatDialog){
     this.employeeList=[];
     this.employeedates=[];
     this.spinnerName="sp1";
@@ -52,6 +63,10 @@ export class EmployeeComponent {
    this.employeedates=[];
    this.getEmployeeList();
    this.getEmployee();
+   
+  
+
+   
 }
   postemployee = this.form.group({
     dates:[''],
@@ -124,7 +139,7 @@ passTheDates(){
 
          this.serviceData.getDates(this.empId).subscribe((resp: any)=>{
           this.countt=resp.length;
-          this.flagCreator();
+          // this.flagCreator();
         })
       }
     )}
@@ -135,13 +150,24 @@ passTheDates(){
     this.serviceData.getDates(this.empId).subscribe((result: any)=>{
       console.log(this.empId);
       this.employeedates=result; 
+      console.log(this.employeedates);
+
+      this.selectedDates = result.map((element: any)=>{
+        return  new Date(element.date);
+      })
+      // this.selectedDates=this.result.date;
+      // console.log(this.selectedDates);
       this.matSnackBar.open("RETRIEVED SUCCESSFULLY ...!✔👍", "Okay!", {
         duration: 3500,
         horizontalPosition: "center",
         verticalPosition: "top",
         // direction: "rtl"
+        
       })
-      console.log(this.employeedates);
+      console.log(this.selectedDates)
+      console.log(this.dateref)
+      
+     
       // this.daysSelected=this.employee2;
       // this.daysSelected=(d: Date): boolean=> {
       //   const time=d.getTime();
@@ -150,28 +176,28 @@ passTheDates(){
     })
   }
 
-  flagCreator(){
-    console.log("hello funct");
-    console.log("count is:"+this.countt);
-    this.nos=this.countt
-    console.log(this.nos);
+//   flagCreator(){
+//     console.log("hello funct");
+//     console.log("count is:"+this.countt);
+//     this.nos=this.countt
+//     console.log(this.nos);
 
-    switch(true){
+//     switch(true){
 
-    case this.countt>=18 :
-        this.flag=0; //green flag
-        console.log("Green flag")
-        break;
-    case this.countt>=16:
-        this.flag=1;  //yellow flag
-        console.log("yellow flag")
-        break;
-    case this.countt<12:
-        this.flag=2;   //red flag
-        console.log("red flag")
-        break;
-    }
-}
+//     case this.countt>=18 :
+//         this.flag=0; //green flag
+//         console.log("Green flag")
+//         break;
+//     case this.countt>=16:
+//         this.flag=1;  //yellow flag
+//         console.log("yellow flag")
+//         break;
+//     case this.countt<12:
+//         this.flag=2;   //red flag
+//         console.log("red flag")
+//         break;
+//     }
+// }
 
  
 
@@ -185,5 +211,28 @@ passTheDates(){
           verticalPosition: "top",
           // direction: "rtl"
         })
+        const dialogue= this.dialog.closeAll();
    };
+
+   openDialog1(){
+
+  const dialogue= this.dialog.open(this.dialogRef1);
+ 
+    
+  }
+  cancelDialog(){
+  
+    const dialogue= this.dialog.closeAll();
+  }
+
+  // iterateDatesOutOf(){
+
+  //   let res = this.employeedates.map((element: any)=>{
+  //     return new Date(element.date);
+  //   })
+  //   console.log(res)
+
+  // }
+
+ 
   }

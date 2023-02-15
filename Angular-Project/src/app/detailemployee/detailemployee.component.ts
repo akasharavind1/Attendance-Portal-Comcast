@@ -7,6 +7,7 @@ import { AddemployeeComponent } from '../addemployee/addemployee.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ViewEncapsulation } from '@angular/core';
 import { MbscModule } from 'ack-angular-mobiscroll';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 @Component({
   selector: 'app-detailemployee',
   templateUrl: './detailemployee.component.html',
@@ -88,4 +89,28 @@ export class DetailemployeeComponent {
   //   }
   //   this.router.navigateByUrl('/employee/'+this.employee.id);
   // }
+
+  dateArr = [
+    {
+        date: "2023-02-12",
+        
+    },
+    {
+        date: "2023-02-19",
+       
+    }
+]
+
+dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+    const index = this.dateArr.findIndex(x => new Date(x.date).toLocaleDateString() === cellDate.toLocaleDateString());
+    if (index > -1) {
+        if (true) {
+            return "date-red";
+        } else if (true) {
+            return "date-green";
+        }
+    }
+
+    return '';
+};
 }
