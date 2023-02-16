@@ -107,6 +107,7 @@ passTheDates(){
 
      this.serviceData.postDates(this.daysSelected,this.empId).subscribe((result: any)=>{
         console.log(result);
+        console.log(this.fn);
       })
       this.matSnackBar.open("DATES ADDED SUCCESSFULLY ...!✔👍", "Okay!", {
         duration: 2500,

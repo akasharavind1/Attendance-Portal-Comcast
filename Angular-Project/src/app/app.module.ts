@@ -33,6 +33,8 @@ import { DateCountPipe } from './pipes/date-count.pipe';
 import{ ResolveGuardGuard} from './servicefiles/resolve-guard.guard'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CalendarCreator } from './servicefiles/calendarService';
+import { TestCalComponent } from './test-cal/test-cal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     DetailemployeeComponent,
     PagenotfoundComponent,
     // DialogComponent,
-    DateCountPipe
+    DateCountPipe,
+    TestCalComponent
     
   ],
   imports: [
@@ -68,7 +71,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatSnackBarModule,
   ],
-  providers: [ResolveGuardGuard],
+  providers: [ResolveGuardGuard, CalendarCreator],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

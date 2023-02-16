@@ -8,6 +8,9 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { ViewEncapsulation } from '@angular/core';
 import { MbscModule } from 'ack-angular-mobiscroll';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { Day } from "../models/model";
+import { CalendarCreator } from "../servicefiles/calendarService";
+
 @Component({
   selector: 'app-detailemployee',
   templateUrl: './detailemployee.component.html',
@@ -22,14 +25,30 @@ export class DetailemployeeComponent {
   admin:any;
   flag:any;
   nos:any;
+  //calendar:
+  public monthDays!: Day[];
+
+  public monthNumber!: number;
+  public year!: number;
+
+  public weekDaysName : string[] = [];
   
-  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
+  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute, public calendarCreator: CalendarCreator){
   }
   ngOnInit(): void{
     this.id=  this.route.snapshot.params['id'];
     this.getEmployee();
     this.admin="admin";
     // this.nos=this.countt;
+    this.setMonthDays(this.calendarCreator.getCurrentMonth());
+
+    this.weekDaysName.push("Mo");
+    this.weekDaysName.push("Tu");
+    this.weekDaysName.push("We");
+    this.weekDaysName.push("Th");
+    this.weekDaysName.push("Fr");
+    this.weekDaysName.push("Sa");
+    this.weekDaysName.push("Su");
   
  }
   getEmployee(){
@@ -90,27 +109,57 @@ export class DetailemployeeComponent {
   //   this.router.navigateByUrl('/employee/'+this.employee.id);
   // }
 
-  dateArr = [
-    {
-        date: "2023-02-12",
+//   dateArr = [
+//     {
+//         date: "2023-02-12",
         
-    },
-    {
-        date: "2023-02-19",
+//     },
+//     {
+//         date: "2023-02-19",
        
-    }
-]
+//     }
+// ]
 
-dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
-    const index = this.dateArr.findIndex(x => new Date(x.date).toLocaleDateString() === cellDate.toLocaleDateString());
-    if (index > -1) {
-        if (true) {
-            return "date-red";
-        } else if (true) {
-            return "date-green";
-        }
-    }
+// dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+//     const index = this.dateArr.findIndex(x => new Date(x.date).toLocaleDateString() === cellDate.toLocaleDateString());
+//     if (index > -1) {
+//         if (true) {
+//             return "date-red";
+//         } else if (true) {
+//             return "date-green";
+//         }
+//     }
 
-    return '';
-};
+//     return '';
+// };
+
+onNextMonth(): void {
+  this.monthNumber++;
+
+  if (this.monthNumber == 13) {
+    this.monthNumber = 1;
+    this.year++;
+  }
+
+  this.setMonthDays(this.calendarCreator.getMonth(this.monthNumber, this.year));
+}
+
+onPreviousMonth() : void{
+  this.monthNumber--;
+
+  if (this.monthNumber < 1) {
+    this.monthNumber = 12;
+    this.year--;
+  }
+
+  this.setMonthDays(this.calendarCreator.getMonth(this.monthNumber, this.year));
+}
+private setMonthDays(days: Day[]): void {
+  this.monthDays = days;
+  this.monthNumber = this.monthDays[0].monthIndex;
+  this.year = this.monthDays[0].year;
+}
+
+
+
 }
