@@ -91,9 +91,24 @@ click: any;
           }
           else if(result.statusCodeValue==200 && result.body=="Password Mismatch"){
             this.passwrong=true;
+            this.matSnackBar.open("PASSWORD MISMATCH ...!✔👍", "Okay!", {
+              duration: 1500,
+              horizontalPosition: "center",
+              verticalPosition: "top",
+              // direction: "rtl"
+            })
+          
+
             }
             else if(result.statusCodeValue==404){
             this.detailswrong=true;
+            this.matSnackBar.open("INVALID CREDENTIALS ...!✔👍", "Okay!", {
+              duration: 1500,
+              horizontalPosition: "center",
+              verticalPosition: "top",
+              // direction: "rtl"
+            })
+          
             }
         
           })

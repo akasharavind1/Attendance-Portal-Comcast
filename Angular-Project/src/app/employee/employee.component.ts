@@ -25,6 +25,7 @@ export class EmployeeComponent {
  empId:any;
  temp:any;
  fn: any;
+ searchtext2: any="";
  successmsg:any;
   spinnerType:string;
  spinnerName:string;
@@ -101,11 +102,7 @@ passTheDates(){
       })
 }
   getEmployeeList(){
-    // this.serviceData.getEmployeeList().subscribe((result: any)=>{
-    //   this.employeeList= result;
-    //   console.log(this.employeeList);
-    //   console.log(this.id);
-    // })
+
     this.employeeList=this.route.snapshot.data['data'];
     this.serviceData.getEmployeeList().subscribe((result: any)=>{
       this.employeeList= result;
