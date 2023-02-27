@@ -25,12 +25,14 @@
       <br>
   
       <label for="newpsw"><b>New Password:</b></label>
-      <input required  type="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" placeholder="Enter your new Password" name="newpsw" required formControlName="password" >
+      <input required  [type]="show_button ? 'text' : 'password'" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" placeholder="Enter your new Password" name="newpsw" required formControlName="password" >
       <!-- <span style="color:red" *ngIf="!this.addEmployeeForm.get('password')?.value"  >Password is required.</span> -->
+      <i [class]="show_eye ? 'fa fa-eye' : 'fa fa-eye-slash'" (click)="showPassword()"></i>
       <br>
       
       <label for="confirmpsw"><b>Confirm Password:</b></label>
-      <input required type="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" placeholder="Confirm your Password" name="confirmpsw" required formControlName="confirmPassword" >
+      <input required [type]="show_button ? 'text' : 'password'" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" placeholder="Confirm your Password" name="confirmpsw" required formControlName="confirmPassword" >
+      <i [class]="show_eye ? 'fa fa-eye' : 'fa fa-eye-slash'" (click)="showPassword()"></i>
       <span class="errormessage" *ngIf="this.addEmployeeForm.get('password')?.value != this.addEmployeeForm.get('confirmPassword')?.value ">
         *Password doesn't match.
       </span>

@@ -13,6 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AddemployeeComponent {
   passwrong=false;
   passwordNotMatch =false;
+  show_button: Boolean = false;
+  show_eye: Boolean = false;
  
 
 
@@ -80,16 +82,18 @@ export class AddemployeeComponent {
     }
   }
 
-    password(formGroup: FormGroup) {
-      console.log("hii from if cond");
-      const password = this.addEmployeeForm.get('password')?.value;
-      const confirmpsw = this.addEmployeeForm.get('confirmpassword')?.value;
-      if( password === confirmpsw ){
-        this.passwordNotMatch =true;
-      }
+    // password(formGroup: FormGroup) {
+    //   console.log("hii from if cond");
+    //   const password = this.addEmployeeForm.get('password')?.value;
+    //   const confirmpsw = this.addEmployeeForm.get('confirmpassword')?.value;
+    //   if( password === confirmpsw ){
+    //     this.passwordNotMatch =true;
+    //   }
+    // }
+    showPassword() {
+      this.show_button = !this.show_button;
+      this.show_eye = !this.show_eye;
     }
-    
-
 
 
 

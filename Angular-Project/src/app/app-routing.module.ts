@@ -12,6 +12,7 @@ import { ServicefilesuseridcheckGuard } from './servicefiles/servicefilesuseridc
 import { DetailemployeeComponent } from './detailemployee/detailemployee.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ResolveGuardGuard } from './servicefiles/resolve-guard.guard';
+import { TestCalComponent } from './test-cal/test-cal.component';
 // import { DialogComponent } from './dialog/dialog.component';
 const routes: Routes = [
   {
@@ -39,8 +40,12 @@ const routes: Routes = [
     path:'detailemployee/:id',component: DetailemployeeComponent
   },
   { 
+    path:'test-cal', component: TestCalComponent,
+  },
+  { 
     path:'**', component: PagenotfoundComponent,
   },
+  
 
 ];
 

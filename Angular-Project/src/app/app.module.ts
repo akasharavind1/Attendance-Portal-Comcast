@@ -31,10 +31,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import { DateCountPipe } from './pipes/date-count.pipe';
 import{ ResolveGuardGuard} from './servicefiles/resolve-guard.guard'
-import{Ng2SearchPipeModule }from 'ng2-search-filter'
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FiltersSamplePipe } from './pipes/filters-sample.pipe'
-
+import { FiltersSamplePipe } from './pipes/filters-sample.pipe';
+import { CalendarCreator } from './servicefiles/calendarService';
+import { TestCalComponent } from './test-cal/test-cal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { FiltersSamplePipe } from './pipes/filters-sample.pipe'
     PagenotfoundComponent,
     // DialogComponent,
     DateCountPipe,
-    FiltersSamplePipe
+    FiltersSamplePipe,
+    TestCalComponent
     
   ],
   imports: [
@@ -69,9 +71,9 @@ import { FiltersSamplePipe } from './pipes/filters-sample.pipe'
     Ng2SearchPipeModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
-  providers: [ResolveGuardGuard],
+  providers: [ResolveGuardGuard, CalendarCreator],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

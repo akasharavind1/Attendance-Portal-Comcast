@@ -8,7 +8,7 @@ export class ServicefilesService {
   url="http://localhost:8080/api/v1";
 
   constructor(private http:HttpClient) {}
-   
+ 
      IsLoggedAdmin(){
       if(localStorage.getItem("tokenadmin")=="AH2EjtcmoURSXm2RhZ8ihnJrsty"){
      return !!localStorage.getItem("tokenadmin");
@@ -32,6 +32,9 @@ export class ServicefilesService {
     getEmployee(id: any){
       return this.http.get(`${this.url}/employeeInfo/`+id)
     }
+     getDates2(empIds: number){
+      return this.http.get(`${this.url}/getDatesDemo/`+empIds)
+    }
     getDates(empId: number){
       return this.http.get(`${this.url}/getDates/`+empId)
     }
@@ -44,9 +47,9 @@ export class ServicefilesService {
     postEmployee(body:any){
       return this.http.post(`${this.url}/signup`,body)
     }
-    postDates(body:any,id: any ){
+    postDates(body:any, id:any,){
       return this.http.post(`${this.url}/postDates/`+id,body)
-    }
+    }   
     postLogin(body:any){
             return this.http.post(`${this.url}/login`,body);
           }

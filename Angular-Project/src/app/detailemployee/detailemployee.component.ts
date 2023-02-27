@@ -7,6 +7,10 @@ import { AddemployeeComponent } from '../addemployee/addemployee.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ViewEncapsulation } from '@angular/core';
 import { MbscModule } from 'ack-angular-mobiscroll';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { Day } from "../models/model";
+import { CalendarCreator } from "../servicefiles/calendarService";
+
 @Component({
   selector: 'app-detailemployee',
   templateUrl: './detailemployee.component.html',
@@ -21,14 +25,31 @@ export class DetailemployeeComponent {
   admin:any;
   flag:any;
   nos:any;
+  //calendar:
+  public monthDays!: Day[];
+
+  public monthNumber!: number;
+  public year!: number;
+
+  public weekDaysName : string[] = [];
   
-  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute){
+  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute, public calendarCreator: CalendarCreator){
   }
   ngOnInit(): void{
     this.id=  this.route.snapshot.params['id'];
     this.getEmployee();
     this.admin="admin";
     // this.nos=this.countt;
+    this.setMonthDays(this.calendarCreator.getCurrentMonth());
+
+    this.weekDaysName.push("Mo");
+    this.weekDaysName.push("Tu");
+    this.weekDaysName.push("We");
+    this.weekDaysName.push("Th");
+    this.weekDaysName.push("Fr");
+    this.weekDaysName.push("Sa");
+    this.weekDaysName.push("Su");
+  
  }
   getEmployee(){
     this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
@@ -47,20 +68,22 @@ export class DetailemployeeComponent {
     this.nos=this.countt
     console.log(this.nos);
     switch(true){
-    case this.countt>=18 :
+    case this.countt>=14 :
         this.flag=0; //green flag
         console.log("Green flag")
         break;
-    case this.countt>=16:
+    case this.countt>=9:
         this.flag=1;  //yellow flag
         console.log("yellow flag")
         break;
-    case this.countt<12:
+    case this.countt<5:
         this.flag=2;   //red flag
         console.log("red flag")
         break;
     }
 }
+
+
   // getDates(){
   //   this.serviceData.getDates(this.empId).subscribe((result: any)=>{
   //     console.log(this.empId);
@@ -85,4 +108,58 @@ export class DetailemployeeComponent {
   //   }
   //   this.router.navigateByUrl('/employee/'+this.employee.id);
   // }
+
+//   dateArr = [
+//     {
+//         date: "2023-02-12",
+        
+//     },
+//     {
+//         date: "2023-02-19",
+       
+//     }
+// ]
+
+// dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+//     const index = this.dateArr.findIndex(x => new Date(x.date).toLocaleDateString() === cellDate.toLocaleDateString());
+//     if (index > -1) {
+//         if (true) {
+//             return "date-red";
+//         } else if (true) {
+//             return "date-green";
+//         }
+//     }
+
+//     return '';
+// };
+
+onNextMonth(): void {
+  this.monthNumber++;
+
+  if (this.monthNumber == 13) {
+    this.monthNumber = 1;
+    this.year++;
+  }
+
+  this.setMonthDays(this.calendarCreator.getMonth(this.monthNumber, this.year));
+}
+
+onPreviousMonth() : void{
+  this.monthNumber--;
+
+  if (this.monthNumber < 1) {
+    this.monthNumber = 12;
+    this.year--;
+  }
+
+  this.setMonthDays(this.calendarCreator.getMonth(this.monthNumber, this.year));
+}
+private setMonthDays(days: Day[]): void {
+  this.monthDays = days;
+  this.monthNumber = this.monthDays[0].monthIndex;
+  this.year = this.monthDays[0].year;
+}
+
+
+
 }

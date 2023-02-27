@@ -1,5 +1,5 @@
 <br>
-<button type="submit" style="float: right;" [routerLink]="'/'"  (click)="logout()" mat-raised-button color="warn">LogOut</button><br>
+<button type="submit" style="float: right;"  (click)="openDialog1()" mat-raised-button color="warn">LogOut</button><br>
 
 <h2> &nbsp; Hi {{fn | uppercase}}</h2>
 
@@ -11,7 +11,7 @@
     <th>Email:</th>&nbsp;
     <th>Employee Id:</th>&nbsp;
      <!-- <th>Attendance %</th> -->
-    <th>Flag</th> 
+    <!-- <th>Flag</th>  -->
     <th>Roles:</th>
 </tr>
   <tr *ngIf="employee">
@@ -25,31 +25,31 @@
     <td>{{employee.mailID}}</td>&nbsp;
     <td>{{employee.employeeId}}</td>&nbsp;
     <!-- <td> </td> -->
-    <td>
+    <!-- <td>
       <ng-container [ngSwitch]="true">
         <ng-container *ngSwitchCase="this.flag==0"><img class="img" src="assets/img/greenflag.png"  ></ng-container>
         <ng-container *ngSwitchCase="this.flag==1"><img class="img" src="assets/img/yellowflag.jpg"  ></ng-container>
         <ng-container *ngSwitchCase="this.flag==2"><img class="img" src="assets/img/redflag.jpg"  ></ng-container>
       </ng-container>
-    </td> 
+    </td>  -->
     <td>{{employee.roles | uppercase}}</td>
 </tr>
 
 <br>
 </table>
 
-<div style="float: right;">
+<!-- <div style="float: right;">
   <div><img class="img" src="assets/img/greenflag.png" > Great Attendance </div>
   <div><img class="img" src="assets/img/yellowflag.jpg" > Attention required</div>
   <div><img class="img" src="assets/img/redflag.jpg" > Low Attendance </div>
   
-</div>
+</div> -->
 
   <button [matMenuTriggerFor]="appMenu" mat-raised-button color="primary">
     MAKE SCHEDULE
    
   </button> 
-   <mat-menu class="matmenu" #appMenu="matMenu">
+   <mat-menu class="matmenu"  #appMenu="matMenu">
       <div (click)="$event.stopPropagation()">
           <mat-calendar #calendar 
              (selectedChange)="select($event,calendar)" 
@@ -155,5 +155,19 @@
       <td>{{employee.roles | uppercase}}</td>
   </tr>
   </table>
+
+  <ng-template #dialogRef1>
+    <h2 >Are you sure?</h2>
+    <button (click)="logout()" mat-raised-button color="primary" >Logout</button>
+    <button (click)="cancelDialog()" mat-raised-button color="warn"> Cancel </button>
+
+    
+</ng-template>
+
+
+<div *ngIf="selectedDates">
+<mat-calendar [selected]="dateref">
+</mat-calendar>
+</div>
   
   <router-outlet></router-outlet>
