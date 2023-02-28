@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import { HttpClient } from '@angular/common/http';
 import { Router ,ActivatedRoute} from '@angular/router';
@@ -19,6 +19,7 @@ import {MatDialog} from '@angular/material/dialog';
   encapsulation:ViewEncapsulation.None
 })
 export class EmployeeComponent {
+[x: string]: any;
  id: any;
  employee:any;
  employeeList:any;
@@ -37,11 +38,18 @@ export class EmployeeComponent {
   fromDialog!:string;
   selectedDates:any;
   dateref = new Date('2023/02/14')
- empIds: any;
+ 
   
   
-
-    @ViewChild('dialogRef1')
+  @Input()
+  date:Date = new Date();
+  monthDates = 0
+  startingIndex = 0;
+  startingValue=1;
+  data :{[id:number]:any}={};
+  Object=Object;
+ 
+ @ViewChild('dialogRef1')
   dialogRef1!: TemplateRef<any>;
 
 
@@ -64,6 +72,10 @@ export class EmployeeComponent {
    this.employeedates=[];
    this.getEmployeeList();
    this.getEmployee();
+   
+  
+
+   
 }
   postemployee = this.form.group({
     dates:[''],
@@ -98,11 +110,14 @@ select(event: any, calendar: any) {
   else this.daysSelected.splice(index, 1);
  
   calendar.updateTodaysDate();
+  console.log(this.daysSelected)
 }
 
 passTheDates(){
+
      this.serviceData.postDates(this.daysSelected,this.empId).subscribe((result: any)=>{
         console.log(result);
+        console.log(this.fn);
       })
       this.matSnackBar.open("DATES ADDED SUCCESSFULLY ...!✔👍", "Okay!", {
         duration: 2500,
@@ -110,6 +125,10 @@ passTheDates(){
         verticalPosition: "top",
         // direction: "rtl"
       })
+
+      const dialogue= this.dialog.closeAll();
+
+      
 }
   getEmployeeList(){
     
@@ -163,16 +182,29 @@ passTheDates(){
       this.selectedDates = result.map((element: any)=>{
         return  new Date(element.date);
       })
+      // this.selectedDates=this.result.date;
+      // console.log(this.selectedDates);
       this.matSnackBar.open("RETRIEVED SUCCESSFULLY ...!✔👍", "Okay!", {
         duration: 3500,
         horizontalPosition: "center",
         verticalPosition: "top",
         // direction: "rtl"
         
-      })
+      // })
       console.log(this.selectedDates)
       console.log(this.dateref)
+      
+     
+      // this.daysSelected=this.employee2;
+      // this.daysSelected=(d: Date): boolean=> {
+      //   const time=d.getTime();
+      //   return !this.daysSelected.find(x=> x.getTime()==time);
+      // }
     })
+  }
+
+  flag1(){
+    this.ifValid = true;
   }
 
 //   flagCreator(){
@@ -215,4 +247,57 @@ passTheDates(){
   cancelDialog(){
     const dialogue= this.dialog.closeAll();
   }
+
+  // iterateDatesOutOf(){
+
+  //   let res = this.employeedates.map((element: any)=>{
+  //     return new Date(element.date);
+  //   })
+  //   console.log(res)
+
+  // }
+
+ 
   }
+
+  sendDates(){
+
+
+this.firstDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
+this.lastDate = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0);
+
+
+//     for(let i=this.firstDate;i> this.monthDates;i++){
+
+//       var dates= this.id;
+
+//     }
+this.bruh= [this.firstDate];
+
+}
+
+month: number = new Date().getMonth();
+
+year : number = new Date().getFullYear();
+
+matchedDates: any;
+
+
+getDaysInMonth(month: number, year: number) {
+  var date = new Date(year, month, 1);
+  var days = [];
+  while (date.getMonth() === month) {
+    days.push(new Date(date));
+    date.setDate(date.getDate() + 1);
+  }
+  console.log("The dates of current month are:" +days);
+
+  this.serviceData.matchDates(this.days).subscribe((result: any)=>{
+
+    this.matchedDates = result;
+    
+  })
+
+}
+  
+}

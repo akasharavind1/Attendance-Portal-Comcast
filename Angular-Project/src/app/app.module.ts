@@ -36,6 +36,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FiltersSamplePipe } from './pipes/filters-sample.pipe';
 import { CalendarCreator } from './servicefiles/calendarService';
 import { TestCalComponent } from './test-cal/test-cal.component';
+import { MatBadgeModule } from '@angular/material/badge';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +73,7 @@ import { TestCalComponent } from './test-cal/test-cal.component';
     MatFormFieldModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatBadgeModule
   ],
   providers: [ResolveGuardGuard, CalendarCreator],
   bootstrap: [AppComponent],

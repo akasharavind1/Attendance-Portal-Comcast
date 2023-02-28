@@ -9,7 +9,7 @@ export class TestCalComponent implements OnInit {
 
 
   @Input()
-  date:Date = new Date(2023,2,1);
+  date:Date = new Date();
   monthDates = 0
   startingIndex = 0;
   startingValue=1;
@@ -36,7 +36,8 @@ export class TestCalComponent implements OnInit {
           date:this.startingValue,
           employeeList:[
             'Gowtham',
-            'Akash'
+            'Akash',
+            
           ]
         }
         this.startingValue++;

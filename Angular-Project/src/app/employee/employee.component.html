@@ -1,9 +1,45 @@
 <br>
-<button type="submit" style="float: right;"  (click)="openDialog1()" mat-raised-button color="warn">LogOut</button><br>
+<button type="submit" style="float: right;"  (click)="openDialog1()" mat-raised-button color="warn"><mat-icon>home</mat-icon>LogOut</button><br>
 
-<h2> &nbsp; Hi {{fn | uppercase}}</h2>
+<h2 class="title"> &nbsp; Hi {{fn | uppercase}},  </h2>
 
-<table>
+<div class="container">
+  <h2 style="text-align: center;  font-family: 'Courier New', monospace; font-weight:bold;">{{monthName}}</h2>
+  <div  class="header">
+      <div class="day">Sunday</div>
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thursday</div>
+      <div class="day">Friday</div>
+      <div class="day">Saturday</div>
+  </div>
+  <div class="content">
+      <div class="date_box"  *ngFor="let item of Object.keys(data);let i=index">
+         <div *ngIf="data[i]">
+         <span class="date"> {{data[i].date}}</span>
+          
+         <span matBadge= {{data[i].employeeList?.length}} matBadgePosition="before"></span>
+          <span class="empAvail">
+          <ul>
+              <li *ngFor="let emp of data[i].employeeList">
+                  {{emp}}
+              </li>
+          </ul>
+        </span>
+         </div>
+      </div>
+  </div>
+  
+</div>
+
+
+<br>
+<br>
+<br>
+
+<table class="tableStyle">
+  <thead>
   <tr>
     <th>First Name:</th>&nbsp;
     <!-- <th>Id:</th>&nbsp; -->
@@ -14,7 +50,10 @@
     <!-- <th>Flag</th>  -->
     <th>Roles:</th>
 </tr>
-  <tr *ngIf="employee">
+</thead>
+
+<tbody>
+  <tr class="active-row" *ngIf="employee">
 
   
     <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></td>&nbsp;
@@ -34,8 +73,8 @@
     </td>  -->
     <td>{{employee.roles | uppercase}}</td>
 </tr>
+</tbody>
 
-<br>
 </table>
 
 <!-- <div style="float: right;">
@@ -45,34 +84,51 @@
   
 </div> -->
 
-  <button [matMenuTriggerFor]="appMenu" mat-raised-button color="primary">
+  <button class="buttonForSchedule" (click)="flag1()" [matMenuTriggerFor]="appMenu" mat-raised-button color="primary">
+    <span class="tooltiptext">Pick the dates, on which you will arrive at the Office</span>
     MAKE SCHEDULE
    
   </button> 
-   <mat-menu class="matmenu"  #appMenu="matMenu">
-      <div (click)="$event.stopPropagation()">
+   <mat-menu class="matmenu"  #appMenu="matMenu" cdkDrag>
+      <div (click)="$event.stopPropagation()"><br>
           <mat-calendar #calendar 
              (selectedChange)="select($event,calendar)" 
               [dateClass]="isSelected">
           </mat-calendar>
-      </div><br><br>
-      <button class="btn">OK</button>
+      </div>
+      <br>
+      <span style="font-family: 'Courier New', monospace; font-weight:bold;">Pick the dates, on which you will arrive at the office!</span>
+      <br><br>
+      <button mat-raised-button color="warn" class="btn">OK</button>
   </mat-menu> 
   <!-- {{daysSelected|json}} -->
 <br><br>
-  <table>
+  <table *ngIf="ifValid" class="zigzag">
+    <thead>
     <tr>
-      <th>Dates selected:</th>
+      <th class="header">Dates selected:</th>
+      <th class="header"> Month:</th>
     </tr>
-    <br>
+  </thead>
+    <tbody>
     <tr *ngFor="let dates of daysSelected">
       <td>{{dates}}</td>
+      <td> {{monthName}}</td>
     </tr>
+  </tbody>
   </table>
 
-  <button  (click)="passTheDates()" mat-raised-button color="accent">
+  <button class="submitBtn" (click)="openDialog2()" >
     SUBMIT
   </button>
+
+  <ng-template  #dialogRef>
+    <h3><b>Are you sure?</b></h3>
+    <button (click)="passTheDates()"  mat-raised-button color="primary">Confirm</button>
+    <button mat-raised-button color="warn" (click)="cancelDialog()">CANCEL</button>
+
+    
+</ng-template>
   <br>
   <br>    
   <!-- <ngx-spinner
@@ -116,14 +172,13 @@
   <td>{{employee22.date | date : 'fullDate' | uppercase}}</td>
   </tr>
 </table>
+
+<!-- <h1 style ="float: right;">Employee Details:</h1> -->
 <br>
 <br>
 <br>
 <br>
-<h1>Employee Details:</h1><br>
-<div class="search">
-  <input type ="text" style="height: 50px;font-size:14pt;" size="100"  [(ngModel)]="searchtext2" placeholder="        SEARCH">
-</div>
+<h1>Employee Details:</h1>
 
 <table class="table">
   <tr>
@@ -140,7 +195,7 @@
   <br>
   
   
-  <tr *ngFor="let employee of employeeList | filter:searchtext2">
+  <tr *ngFor="let employee of employeeList">
   
     
       <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;
@@ -154,20 +209,23 @@
       <td></td> -->
       <td>{{employee.roles | uppercase}}</td>
   </tr>
+  </tbody>
   </table>
 
-  <ng-template #dialogRef1>
+  <ng-template class="dialog" #dialogRef1>
     <h2 >Are you sure?</h2>
     <button (click)="logout()" mat-raised-button color="primary" >Logout</button>
     <button (click)="cancelDialog()" mat-raised-button color="warn"> Cancel </button>
-
-    
-</ng-template>
-
-
-<div *ngIf="selectedDates">
-<mat-calendar [selected]="dateref">
+  </ng-template>
+<!-- 
+<div >
+<mat-calendar [selected]="">
 </mat-calendar>
-</div>
-  
+</div> -->
+
+<table>
+<tr *ngFor="let bruuuu of bruh">
+<th>date is: {{bruuuu | date : 'yy/M/d'  }}</th>
+
+</table>
   <router-outlet></router-outlet>
