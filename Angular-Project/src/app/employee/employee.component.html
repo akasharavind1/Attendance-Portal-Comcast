@@ -131,7 +131,7 @@
 </ng-template>
   <br>
   <br>    
-  <!-- <ngx-spinner
+  <ngx-spinner
   [name]="spinnerName"
   [type]="spinnerType"
   bdColor="rgba(0,0,0,0.5)"
@@ -139,7 +139,7 @@
   color="#fff"
   [fullScreen]="true">
   <p style="color: white">Loading...</p>
-</ngx-spinner> -->
+</ngx-spinner>
   <router-outlet></router-outlet>
 
 
@@ -175,12 +175,13 @@
 
 <!-- <h1 style ="float: right;">Employee Details:</h1> -->
 <br>
-<br>
-<br>
-<br>
-<h1>Employee Details:</h1>
 
-<table class="table">
+<table class="tableStyle">
+   
+  <thead>
+    <tr style="background-color: #4e45ac; text-align: center;  font-family: 'Courier New', monospace; font-weight:bold;">
+     <th>Employee Details:</th> 
+    </tr>
   <tr>
       <th>First Name:</th>&nbsp;
       <!-- <th>Id:</th>&nbsp; -->
@@ -191,11 +192,10 @@
       <th>Flag</th> -->
       <th>Roles:</th>
   </tr>
-  
-  <br>
-  
-  
-  <tr *ngFor="let employee of employeeList">
+  </thead>
+
+  <tbody>
+  <tr class="active-row" *ngFor="let employee of employeeList">
   
     
       <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;

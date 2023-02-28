@@ -27,7 +27,6 @@ export class EmployeeComponent {
  empId:any;
  temp:any;
  fn: any;
- searchtext2: any="";
  successmsg:any;
   spinnerType:string;
  spinnerName:string;
@@ -37,9 +36,18 @@ export class EmployeeComponent {
   countt: any;
   fromDialog!:string;
   selectedDates:any;
-  dateref = new Date('2023/02/14')
- 
-  
+  ifValid =false;
+
+  monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  d = new Date();
+  monthName = this.monthNames[this.d.getMonth()];
+
+  firstDate: any;
+  lastDate: any;
+
+  @ViewChild('dialogRef')
+  dialogRef!: TemplateRef<any>;
+
   
   @Input()
   date:Date = new Date();
@@ -72,11 +80,13 @@ export class EmployeeComponent {
    this.employeedates=[];
    this.getEmployeeList();
    this.getEmployee();
+   this.setMonthDates();
+   this.sendDates();
+   this.getDaysInMonth(this.month, this.year);
    
-  
+  }
 
-   
-}
+
   postemployee = this.form.group({
     dates:[''],
   })
@@ -115,9 +125,16 @@ select(event: any, calendar: any) {
 
 passTheDates(){
 
+  // requestBody:{
+  //   daysSelected: this.daysSelected,
+
+  // }
+
      this.serviceData.postDates(this.daysSelected,this.empId).subscribe((result: any)=>{
         console.log(result);
         console.log(this.fn);
+      
+      
       })
       this.matSnackBar.open("DATES ADDED SUCCESSFULLY ...!✔👍", "Okay!", {
         duration: 2500,
@@ -131,17 +148,14 @@ passTheDates(){
       
 }
   getEmployeeList(){
-    
-    this.spinner.show(this.spinnerName);
+    // this.serviceData.getEmployeeList().subscribe((result: any)=>{
+    //   this.employeeList= result;
+    //   console.log(this.employeeList);
+    //   console.log(this.id);
+    // })
     this.employeeList=this.route.snapshot.data['data'];
     this.serviceData.getEmployeeList().subscribe((result: any)=>{
-  
-      this.spinner.hide (this.spinnerName);
       this.employeeList= result;
-      this.fn=result.firstName;
-      this.empIds=result.map((e:any)=>e.employeeId)
-      console.log(this.empIds);
-      console.log(this.fn);
       console.log(this.employeeList);
       console.log(this.id);
     })}
@@ -162,17 +176,8 @@ passTheDates(){
       }
     )}
 
-// employeedates2:any;
 
-  // getDates2(){  
-  //   this.serviceData.getDates2(this.empIds).subscribe((result: any)=>{
-  //     console.log(result);
-  //     this.employeedates2=result; 
-  //     console.log(this.employeedates2);
-      
-  //   })
-  // }
-  
+
   getDates(){  
     this.serviceData.getDates(this.empId).subscribe((result: any)=>{
       console.log(this.empId);
@@ -184,15 +189,16 @@ passTheDates(){
       })
       // this.selectedDates=this.result.date;
       // console.log(this.selectedDates);
-      this.matSnackBar.open("RETRIEVED SUCCESSFULLY ...!✔👍", "Okay!", {
-        duration: 3500,
-        horizontalPosition: "center",
-        verticalPosition: "top",
-        // direction: "rtl"
+      // this.matSnackBar.open("RETRIEVED SUCCESSFULLY ...!✔👍", "Okay!", {
+      //   duration: 3500,
+      //   horizontalPosition: "center",
+      //   verticalPosition: "top",
+      //   // direction: "rtl"
         
       // })
       console.log(this.selectedDates)
-      console.log(this.dateref)
+      
+      // console.log(this.dateref)
       
      
       // this.daysSelected=this.employee2;
@@ -228,7 +234,10 @@ passTheDates(){
 //         console.log("red flag")
 //         break;
 //     }
-// }  
+// }
+
+ 
+
   logout(){ 
     localStorage.removeItem('tokenuser');
     localStorage.removeItem('idd');
@@ -241,10 +250,15 @@ passTheDates(){
         })
         const dialogue= this.dialog.closeAll();
    };
+
    openDialog1(){
+
   const dialogue= this.dialog.open(this.dialogRef1);
+ 
+    
   }
   cancelDialog(){
+  
     const dialogue= this.dialog.closeAll();
   }
 
@@ -256,9 +270,49 @@ passTheDates(){
   //   console.log(res)
 
   // }
+  setMonthDates(){
+    this.startingValue=1;
+    this.monthDates =  new Date(this.date.getFullYear(),this.date.getMonth()+1,0).getDate()
+    // this.date.setDate(1)
+    this.startingIndex =  new Date(this.date.getFullYear(),this.date.getMonth(),1).getDay();
+    console.log(this.startingIndex);
+    
+    this.data={}
+    for(let i =0;i<35;i++){
+      if(i<this.startingIndex || this.startingValue>this.monthDates){
+        this.data[i] = null
+      }else{
+        this.data[i]={
+          date:this.startingValue,
+          employeeList:[
+            'Gowtham',
+            'Akash',
+            'Hari',
+            'Somnath',
+            'Varun',
+            'Naruto',
+            'Shinigami',
+            'Gowtham',
+
+            
+          ]
+        }
+        this.startingValue++;
+      }
+    }
+    console.log(this.data);
+    
+  }
+  bruh:any;
 
  
-  }
+  
+   openDialog2(){
+  
+    const dialogue= this.dialog.open(this.dialogRef);
+   
+      
+    }
 
   sendDates(){
 
