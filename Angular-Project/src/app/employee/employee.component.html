@@ -89,13 +89,14 @@
     MAKE SCHEDULE
    
   </button> 
-   <mat-menu class="matmenu"  #appMenu="matMenu" cdkDrag>
-      <div (click)="$event.stopPropagation()"><br>
+  
+   <mat-menu class="matmenu"  #appMenu="matMenu" cdkDragHandle>
+      <div (click)="$event.stopPropagation()" cdkDrag><br>
           <mat-calendar #calendar 
              (selectedChange)="select($event,calendar)" 
               [dateClass]="isSelected">
           </mat-calendar>
-      </div>
+        </div>
       <br>
       <span style="font-family: 'Courier New', monospace; font-weight:bold;">Pick the dates, on which you will arrive at the office!</span>
       <br><br>
