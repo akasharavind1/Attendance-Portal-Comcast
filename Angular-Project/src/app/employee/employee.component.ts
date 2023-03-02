@@ -349,6 +349,7 @@ getDaysInMonth(month: number, year: number) {
   this.serviceData.matchDates(this.days).subscribe((result: any)=>{
 
     this.matchedDates = result;
+    console.log("Heyyyyy"+ this.matchedDates)
     
   })
 

@@ -89,9 +89,9 @@
     MAKE SCHEDULE
    
   </button> 
-  
-   <mat-menu class="matmenu"  #appMenu="matMenu" cdkDragHandle>
-      <div (click)="$event.stopPropagation()" cdkDrag><br>
+   <!-- <div class="matmenu" cdkDrag>  -->
+   <mat-menu class="matmenu"  #appMenu="matMenu" cdkDrag >
+      <div (click)="$event.stopPropagation()" ><br>
           <mat-calendar #calendar 
              (selectedChange)="select($event,calendar)" 
               [dateClass]="isSelected">
@@ -102,6 +102,7 @@
       <br><br>
       <button mat-raised-button color="warn" class="btn">OK</button>
   </mat-menu> 
+<!-- </div> -->
   <!-- {{daysSelected|json}} -->
 <br><br>
   <table *ngIf="ifValid" class="zigzag">
