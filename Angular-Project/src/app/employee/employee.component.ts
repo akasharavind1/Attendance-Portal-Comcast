@@ -338,7 +338,21 @@ this.serviceData.matchDates(this.demo).subscribe((result: any)=>{
       this.employeeCount = result.map((element: any)=>{
         return element.employeeCount;
       })})
-      console.log( this.employeeCount )
+      console.log( this.employeeCount )}
+      
+getDaysInMonth(month: number, year: number) {
+  var date = new Date(year, month, 1);
+  var days = [];
+  while (date.getMonth() === month) {
+    days.push(new Date(date));
+    date.setDate(date.getDate() + 1);
+  }
+  console.log("The dates of current month are:" +days);
+
+  this.serviceData.matchDates(this.days).subscribe((result: any)=>{
+
+    this.matchedDates = result;
+    console.log("Heyyyyy"+ this.matchedDates)
     
     
   // // this.employeeName =result.map((element: any)=>{
@@ -349,22 +363,6 @@ this.serviceData.matchDates(this.demo).subscribe((result: any)=>{
   // console.log( this.matchedDates);
    
 }
-// getDaysInMonth(month: number, year: number) {
-//   var date = new Date(year, month, 1);
-//   var days = [];
-//   while (date.getMonth() === month) {
-//     days.push(new Date(date));
-//     date.setDate(date.getDate() + 1);
-//   }
-//   console.log("The dates of current month are:" +days);
+  )
+}}
 
-//   this.serviceData.matchDates(this.days).subscribe((result: any)=>{
-
-//     this.matchedDates = result;
-//     console.log("dhftvjtj"+ this.matchedDates);
-    
-//   })
-
-// }
-  
-}

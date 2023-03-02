@@ -37,6 +37,8 @@ import { FiltersSamplePipe } from './pipes/filters-sample.pipe';
 import { CalendarCreator } from './servicefiles/calendarService';
 import { TestCalComponent } from './test-cal/test-cal.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +75,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatFormFieldModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatBadgeModule
+    MatBadgeModule,
+    DragDropModule
   ],
   providers: [ResolveGuardGuard, CalendarCreator],
   bootstrap: [AppComponent],
