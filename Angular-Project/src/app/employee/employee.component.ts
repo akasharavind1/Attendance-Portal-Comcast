@@ -82,8 +82,8 @@ export class EmployeeComponent {
    this.getEmployee();
    this.setMonthDates();
    this.sendDates();
-   this.getDaysInMonth(this.month, this.year);
-   
+  //  this.getDaysInMonth(this.month, this.year);
+   this.demo2();
   }
 
 
@@ -284,18 +284,7 @@ passTheDates(){
       }else{
         this.data[i]={
           date:this.startingValue,
-          employeeList:[
-            'Gowtham',
-            'Akash',
-            'Hari',
-            'Somnath',
-            'Varun',
-            'Naruto',
-            'Shinigami',
-            'Gowtham',
-
-            
-          ]
+     
         }
         this.startingValue++;
       }
@@ -335,23 +324,47 @@ month: number = new Date().getMonth();
 year : number = new Date().getFullYear();
 
 matchedDates: any;
+democount:any;
+demo:any=["2023-02-15"]
+employeeCount: any;
+employeeName: any;
+
+demo2(){
+this.serviceData.matchDates(this.demo).subscribe((result: any)=>{
+  this.employeeName = result.map((element: any)=>{
+    return element.employeeName;})
 
 
-getDaysInMonth(month: number, year: number) {
-  var date = new Date(year, month, 1);
-  var days = [];
-  while (date.getMonth() === month) {
-    days.push(new Date(date));
-    date.setDate(date.getDate() + 1);
-  }
-  console.log("The dates of current month are:" +days);
-
-  this.serviceData.matchDates(this.days).subscribe((result: any)=>{
-
-    this.matchedDates = result;
+      this.employeeCount = result.map((element: any)=>{
+        return element.employeeCount;
+      })})
+      console.log( this.employeeCount )
     
-  })
-
+    
+  // // this.employeeName =result.map((element: any)=>{
+  // //   return element.firstName;
+  // // })
+  // this.matchedDates = result;
+  // // this.employeeList=result.count;
+  // console.log( this.matchedDates);
+   
 }
+// getDaysInMonth(month: number, year: number) {
+//   var date = new Date(year, month, 1);
+//   var days = [];
+//   while (date.getMonth() === month) {
+//     days.push(new Date(date));
+//     date.setDate(date.getDate() + 1);
+//   }
+//   console.log("The dates of current month are:" +days);
+
+//   this.serviceData.matchDates(this.days).subscribe((result: any)=>{
+
+//     this.matchedDates = result;
+//     console.log("dhftvjtj"+ this.matchedDates);
+    
+//   })
+
+// }
   
 }
