@@ -82,8 +82,8 @@ export class EmployeeComponent {
    this.getEmployee();
    this.setMonthDates();
    this.sendDates();
-  //  this.getDaysInMonth(this.month, this.year);
-   this.demo2();
+   this.getDaysInMonth(this.month, this.year);
+  //  this.demo2();
   }
 
 
@@ -325,44 +325,63 @@ year : number = new Date().getFullYear();
 
 matchedDates: any;
 democount:any;
-demo:any=["2023-02-15"]
+demo:any=["2023-03-01","2023-03-02"]
 employeeCount: any;
 employeeName: any;
+wholeList: any;
 
-demo2(){
-this.serviceData.matchDates(this.demo).subscribe((result: any)=>{
-  this.employeeName = result.map((element: any)=>{
-    return element.employeeName;})
+//  demo2(){
+// this.serviceData.matchingDates(this.demo).subscribe((result: any)=>{
+
+//   // this.wholeList= result;
+//    this.employeeName = result.map((element: any)=>{
+//      return element.employeeName;})
+
+//      console.log( "name is"+ this.employeeName)
 
 
-      this.employeeCount = result.map((element: any)=>{
-        return element.employeeCount;
-      })})
-      console.log( this.employeeCount )}
-      
+//       this.employeeCount = result.map((element: any)=>{
+//         return element.count;
+//       })
+//       console.log( "countis"+ this.employeeCount )
+//     })
+    
+// }
+   
+dateOfCurrentMonth: any;
+daysOfMonth: any;
+
 getDaysInMonth(month: number, year: number) {
-  var date = new Date(year, month, 1);
-  var days = [];
-  while (date.getMonth() === month) {
-    days.push(new Date(date));
-    date.setDate(date.getDate() + 1);
+  this.dateOfCurrentMonth = new Date(year, month, 1);
+ this.daysOfMonth = [];
+  while (this.dateOfCurrentMonth.getMonth() === month) {
+    this.daysOfMonth.push(new Date(this.dateOfCurrentMonth).toISOString().substring(0, 10));
+    this.dateOfCurrentMonth.setDate(this.dateOfCurrentMonth.getDate() + 1);
   }
-  console.log("The dates of current month are:" +days);
+  console.log("The dates of current month are:" +this.daysOfMonth);
 
-  this.serviceData.matchDates(this.days).subscribe((result: any)=>{
+  this.serviceData.matchingDates(this.daysOfMonth).subscribe((result: any)=>{
 
     this.matchedDates = result;
     console.log("Heyyyyy"+ this.matchedDates)
     
     
-  // // this.employeeName =result.map((element: any)=>{
-  // //   return element.firstName;
-  // // })
-  // this.matchedDates = result;
-  // // this.employeeList=result.count;
-  // console.log( this.matchedDates);
+   this.employeeName =result.map((element: any)=>{
+    return [element.employeeName];
+   })
+   console.log( "name is"+ this.employeeName)
+
+     this.employeeCount =result.map((element: any)=>{
+    return [element.count];
+   })
+   console.log( "countis"+ this.employeeCount )
+ 
+ 
    
 }
   )
-}}
+  console.log( "iahsicwsivg"+ this.employeeName)
+
+}
+}
 

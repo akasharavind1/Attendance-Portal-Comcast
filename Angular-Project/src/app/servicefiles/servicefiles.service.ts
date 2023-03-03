@@ -65,7 +65,7 @@ export class ServicefilesService {
     // postDate(dates: any){
     //   return this.http.post("http://localhost:8080/api/v1/postDate?dates=",dates);
     // }
-    matchDates(days:any){
+    matchingDates(days:any){
       return this.http.post(`${this.url}/matchDates`,days);
 
     }

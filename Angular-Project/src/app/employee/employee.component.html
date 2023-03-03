@@ -18,19 +18,19 @@
       <div class="date_box"  *ngFor="let item of Object.keys(data);let i=index">
          <div *ngIf="data[i]">
          <span class="date"> {{data[i].date}}</span>
-         <span matBadge= {{data[i].employeeList?.length}} matBadgePosition="before"></span>
-          <span class="empAvail">
+         <span matBadge= {{data[i].employeeName?.length}} matBadgePosition="before"></span>
+          <span *ngIf="employeeName"  class="empAvail">
           <ul>
               <li *ngFor="let emp of employeeName">
-                  {{emp}}
+                  {{data[i].emp}}
               </li>
           </ul>
           
         </span>
-        <span>
+        <span  *ngIf="employeeCount" class="empAvail">
           <ul>
-          <li *ngFor="let emp of employeeCount  ">
-              {{emp}}
+          <li *ngFor="let emp1 of employeeCount  ">
+              {{data[i].emp1}}
           </li>
       </ul></span>
          </div>
@@ -38,6 +38,15 @@
   </div>
   
 </div>
+
+<table *ngFor="let yt of employeeName">
+
+  <tr>
+    <th>{{yt}}</th>
+
+    </tr>
+
+</table>
 
 
 <br>
