@@ -37,6 +37,7 @@ export class EmployeeComponent {
   fromDialog!:string;
   selectedDates:any;
   ifValid =false;
+  indexForCalendar=0;
 
   monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   d = new Date();
@@ -350,6 +351,7 @@ wholeList: any;
    
 dateOfCurrentMonth: any;
 daysOfMonth: any;
+totalNames: any;
 
 getDaysInMonth(month: number, year: number) {
   this.dateOfCurrentMonth = new Date(year, month, 1);
@@ -367,9 +369,11 @@ getDaysInMonth(month: number, year: number) {
     
     
    this.employeeName =result.map((element: any)=>{
-    return [element.employeeName];
+    return element.employeeName;
    })
    console.log( "name is"+ this.employeeName)
+
+
 
      this.employeeCount =result.map((element: any)=>{
     return [element.count];
