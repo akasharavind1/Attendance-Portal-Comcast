@@ -1,7 +1,11 @@
-<br>
-<button type="submit" style="float: right;"  (click)="openDialog1()" mat-raised-button color="warn"><mat-icon>home</mat-icon>LogOut</button><br>
+
+<button type="submit" style="float: right;"  (click)="openDialog1()" mat-raised-button color="warn"><mat-icon>home</mat-icon>LogOut</button>
 
 <h2 class="title"> &nbsp; Hi {{fn | uppercase}},  </h2>
+
+<select>
+  <option *ngFor="let item of employeeFirstName">{{item}}</option>
+</select>
 
 <div class="container">
   <h2 style="text-align: center;  font-family: 'Courier New', monospace; font-weight:bold;">{{monthName}}</h2>
@@ -18,11 +22,11 @@
       <div class="date_box"  *ngFor="let item of Object.keys(data);let i=index">
          <div *ngIf="data[i]">
          <span class="date"> {{data[i].date}}</span>
-         <span matBadge= {{employeeCount[i-2]}} matBadgePosition="before"></span>
+         <span class="count">Count :{{employeeCount[i-3]}}</span>
           <span  class="empAvail">
           <ul>
               <li>
-                  {{employeeName[i-2]}}
+                  {{employeeName[i-3]}}
               </li>
           </ul>
           
@@ -36,10 +40,10 @@
          </div>
       </div>
   </div>
-  
+  <h5>Note: Hover over a certain date to check availability.</h5>
 </div>
 
-<table>
+<!-- <table>
 
   <tr>
     <th>date response:</th>
@@ -47,7 +51,7 @@
   <tr  *ngFor="let yt of employeeName">
     <td>{{yt}}</td>
   </tr>
-</table>
+</table> -->
 
 
 <br>

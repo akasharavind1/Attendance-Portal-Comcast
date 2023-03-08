@@ -148,6 +148,7 @@ passTheDates(){
 
       
 }
+employeeFirstName: any;
   getEmployeeList(){
     // this.serviceData.getEmployeeList().subscribe((result: any)=>{
     //   this.employeeList= result;
@@ -159,6 +160,10 @@ passTheDates(){
       this.employeeList= result;
       console.log(this.employeeList);
       console.log(this.id);
+      this.employeeFirstName = result.map((element: any)=>{
+        return  new element.firstName;
+      })
+      console.log("fn is "+ this.employeeFirstName);
     })}
 
   getEmployee(){
@@ -324,6 +329,7 @@ month: number = new Date().getMonth();
 
 year : number = new Date().getFullYear();
 
+
 matchedDates: any;
 democount:any;
 demo:any=["2023-03-01","2023-03-02"]
@@ -354,11 +360,12 @@ daysOfMonth: any;
 totalNames: any;
 
 getDaysInMonth(month: number, year: number) {
-  this.dateOfCurrentMonth = new Date(year, month, 1);
- this.daysOfMonth = [];
+  this.dateOfCurrentMonth = new Date(year, month, 2);
+  this.daysOfMonth = [];
+  console.log("this is "+this.dateOfCurrentMonth.getMonth() )
   while (this.dateOfCurrentMonth.getMonth() === month) {
     this.daysOfMonth.push(new Date(this.dateOfCurrentMonth).toISOString().substring(0, 10));
-    this.dateOfCurrentMonth.setDate(this.dateOfCurrentMonth.getDate() + 1);
+    this.dateOfCurrentMonth.setDate(this.dateOfCurrentMonth.getDate() +1);
   }
   console.log("The dates of current month are:" +this.daysOfMonth);
 
@@ -366,6 +373,7 @@ getDaysInMonth(month: number, year: number) {
 
     this.matchedDates = result;
     console.log("Heyyyyy"+ this.matchedDates)
+    console.log(this.month)
     
     
    this.employeeName =result.map((element: any)=>{
