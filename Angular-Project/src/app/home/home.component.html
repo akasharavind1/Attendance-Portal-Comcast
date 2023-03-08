@@ -19,11 +19,11 @@
 
     <div >
     <label for="uname"><b>Mail ID: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b></label>
-    <input required type="email" class="inputbox" placeholder="Enter your Mail Id" name="email" required formControlName="mailID">
+    <input required type="email" class="inputbox" placeholder="Enter your Mail Id" name="email" required formControlName="mailID">&nbsp;&nbsp;&nbsp;<mat-icon>account_box</mat-icon>
     </div>
     <div>
     <label for="psw" ><b>Password:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-    <input required type="password" class="inputbox" placeholder="Enter your Password" name="psw" required formControlName="password" > 
+    <input required type="password" class="inputbox" placeholder="Enter your Password" name="psw" required formControlName="password" > &nbsp;&nbsp;<mat-icon>lock_open</mat-icon>
     </div>
     <!-- <button (click)="password()">{{show ? 'Hide' : 'Show'}}</button> -->
     <div class="errormessage" *ngIf="passwrong">
@@ -33,8 +33,8 @@
       *Enter vaild credentials.
     </div> 
     <div>
-    <button type="submit" class="box-1" (click)="login()" >Login</button><br>
-    <button [routerLink]="'/addemployee'" type="submit" class="box-1"  >SignUp</button><br><br>
+    <button type="submit" class="box-1" (click)="login()" > <mat-icon>supervisor_account</mat-icon>&nbsp;&nbsp;Login</button><br>
+    <button [routerLink]="'/addemployee'" type="submit" class="box-1" ><mat-icon>recent_actors</mat-icon>&nbsp;&nbsp;SignUp</button><br><br>
   </div>
 </div>
 </form>
