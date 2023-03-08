@@ -6,9 +6,10 @@
   <br>
   <br>
 
-<h2 style=" font-family: Tahoma, sans-serif;">&nbsp; &nbsp;
+<h2 class="login">&nbsp; &nbsp;
   &nbsp;
-  Login: </h2>
+  <mat-icon>account_circle</mat-icon>
+  <b>&nbsp;LOG IN</b> </h2>
 
 <form [formGroup]="validateemployee" >
   <!-- <div [ngClass]="isdarktheme? 'dark-theme' : 'define-light-theme'"> -->
@@ -32,16 +33,10 @@
       *Enter vaild credentials.
     </div> 
     <div>
-    <button type="submit" class="box-1" (click)="login()"   >Login</button><br>
+    <button type="submit" class="box-1" (click)="login()" >Login</button><br>
     <button [routerLink]="'/addemployee'" type="submit" class="box-1"  >SignUp</button><br><br>
-    <input type="checkbox" checked="checked" name="remember"><label>Remember me</label> 
   </div>
-  
 </div>
-  <div class="container" style="background-color:#faf8f8">
-    <span class="psw"> <a href="#">Forgot password?</a></span>
-  </div>
-<!-- </div> -->
 </form>
 <ngx-spinner
   [name]="spinnerName"
