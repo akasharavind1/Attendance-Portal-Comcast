@@ -1,14 +1,15 @@
 <body>
-<button type="submit" style="float: right;"  (click)="openDialog1()" mat-raised-button color="warn"><mat-icon>home</mat-icon>LogOut</button>
 
-<h2 class="title"> &nbsp; Hi {{fn | uppercase}},  </h2>
+<button class="title" type="submit" style="float: right;"  (click)="openDialog1()" mat-raised-button color="warn"><mat-icon>home</mat-icon>LogOut</button>
+
+<h2 class="title" style="font-family:Chalkduster, fantasy"> &nbsp;&nbsp; Hi {{fn | uppercase}},  </h2>
 
 <!-- <select>
   <option *ngFor="let item of employeeFirstName">{{item}}</option>
 </select> -->
 
 <div class="container">
-  <h2 style="text-align: center;  font-family: 'Courier New', monospace; font-weight:bold;">{{monthName}}</h2>
+  <h2  style="text-align: center;font-size: 40px; font-family:Chalkduster, fantasy ;font-weight:bold;text-shadow: 3px 3px #464EB8;">{{monthName}}</h2>
   <div  class="header">
       <div class="day">Sunday</div>
       <div class="day">Monday</div>
@@ -42,6 +43,47 @@
   </div>
   <h5>Note: Hover over a certain date to check availability.</h5>
 </div>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="buttonForSchedule" (click)="flag1()" [matMenuTriggerFor]="appMenu" mat-raised-button color="primary">
+  <span class="tooltiptext">Pick the dates, on which you will arrive at the Office</span>
+  MAKE SCHEDULE
+ 
+</button> 
+ <!-- <div class="matmenu" cdkDrag>  -->
+ <mat-menu class="matmenu"  #appMenu="matMenu" cdkDrag >
+    <div (click)="$event.stopPropagation()" ><br>
+        <mat-calendar #calendar 
+           (selectedChange)="select($event,calendar)" 
+            [dateClass]="isSelected">
+        </mat-calendar>
+      </div>
+    <br>
+    <span style="font-family: 'Courier New', monospace; font-weight:bold;">Pick the dates, on which you will arrive at the office!</span>
+    <br><br>
+    <button mat-raised-button color="warn" class="btn">OK</button>
+</mat-menu> 
+<!-- </div> -->
+<!-- {{daysSelected|json}} -->
+<br><br>
+<table *ngIf="ifValid" class="zigzag">
+  <thead>
+  <tr>
+    <th class="header">Dates selected:</th>
+    <th class="header"> Month:</th>
+  </tr>
+</thead>
+  <tbody>
+  <tr *ngFor="let dates of daysSelected">
+    <td>{{dates}}</td>
+    <td> {{monthName}}</td>
+  </tr>
+</tbody>
+</table>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="submitBtn" (click)="openDialog2()" >
+  SUBMIT
+</button>
 
 <!-- <table>
 
@@ -104,45 +146,7 @@
   
 </div> -->
 
-  <button class="buttonForSchedule" (click)="flag1()" [matMenuTriggerFor]="appMenu" mat-raised-button color="primary">
-    <span class="tooltiptext">Pick the dates, on which you will arrive at the Office</span>
-    MAKE SCHEDULE
-   
-  </button> 
-   <!-- <div class="matmenu" cdkDrag>  -->
-   <mat-menu class="matmenu"  #appMenu="matMenu" cdkDrag >
-      <div (click)="$event.stopPropagation()" ><br>
-          <mat-calendar #calendar 
-             (selectedChange)="select($event,calendar)" 
-              [dateClass]="isSelected">
-          </mat-calendar>
-        </div>
-      <br>
-      <span style="font-family: 'Courier New', monospace; font-weight:bold;">Pick the dates, on which you will arrive at the office!</span>
-      <br><br>
-      <button mat-raised-button color="warn" class="btn">OK</button>
-  </mat-menu> 
-<!-- </div> -->
-  <!-- {{daysSelected|json}} -->
-<br><br>
-  <table *ngIf="ifValid" class="zigzag">
-    <thead>
-    <tr>
-      <th class="header">Dates selected:</th>
-      <th class="header"> Month:</th>
-    </tr>
-  </thead>
-    <tbody>
-    <tr *ngFor="let dates of daysSelected">
-      <td>{{dates}}</td>
-      <td> {{monthName}}</td>
-    </tr>
-  </tbody>
-  </table>
-
-  <button class="submitBtn" (click)="openDialog2()" >
-    SUBMIT
-  </button>
+  
 
   <ng-template  #dialogRef>
     <h3><b>Are you sure?</b></h3>
@@ -245,10 +249,10 @@
 </mat-calendar>
 </div> -->
 
-<table>
+<!-- <table>
 <tr *ngFor="let bruuuu of bruh">
 <th>date is: {{bruuuu | date : 'yy/M/d'  }}</th>
 
-</table>
+</table> -->
 </body>
   <router-outlet></router-outlet>

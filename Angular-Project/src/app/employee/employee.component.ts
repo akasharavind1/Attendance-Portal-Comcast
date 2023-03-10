@@ -72,7 +72,7 @@ export class EmployeeComponent {
     this.spinner.show(this.spinnerName);
     setTimeout(() => {
       this.spinner.hide(this.spinnerName);
-    }, 1250);
+    }, 100);
   }
   
   ngOnInit(): void{

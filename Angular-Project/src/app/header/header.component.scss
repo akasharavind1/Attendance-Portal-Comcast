@@ -3,9 +3,22 @@
 width:120px;
 height:50px;
 padding: 10px ;
+animation: movedown 1s linear 1;
+animation-delay: 1s;
+}
+
+@keyframes movedown {
+  
+  0%{
+    transform: translateY(-100px);
+  }
+  100%{
+    transform: translateY(0);
+  }
+
 }
 
 .header{
-  background-color: rgb(192, 224, 234);
+  background-color:white;
 
 }
