@@ -38,6 +38,7 @@ import { CalendarCreator } from './servicefiles/calendarService';
 import { TestCalComponent } from './test-cal/test-cal.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -76,9 +77,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatDialogModule,
     MatSnackBarModule,
     MatBadgeModule,
-    DragDropModule
+    DragDropModule,
+  
   ],
-  providers: [ResolveGuardGuard, CalendarCreator],
+  providers: [ResolveGuardGuard, CalendarCreator, DatePipe],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

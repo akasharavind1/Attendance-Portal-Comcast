@@ -11,6 +11,7 @@ import { MbscModule } from 'ack-angular-mobiscroll';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-employee',
@@ -63,7 +64,7 @@ export class EmployeeComponent {
 
 
   // employeeList:any;
-  constructor(private matSnackBar: MatSnackBar,private spinner: NgxSpinnerService,private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute, public dialog: MatDialog){
+  constructor(private datePipe: DatePipe,private matSnackBar: MatSnackBar,private spinner: NgxSpinnerService,private mbsc: MbscModule, private form:FormBuilder,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute, public dialog: MatDialog){
     this.employeeList=[];
     this.employeedates=[];
     this.spinnerName="sp1";
@@ -358,38 +359,32 @@ wholeList: any;
 dateOfCurrentMonth: any;
 daysOfMonth: any;
 totalNames: any;
-
 getDaysInMonth(month: number, year: number) {
-  this.dateOfCurrentMonth = new Date(year, month, 2);
+  this.dateOfCurrentMonth = new Date(year, month,1);
+  console.log(this.dateOfCurrentMonth);
   this.daysOfMonth = [];
   console.log("this is "+this.dateOfCurrentMonth.getMonth() )
   while (this.dateOfCurrentMonth.getMonth() === month) {
-    this.daysOfMonth.push(new Date(this.dateOfCurrentMonth).toISOString().substring(0, 10));
+    // this.daysOfMonth.push(new Date(this.dateOfCurrentMonth).toISOString().substring(0, 10));
+    // this.dateOfCurrentMonth=this.datePipe.transform(this.dateOfCurrentMonth, 'yyyy-MM-dd');
+    this.daysOfMonth.push(this.datePipe.transform (new Date(this.dateOfCurrentMonth),'yyyy-MM-dd'));
     this.dateOfCurrentMonth.setDate(this.dateOfCurrentMonth.getDate() +1);
   }
   console.log("The dates of current month are:" +this.daysOfMonth);
 
   this.serviceData.matchingDates(this.daysOfMonth).subscribe((result: any)=>{
-
     this.matchedDates = result;
     console.log("Heyyyyy"+ this.matchedDates)
     console.log(this.month)
-    
-    
    this.employeeName =result.map((element: any)=>{
     return element.employeeName;
    })
    console.log( "name is"+ this.employeeName)
-
-
-
      this.employeeCount =result.map((element: any)=>{
     return [element.count];
    })
    console.log( "countis"+ this.employeeCount )
- 
- 
-   
+  
 }
   )
   console.log( "iahsicwsivg"+ this.employeeName)
