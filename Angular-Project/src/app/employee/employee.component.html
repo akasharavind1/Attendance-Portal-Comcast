@@ -1,11 +1,11 @@
-
+<body>
 <button type="submit" style="float: right;"  (click)="openDialog1()" mat-raised-button color="warn"><mat-icon>home</mat-icon>LogOut</button>
 
 <h2 class="title"> &nbsp; Hi {{fn | uppercase}},  </h2>
 
-<select>
+<!-- <select>
   <option *ngFor="let item of employeeFirstName">{{item}}</option>
-</select>
+</select> -->
 
 <div class="container">
   <h2 style="text-align: center;  font-family: 'Courier New', monospace; font-weight:bold;">{{monthName}}</h2>
@@ -250,4 +250,5 @@
 <th>date is: {{bruuuu | date : 'yy/M/d'  }}</th>
 
 </table>
+</body>
   <router-outlet></router-outlet>

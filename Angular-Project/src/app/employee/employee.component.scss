@@ -145,9 +145,9 @@ table.zigzag {
   color: black;
 }
 
-body {
-  font-family: Arial, sans-serif;
-}
+// body {
+//   font-family: Arial, sans-serif;
+// }
 
 h2{
   font-family: Arial, sans-serif;
@@ -298,4 +298,9 @@ font-size:26px;
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+.body{
+  background-image: url("../../assets/img/comcastLogo.png");
+  background-color: lightblue;
+  font-family: Arial, sans-serif;
 }
