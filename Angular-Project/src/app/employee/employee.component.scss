@@ -304,3 +304,26 @@ font-size:26px;
   background-color: lightblue;
   font-family: Arial, sans-serif;
 }
+
+html, body {
+  width: 100%;
+  height:100%;
+}
+
+body {
+    background: linear-gradient(-45deg, #f0c6b9, #eeb0c7, #b6e1f0, #bafaeb);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    20% {
+        background-position: 100% 50%;
+    }
+    40% {
+        background-position: 0% 50%;
+    }
+}
