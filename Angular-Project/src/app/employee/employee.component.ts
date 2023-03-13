@@ -146,6 +146,7 @@ passTheDates(){
       })
 
       const dialogue= this.dialog.closeAll();
+      window.location.reload();
 
       
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import { HttpClient } from '@angular/common/http';
 import { Router ,ActivatedRoute, defaultUrlMatcher} from '@angular/router';
@@ -10,6 +10,7 @@ import { MbscModule } from 'ack-angular-mobiscroll';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { Day } from "../models/model";
 import { CalendarCreator } from "../servicefiles/calendarService";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-detailemployee',
@@ -32,23 +33,31 @@ export class DetailemployeeComponent {
   public year!: number;
 
   public weekDaysName : string[] = [];
+
+  @Input()
+  date:Date = new Date();
+  monthDates = 0
+  startingIndex = 0;
+  startingValue=1;
+  data :{[id:number]:any}={};
+  Object=Object;
   
-  constructor(private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute, public calendarCreator: CalendarCreator){
+  constructor(private datePipe: DatePipe,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router, private route: ActivatedRoute, public calendarCreator: CalendarCreator){
   }
   ngOnInit(): void{
     this.id=  this.route.snapshot.params['id'];
     this.getEmployee();
     this.admin="admin";
     // this.nos=this.countt;
-    this.setMonthDays(this.calendarCreator.getCurrentMonth());
+    // this.setMonthDays(this.calendarCreator.getCurrentMonth());
 
-    this.weekDaysName.push("Mo");
-    this.weekDaysName.push("Tu");
-    this.weekDaysName.push("We");
-    this.weekDaysName.push("Th");
-    this.weekDaysName.push("Fr");
-    this.weekDaysName.push("Sa");
-    this.weekDaysName.push("Su");
+    // this.weekDaysName.push("Mo");
+    // this.weekDaysName.push("Tu");
+    // this.weekDaysName.push("We");
+    // this.weekDaysName.push("Th");
+    // this.weekDaysName.push("Fr");
+    // this.weekDaysName.push("Sa");
+    // this.weekDaysName.push("Su");
   
  }
   getEmployee(){
@@ -82,6 +91,62 @@ export class DetailemployeeComponent {
         break;
     }
 }
+
+setMonthDates(){
+  this.startingValue=1;
+  this.monthDates =  new Date(this.date.getFullYear(),this.date.getMonth()+1,0).getDate()
+  // this.date.setDate(1)
+  this.startingIndex =  new Date(this.date.getFullYear(),this.date.getMonth(),1).getDay();
+  console.log(this.startingIndex);
+  
+  this.data={}
+  for(let i =0;i<35;i++){
+    if(i<this.startingIndex || this.startingValue>this.monthDates){
+      this.data[i] = null
+    }else{
+      this.data[i]={
+        date:this.startingValue,
+   
+      }
+      this.startingValue++;
+    }
+  }
+  console.log(this.data);
+  
+}
+
+dateOfCurrentMonth: any;
+daysOfMonth: any;
+totalNames: any;
+
+matchedDates:any;
+getDaysInMonth(month: number, year: number) {
+  this.dateOfCurrentMonth = new Date(year, month,1);
+  console.log(this.dateOfCurrentMonth);
+  this.daysOfMonth = [];
+  console.log("this is "+this.dateOfCurrentMonth.getMonth() )
+  while (this.dateOfCurrentMonth.getMonth() === month) {
+    // this.daysOfMonth.push(new Date(this.dateOfCurrentMonth).toISOString().substring(0, 10));
+    // this.dateOfCurrentMonth=this.datePipe.transform(this.dateOfCurrentMonth, 'yyyy-MM-dd');
+    this.daysOfMonth.push(this.datePipe.transform (new Date(this.dateOfCurrentMonth),'yyyy-MM-dd'));
+    this.dateOfCurrentMonth.setDate(this.dateOfCurrentMonth.getDate() +1);
+  }
+  console.log("The dates of current month are:" +this.daysOfMonth);
+
+  this.serviceData.matchingDates(this.daysOfMonth).subscribe((result: any)=>{
+    this.matchedDates = result;
+  
+  
+})
+
+
+
+}
+
+monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+d = new Date();
+monthName = this.monthNames[this.d.getMonth()];
+
 
 
   // getDates(){
@@ -133,32 +198,32 @@ export class DetailemployeeComponent {
 //     return '';
 // };
 
-onNextMonth(): void {
-  this.monthNumber++;
+// onNextMonth(): void {
+//   this.monthNumber++;
 
-  if (this.monthNumber == 13) {
-    this.monthNumber = 1;
-    this.year++;
-  }
+//   if (this.monthNumber == 13) {
+//     this.monthNumber = 1;
+//     this.year++;
+//   }
 
-  this.setMonthDays(this.calendarCreator.getMonth(this.monthNumber, this.year));
-}
+//   this.setMonthDays(this.calendarCreator.getMonth(this.monthNumber, this.year));
+// }
 
-onPreviousMonth() : void{
-  this.monthNumber--;
+// onPreviousMonth() : void{
+//   this.monthNumber--;
 
-  if (this.monthNumber < 1) {
-    this.monthNumber = 12;
-    this.year--;
-  }
+//   if (this.monthNumber < 1) {
+//     this.monthNumber = 12;
+//     this.year--;
+//   }
 
-  this.setMonthDays(this.calendarCreator.getMonth(this.monthNumber, this.year));
-}
-private setMonthDays(days: Day[]): void {
-  this.monthDays = days;
-  this.monthNumber = this.monthDays[0].monthIndex;
-  this.year = this.monthDays[0].year;
-}
+//   this.setMonthDays(this.calendarCreator.getMonth(this.monthNumber, this.year));
+// }
+// private setMonthDays(days: Day[]): void {
+//   this.monthDays = days;
+//   this.monthNumber = this.monthDays[0].monthIndex;
+//   this.year = this.monthDays[0].year;
+// }
 
 
 
