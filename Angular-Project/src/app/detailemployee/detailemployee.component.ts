@@ -26,13 +26,14 @@ export class DetailemployeeComponent {
   admin:any;
   flag:any;
   nos:any;
-  //calendar:
-  public monthDays!: Day[];
+  
+  // //calendar:
+  // public monthDays!: Day[];
 
-  public monthNumber!: number;
-  public year!: number;
+  // public monthNumber!: number;
+  // public year!: number;
 
-  public weekDaysName : string[] = [];
+  // public weekDaysName : string[] = [];
 
   @Input()
   date:Date = new Date();
@@ -47,7 +48,12 @@ export class DetailemployeeComponent {
   ngOnInit(): void{
     this.id=  this.route.snapshot.params['id'];
     this.getEmployee();
+    this.getDates();
     this.admin="admin";
+     this.setMonthDates();
+     this.getDaysInMonth(this.month, this.year);
+     this.matchingDatesForDisplay();
+    
     // this.nos=this.countt;
     // this.setMonthDays(this.calendarCreator.getCurrentMonth());
 
@@ -111,7 +117,7 @@ setMonthDates(){
       this.startingValue++;
     }
   }
-  console.log(this.data);
+
   
 }
 
@@ -120,18 +126,20 @@ daysOfMonth: any;
 totalNames: any;
 
 matchedDates:any;
+
+month: number = new Date().getMonth();
+
+year : number = new Date().getFullYear();
+
 getDaysInMonth(month: number, year: number) {
   this.dateOfCurrentMonth = new Date(year, month,1);
-  console.log(this.dateOfCurrentMonth);
   this.daysOfMonth = [];
-  console.log("this is "+this.dateOfCurrentMonth.getMonth() )
   while (this.dateOfCurrentMonth.getMonth() === month) {
     // this.daysOfMonth.push(new Date(this.dateOfCurrentMonth).toISOString().substring(0, 10));
     // this.dateOfCurrentMonth=this.datePipe.transform(this.dateOfCurrentMonth, 'yyyy-MM-dd');
     this.daysOfMonth.push(this.datePipe.transform (new Date(this.dateOfCurrentMonth),'yyyy-MM-dd'));
     this.dateOfCurrentMonth.setDate(this.dateOfCurrentMonth.getDate() +1);
   }
-  console.log("The dates of current month are:" +this.daysOfMonth);
 
   this.serviceData.matchingDates(this.daysOfMonth).subscribe((result: any)=>{
     this.matchedDates = result;
@@ -148,16 +156,44 @@ d = new Date();
 monthName = this.monthNames[this.d.getMonth()];
 
 
+datesOfEmployee:any;
+  getDates(){
+    this.serviceData.getDates(this.empId).subscribe((result: any)=>{
+      this.employee2=result;
+      // this.countt=result.length;
+      // console.log(result.length);
 
-  // getDates(){
-  //   this.serviceData.getDates(this.empId).subscribe((result: any)=>{
-  //     console.log(this.empId);
-  //     this.employee2=result;
-  //     console.log(this.employee2)
-  //     // this.countt=result.length;
-  //     // console.log(result.length);
-  //   })
-  // }
+      this.datesOfEmployee = result.map((element: any)=>{
+          new Date(element.date);
+      })
+      console.log("dhbdthbd"+ this.datesOfEmployee)
+    })
+
+    
+  }
+
+  displayList:any;
+  dummy:any;
+  matchingDatesForDisplay(){
+
+    this.dummy=this.employee2.map((element: any)=>{
+      return  new Date(element.date);
+    })
+
+    this.displayList=[];
+    console.log(this.datesOfEmployee);
+    for(let q=0;q<=this.daysOfMonth.length;q++){
+      console.log("dates are"+this.daysOfMonth)
+      if(this.dummy.includes(this.daysOfMonth[q])){
+          this.displayList.push(1);
+      }
+      else{
+        this.displayList.push(1);
+      }
+
+    }
+    console.log("displaylist is igkufufkuf:"+ this.displayList)
+  }
   // getDatesSelected(){
   //   this.serviceData.getDates(this.empId).subscribe((result: any)=>{
   //     console.log(this.empId);

@@ -67,6 +67,5 @@ export class ServicefilesService {
     // }
     matchingDates(days:any){
       return this.http.post(`${this.url}/matchDates`,days);
-
-    }
+}
     }

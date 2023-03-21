@@ -12,6 +12,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
+import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-employee',
@@ -84,7 +85,7 @@ export class EmployeeComponent {
    this.getEmployee();
    this.setMonthDates();
    this.sendDates();
-   this.getDaysInMonth(this.month, this.year);
+   this.getDaysInMonth(this.month, this.year);``
   //  this.demo2();
   }
 
@@ -138,7 +139,7 @@ passTheDates(){
       
       
       })
-      this.matSnackBar.open("DATES ADDED SUCCESSFULLY ...!✔👍", "Okay!", {
+      this.matSnackBar.open("DATES ADDED SUCCESSFULLY ...!✔👍", "Okay", {
         duration: 2500,
         horizontalPosition: "center",
         verticalPosition: "top",
@@ -161,7 +162,7 @@ employeeFirstName: any;
     this.serviceData.getEmployeeList().subscribe((result: any)=>{
       this.employeeList= result;
       console.log(this.employeeList);
-      console.log(this.id);
+      console.log("id is:" +this.id);
       this.employeeFirstName = result.map((element: any)=>{
         return  new element.firstName;
       })
@@ -216,6 +217,7 @@ employeeFirstName: any;
       // }
     })
   }
+
 
   flag1(){
     this.ifValid = true;

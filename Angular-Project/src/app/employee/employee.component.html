@@ -60,11 +60,13 @@
       </div>
     <br>
     <span style="font-family: 'Courier New', monospace; font-weight:bold;">Pick the dates, on which you will arrive at the office!</span>
-    <br><br>
-    <button mat-raised-button color="warn" class="btn">OK</button>
+    <br><br><mat-divider></mat-divider>
+    <button mat-raised-button color="accent" class="btn">OK</button>
 </mat-menu> 
 <!-- </div> -->
 <!-- {{daysSelected|json}} -->
+
+
 <br><br>
 <table *ngIf="ifValid" class="zigzag">
   <thead>
@@ -99,6 +101,7 @@
 <br>
 <br>
 <br>
+
 
 <table class="tableStyle">
   <thead>
@@ -237,6 +240,20 @@
   </tr>
   </tbody>
   </table>
+  
+  <h2>//choose to view their details//</h2>
+  <!-- <div class="select">
+  <select>
+    <option *ngFor="let select of employeeList">{{select.firstName}}</option>
+  </select>
+ </div> -->
+ <div class="list-choice">
+  <div class="list-choice-title">Hiiiiii</div>
+  <div class="list-choice-objects">
+   <option *ngFor="let select of employeeList">{{select.firstName}}</option>                        
+    
+   </div>
+</div>
 
   <ng-template class="dialog" #dialogRef1>
     <h2 >Are you sure?</h2>
