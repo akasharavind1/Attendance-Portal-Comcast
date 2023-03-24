@@ -20,10 +20,11 @@
       <div class="day">Saturday</div>
   </div>
   <div class="content">
-      <div class="date_box"  *ngFor="let item of Object.keys(data);let i=index">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+      <div class="date_box" *ngFor="let item of Object.keys(data);let i=index">
          <div *ngIf="data[i]">
          <span class="count"> {{data[i].date}}</span>
-         <span class="date">Count :{{employeeCount[i-3]}}</span>
+         <span class="date">{{employeeCount[i-3]}}</span>
           <span  class="empAvail">
           <ul>
               <li>
