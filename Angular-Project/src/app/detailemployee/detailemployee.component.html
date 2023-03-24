@@ -11,9 +11,6 @@
       <th>No.of Days Selected </th>
       <!-- <th>Flag</th>  -->
   </tr>
-  
-  <br>
-  
   <tr *ngIf="employee">
   
     <td>{{employee.firstName | uppercase}}
@@ -51,23 +48,24 @@
   <div class="content">
       <div class="date_box"  *ngFor="let item of Object.keys(data);let i=index">
          <div *ngIf="data[i]">
-         <span class="date"> {{data[i].date}}</span>
+         <span class="count"> {{data[i].date}}</span>
     
        <span  *ngIf="displayList[i-3]==1">
         <img class="img" src="assets/img/1679464844148.png"  >
        </span>
          </div>
       </div>
+      
   </div>
-  <h5>Note: Hover over a certain date to check availability.</h5>
+  <br>
+  <h5>Note: Ones that are marked "Available" refers to <b>{{employee.firstName}}'s</b> availability at the office</h5>
 </div>
 <br>
 
 
+  
+   ..
 
-   <br>
-   <br>
-   <br>
    <!-- <button class="button" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i>
    BACK
    </button>  -->

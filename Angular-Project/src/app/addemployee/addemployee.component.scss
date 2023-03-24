@@ -45,7 +45,7 @@ h1{
 
 .signUp{
   font-family: Tahoma, sans-serif;
-  color:blue;
+  color:#0088D2;
   text-decoration-line: underline;
     margin: auto;
     padding: 10px; 
@@ -53,4 +53,22 @@ h1{
 .container{
   width:50%;
   float: left;
+}
+
+body {
+  background: linear-gradient(-45deg, #f4b39f, #fb8cb6, #7fceeb, #90fde4);
+  background-size: 400% 400%;
+  animation: gradient 30s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 30%;
+  }
+  20% {
+      background-position: 100% 30%;
+  }
+  40% {
+      background-position: 0% 30%;
+  }
 }

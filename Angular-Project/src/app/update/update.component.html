@@ -10,8 +10,9 @@
      <label for="Email"><b>E-mail Id </b></label>
      <input type="text"  name="Email" required formControlName="mailID" >
      <label for="EmployeeId"><b>EmployeeId </b></label>
-     <input type="text"    name="EmployeeId" required formControlName="employeeId">
-     <label for="roles"><b>Roles </b></label><br>
+     <input type="text"  [readonly]="!editable"  name="EmployeeId" required formControlName="employeeId">
+     <span style="color:red">Employee Id is not editable!</span><br><br>
+     <label for="roles"><b>Roles </b><span>(Manage access to user by changing the roles)</span> </label><br>
      <select formControlName="roles" id="role" name="role">
       <option value="user" >User</option>
       <option value="admin">Admin</option>

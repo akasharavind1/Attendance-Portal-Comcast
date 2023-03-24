@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
@@ -11,6 +11,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent {
+
+  @Input() editable: boolean = false;
+  
   spinnerType:string;
   spinnerName:string;
 
@@ -46,7 +49,7 @@ UpdateData(){
         firstName: this.editEmployee.get('firstName')?.value,
         lastName: this.editEmployee.get('lastName')?.value,
         mailID: this.editEmployee.get('mailID')?.value,
-        employeeId: this.editEmployee.get('employeeId')?.value,
+        // employeeId: this.editEmployee.get('employeeId')?.value,
         roles: this.editEmployee.get('roles')?.value,
       }
      this.serviceData.updateEmployee(this.id,requestBody).subscribe((result: any)=>{ 

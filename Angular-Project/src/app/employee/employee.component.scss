@@ -181,6 +181,17 @@ h2{
           color: #fff;
           text-align: center;
           width: 14.28%;
+          font-weight: bold;
+      }
+      .dayOff{
+        flex: 1;
+          border-radius: 25px;
+          border: 2px solid transparent;
+          background:#fff ;
+          color: #645DAC;
+          text-align: center;
+          width: 14.28%;
+          font-weight: bold;
       }
   }
   .content{
@@ -283,12 +294,13 @@ h2{
 .date_box .empAvail{
 
   visibility: hidden;
-  width: 220px;
-  background-color: #505AC9;
+  width: auto;
+  background-color: #0088D2;
   color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
+  padding-right: 5px;
 
   /* Position the tooltip */
   position: absolute;
@@ -372,7 +384,7 @@ body {
 .list-choice-title {
 width: 100%;
 display: block;
-background: rgb(62, 173, 62);
+background:#00B345;
 text-align: center;
 padding: 0.55em 1em;
 box-sizing: border-box;
