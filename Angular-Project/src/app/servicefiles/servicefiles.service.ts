@@ -32,11 +32,11 @@ export class ServicefilesService {
     getEmployee(id: any){
       return this.http.get(`${this.url}/employeeInfo/`+id)
     }
-     getDates2(empIds: number){
-      return this.http.get(`${this.url}/getDatesDemo/`+empIds)
-    }
-    getDates(empId: number){
-      return this.http.get(`${this.url}/getDates/`+empId)
+    //  getDates2(empIds: number){
+    //   return this.http.get(`${this.url}/getDatesDemo/`+empIds)
+    // }
+    getDates(dummy1: number){
+      return this.http.get(`${this.url}/getDates/`+dummy1)
     }
     getId(){
       return this.http.get(`${this.url}/getLogin`)

@@ -21,7 +21,7 @@
       <td>{{employee.lastName | uppercase}}</td>&nbsp; 
       <td>{{employee.mailID}}</td>&nbsp;
       <td>{{employee.employeeId}}</td>&nbsp;
-      <td >{{countt}}</td>
+      <td >{{daysSelectedCount}}</td>
       <!-- <td>
         <ng-container  [ngClass]="{'green': this.flag==0 ,
         'yellow': this.flag==1 , 
@@ -35,9 +35,10 @@
   </table>
 </div>
 
-
+<br>
+<br>
 <div class="container">
-  <h2  style="text-align: center;font-size: 40px; font-family:Chalkduster, fantasy ;font-weight:bold;text-shadow: 3px 3px #464EB8;">{{monthName}}</h2>
+  <h2  style="text-align: center;font-size: 40px; font-family:Chalkduster, fantasy ;font-weight:bold;text-shadow: 3px 3px #464EB8;">- {{monthName}} -</h2>
   <div  class="header">
       <div class="day">Sunday</div>
       <div class="day">Monday</div>
@@ -51,21 +52,10 @@
       <div class="date_box"  *ngFor="let item of Object.keys(data);let i=index">
          <div *ngIf="data[i]">
          <span class="date"> {{data[i].date}}</span>
-         <span class="count">Count :</span>
-          <span  class="empAvail">
-          <ul>
-              <li>
-                  <!-- {{employeeName[i-3]}} -->
-              </li>
-          </ul>
-          
-        </span>
-        <!-- <span  *ngIf="employeeCount" class="empAvail">
-          <ul>
-          <li *ngFor="let emp1 of employeeCount ">
-              {{data[i].emp1}}
-          </li>
-      </ul></span> -->
+    
+       <span  *ngIf="displayList[i-3]==1">
+        <img class="img" src="assets/img/1679464844148.png"  >
+       </span>
          </div>
       </div>
   </div>
@@ -83,12 +73,12 @@
    </button>  -->
 
    
-   <h2> Employee Availability:</h2>
+   <!-- <h2> Employee Availability:</h2>
    <table>
-   <tr *ngFor="let employee22 of employee2">
-   <th><h3>{{employee22.date   | date : 'fullDate' | uppercase}}</h3></th>
+   <tr *ngFor="let employee of employee2">
+   <th><h3>{{employee.date   | date : 'fullDate' | uppercase}}</h3></th>
    </tr>
-  </table>
+  </table> -->
 
     <!-- <div style="float: right;">
     <div><img class="img" src="assets/img/greenflag.png" > Great Attendance </div>

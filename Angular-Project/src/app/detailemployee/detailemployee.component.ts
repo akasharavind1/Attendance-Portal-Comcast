@@ -47,13 +47,12 @@ export class DetailemployeeComponent {
   }
   ngOnInit(): void{
     this.id=  this.route.snapshot.params['id'];
+    this.setMonthDates();
     this.getEmployee();
-    this.getDates();
     this.admin="admin";
-     this.setMonthDates();
+  
      this.getDaysInMonth(this.month, this.year);
-     this.matchingDatesForDisplay();
-    
+    //  this.matchingDatesForDisplay();
     // this.nos=this.countt;
     // this.setMonthDays(this.calendarCreator.getCurrentMonth());
 
@@ -66,17 +65,7 @@ export class DetailemployeeComponent {
     // this.weekDaysName.push("Su");
   
  }
-  getEmployee(){
-    this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
-      this.employee= result;
-      this.empId=result.employeeId;
-      this.serviceData.getDates(this.empId).subscribe((resp: any)=>{
-        this.employee2=resp;
-        this.countt=resp.length;
-        this.flagCreator();
-      })
-    })
-  }
+ 
   flagCreator(){
     console.log("hello funct");
     console.log("count is:"+this.countt);
@@ -117,7 +106,7 @@ setMonthDates(){
       this.startingValue++;
     }
   }
-
+  console.log(this.data);
   
 }
 
@@ -133,13 +122,16 @@ year : number = new Date().getFullYear();
 
 getDaysInMonth(month: number, year: number) {
   this.dateOfCurrentMonth = new Date(year, month,1);
+  console.log(this.dateOfCurrentMonth);
   this.daysOfMonth = [];
+  console.log("this is "+this.dateOfCurrentMonth.getMonth() )
   while (this.dateOfCurrentMonth.getMonth() === month) {
     // this.daysOfMonth.push(new Date(this.dateOfCurrentMonth).toISOString().substring(0, 10));
     // this.dateOfCurrentMonth=this.datePipe.transform(this.dateOfCurrentMonth, 'yyyy-MM-dd');
     this.daysOfMonth.push(this.datePipe.transform (new Date(this.dateOfCurrentMonth),'yyyy-MM-dd'));
     this.dateOfCurrentMonth.setDate(this.dateOfCurrentMonth.getDate() +1);
   }
+  console.log("The dates of current month are:" +this.daysOfMonth);
 
   this.serviceData.matchingDates(this.daysOfMonth).subscribe((result: any)=>{
     this.matchedDates = result;
@@ -155,40 +147,62 @@ monthNames = ["January","February","March","April","May","June","July","August",
 d = new Date();
 monthName = this.monthNames[this.d.getMonth()];
 
-
-datesOfEmployee:any;
-  getDates(){
+dummy1:any;
+daysSelectedCount:any;
+getEmployee(){
+  this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
+    this.employee= result;
+    this.empId=result.employeeId;
+    
     this.serviceData.getDates(this.empId).subscribe((result: any)=>{
-      this.employee2=result;
-      // this.countt=result.length;
-      // console.log(result.length);
+    this.employee2=result;
+    this.daysSelectedCount= result.length;
 
-      this.datesOfEmployee = result.map((element: any)=>{
-          new Date(element.date);
-      })
-      console.log("dhbdthbd"+ this.datesOfEmployee)
+    console.log(this.empId)
+     if(this.empId!=null){
+      this.matchingDatesForDisplay();
+    }
+
     })
 
-    
-  }
+  })
+
+}
+
+  // getDates(){
+   
+  //   console.log(this.dummy1);
+
+   
+
+  //   this.serviceData.getDates(this.dummy1).subscribe((result: any)=>{
+
+  //     this.employee2=result;
+
+     
+  //     // this.countt=result.length;
+  //     // console.log(result.length);
+  //   })
+  //   this.matchingDatesForDisplay();
+  // }
 
   displayList:any;
   dummy:any;
+  q:any;
   matchingDatesForDisplay(){
-
-    this.dummy=this.employee2.map((element: any)=>{
-      return  new Date(element.date);
-    })
-
     this.displayList=[];
-    console.log(this.datesOfEmployee);
-    for(let q=0;q<=this.daysOfMonth.length;q++){
-      console.log("dates are"+this.daysOfMonth)
-      if(this.dummy.includes(this.daysOfMonth[q])){
+    
+    this.dummy = this.employee2.map((element: any)=>{
+      return  this.datePipe.transform (element.date,'yyyy-MM-dd');
+    })
+    console.log(this.dummy)
+
+    for(this.q=0;this.q<=this.daysOfMonth.length;this.q++){
+      if(this.dummy.includes(this.daysOfMonth[this.q])){
           this.displayList.push(1);
       }
       else{
-        this.displayList.push(1);
+        this.displayList.push(0);
       }
 
     }

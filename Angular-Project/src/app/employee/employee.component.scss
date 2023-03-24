@@ -212,7 +212,6 @@ h2{
             bottom: 8px;
             left: 16px;
             font-size: 11px;  
-
           }
           
       }
@@ -371,12 +370,12 @@ body {
 .list-choice-title {
 width: 100%;
 display: block;
-background: #D8D8D8;
+background: rgb(62, 173, 62);
 text-align: center;
 padding: 0.55em 1em;
 box-sizing: border-box;
 color: #FFF;
-text-shadow: 0 1px 0 #CACACA;
+// text-shadow: 0 1px 0 #CACACA;
 border-radius: 0.2em;
 }
 .list-choice:hover .list-choice-title {

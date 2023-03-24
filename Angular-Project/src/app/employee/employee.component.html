@@ -9,7 +9,7 @@
 </select> -->
 
 <div class="container">
-  <h2  style="text-align: center;font-size: 40px; font-family:Chalkduster, fantasy ;font-weight:bold;text-shadow: 3px 3px #464EB8;">{{monthName}}</h2>
+  <h2  style="text-align: center;font-size: 40px; font-family:Chalkduster, fantasy ;font-weight:bold;text-shadow: 3px 3px #464EB8;">- {{monthName}} -</h2>
   <div  class="header">
       <div class="day">Sunday</div>
       <div class="day">Monday</div>
@@ -22,8 +22,8 @@
   <div class="content">
       <div class="date_box"  *ngFor="let item of Object.keys(data);let i=index">
          <div *ngIf="data[i]">
-         <span class="date"> {{data[i].date}}</span>
-         <span class="count">Count :{{employeeCount[i-3]}}</span>
+         <span class="count"> {{data[i].date}}</span>
+         <span class="date">Count :{{employeeCount[i-3]}}</span>
           <span  class="empAvail">
           <ul>
               <li>
@@ -44,10 +44,11 @@
   <h5>Note: Hover over a certain date to check availability.</h5>
 </div>
 <br>
-
+<div >
+  <div style="float:left">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="buttonForSchedule" (click)="flag1()" [matMenuTriggerFor]="appMenu" mat-raised-button color="primary">
   <span class="tooltiptext">Pick the dates, on which you will arrive at the Office</span>
-  MAKE SCHEDULE
+  &nbsp;<span class='material-icons'>schedule</span> MAKE SCHEDULE
  
 </button> 
  <!-- <div class="matmenu" cdkDrag>  -->
@@ -102,7 +103,7 @@
 <br>
 <br>
 
-
+<div>
 <table class="tableStyle">
   <thead>
   <tr>
@@ -140,8 +141,54 @@
 </tr>
 </tbody>
 
-</table>
 
+</table>
+</div>
+</div>
+
+<div class="list-choice" style="float:right">
+  <div class="list-choice-title">Check By Employee:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mat-icon>arrow_drop_down_circle</mat-icon></div>
+  <div class="list-choice-objects">
+<table class="tableStyle">
+   
+  <thead>
+    <tr style="background-color: #4e45ac;  font-family: 'Courier New', monospace; font-weight:bold;">
+     <th>Employee Details:</th> 
+    </tr>
+  <tr>
+      <!-- <th>Name:</th> -->
+      <!-- <th>Id:</th>&nbsp; -->
+      <!-- <th>Last Name:</th>&nbsp; -->
+      <!-- <th>Email:</th>&nbsp;
+      <th>Employee Id:</th>&nbsp; -->
+      <!-- <th>Attendance %</th>
+      <th>Flag</th> -->
+      <!-- <th>Roles:</th> -->
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr class="active-row" *ngFor="let employee of employeeList">
+  
+    
+      <td routerLink="/detailemployee/{{employee.id}}">{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<span class='material-icons'>person</span></td>
+      <!-- <td>{{employees.id}}</td>&nbsp; -->
+      
+      <!-- <td>{{employee.lastName | uppercase}}</td>&nbsp; -->
+  
+      <!-- <td>{{employee.mailID}}</td>&nbsp;
+      <td>{{employee.employeeId}}</td>&nbsp; -->
+      <!-- <td> </td>
+      <td></td> -->
+      <!-- <td>{{employee.roles | uppercase}}</td> -->
+  </tr>
+  </tbody>
+  </table>
+</div>
+
+</div>
+
+</div>
 <!-- <div style="float: right;">
   <div><img class="img" src="assets/img/greenflag.png" > Great Attendance </div>
   <div><img class="img" src="assets/img/yellowflag.jpg" > Attention required</div>
@@ -171,26 +218,7 @@
 </ngx-spinner>
   <router-outlet></router-outlet>
 
-
-  <!-- <mbsc-datepicker [(ngModel)]="myBirthday"  placeholder="Please select..." /> -->
-  <!-- <mbsc-datepicker
-    [controls]="['calendar']"
-    [selectMultiple]="false">
-</mbsc-datepicker> -->
-<!-- <input [matDatepicker]="basicDatepicker">
-<mat-datepicker-toggle [for]="basicDatepicker">
-  <mat-icon matDatepickerToggleIcon>
-      mouse
-  </mat-icon>
-</mat-datepicker-toggle>
-<mat-datepicker #basicDatepicker></mat-datepicker> -->
-
-  <!-- Date: <input type="date" [(ngModel)]="days">
-  fetch data:<button type="button" (click)="fetchData()"></button> -->
-
-
-
-  <!-- <p>{{today | date:'yyyy-MM-dd'}}</p> -->
+  <!-- <div>
   <button (click)="getDates()" mat-raised-button color="primary">
    <tr><th>CHECK SELECTED DATES</th>
   </button> 
@@ -201,75 +229,15 @@
   <td>{{employee22.date | date : 'fullDate' | uppercase}}</td>
   </tr>
 </table>
-
-<!-- <h1 style ="float: right;">Employee Details:</h1> -->
+</div> -->
 <br>
 
-<table class="tableStyle">
-   
-  <thead>
-    <tr style="background-color: #4e45ac; text-align: center;  font-family: 'Courier New', monospace; font-weight:bold;">
-     <th>Employee Details:</th> 
-    </tr>
-  <tr>
-      <th>First Name:</th>&nbsp;
-      <!-- <th>Id:</th>&nbsp; -->
-      <th>Last Name:</th>&nbsp;
-      <th>Email:</th>&nbsp;
-      <th>Employee Id:</th>&nbsp;
-      <!-- <th>Attendance %</th>
-      <th>Flag</th> -->
-      <th>Roles:</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <tr class="active-row" *ngFor="let employee of employeeList">
-  
-    
-      <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<a routerLink="/detailemployee/{{employee.id}}"><i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></a></td>&nbsp;
-      <!-- <td>{{employees.id}}</td>&nbsp; -->
-      
-      <td>{{employee.lastName | uppercase}}</td>&nbsp;
-  
-      <td>{{employee.mailID}}</td>&nbsp;
-      <td>{{employee.employeeId}}</td>&nbsp;
-      <!-- <td> </td>
-      <td></td> -->
-      <td>{{employee.roles | uppercase}}</td>
-  </tr>
-  </tbody>
-  </table>
-  
-  <h2>//choose to view their details//</h2>
-  <!-- <div class="select">
-  <select>
-    <option *ngFor="let select of employeeList">{{select.firstName}}</option>
-  </select>
- </div> -->
- <div class="list-choice">
-  <div class="list-choice-title">Hiiiiii</div>
-  <div class="list-choice-objects">
-   <option *ngFor="let select of employeeList">{{select.firstName}}</option>                        
-    
-   </div>
-</div>
 
   <ng-template class="dialog" #dialogRef1>
     <h2 >Are you sure?</h2>
     <button (click)="logout()" mat-raised-button color="primary" >Logout</button>
     <button (click)="cancelDialog()" mat-raised-button color="warn"> Cancel </button>
   </ng-template>
-<!-- 
-<div >
-<mat-calendar [selected]="">
-</mat-calendar>
-</div> -->
 
-<!-- <table>
-<tr *ngFor="let bruuuu of bruh">
-<th>date is: {{bruuuu | date : 'yy/M/d'  }}</th>
-
-</table> -->
 </body>
   <router-outlet></router-outlet>

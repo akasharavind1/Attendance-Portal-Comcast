@@ -161,8 +161,6 @@ employeeFirstName: any;
     this.employeeList=this.route.snapshot.data['data'];
     this.serviceData.getEmployeeList().subscribe((result: any)=>{
       this.employeeList= result;
-      console.log(this.employeeList);
-      console.log("id is:" +this.id);
       this.employeeFirstName = result.map((element: any)=>{
         return  new element.firstName;
       })
@@ -175,13 +173,11 @@ employeeFirstName: any;
       this.fn=resp.firstName; 
       // console.log(this.temp);
       this.empId=resp.employeeId;
-         console.log(this.empId);
-         console.log(this.employee);
-
-         this.serviceData.getDates(this.empId).subscribe((resp: any)=>{
-          this.countt=resp.length;
-          // this.flagCreator();
-        })
+       
+  // this.serviceData.getDates(this.empId).subscribe((resp: any)=>{
+  //         this.countt=resp.length;
+  //         // this.flagCreator();
+  //       })
       }
     )}
 
