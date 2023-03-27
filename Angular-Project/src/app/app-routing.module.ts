@@ -13,6 +13,7 @@ import { DetailemployeeComponent } from './detailemployee/detailemployee.compone
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ResolveGuardGuard } from './servicefiles/resolve-guard.guard';
 import { TestCalComponent } from './test-cal/test-cal.component';
+import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 // import { DialogComponent } from './dialog/dialog.component';
 const routes: Routes = [
   {
@@ -44,6 +45,9 @@ const routes: Routes = [
   },
   { 
     path:'**', component: PagenotfoundComponent,
+  },
+  {
+    path:'employeeprofile', component: EmployeeProfileComponent, 
   },
   
 

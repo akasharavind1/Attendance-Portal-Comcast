@@ -123,7 +123,7 @@
   <tr class="active-row" style="color:white; background-color: black;" *ngIf="employee">
 
   
-    <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></td>&nbsp;
+    <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<i [routerLink]="'/employeeprofile'" class="fa fa-address-card-o" style="font-size:24px;color:red"></i></td>&nbsp;
     <!-- <td>{{employees.id}}</td>&nbsp; -->
     
     <td>{{employee.lastName | uppercase}}</td>&nbsp;

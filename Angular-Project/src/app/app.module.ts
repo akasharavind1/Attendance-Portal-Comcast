@@ -39,6 +39,7 @@ import { TestCalComponent } from './test-cal/test-cal.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DatePipe } from '@angular/common';
+import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { DatePipe } from '@angular/common';
     // DialogComponent,
     DateCountPipe,
     FiltersSamplePipe,
-    TestCalComponent
+    TestCalComponent,
+    EmployeeProfileComponent
     
   ],
   imports: [
