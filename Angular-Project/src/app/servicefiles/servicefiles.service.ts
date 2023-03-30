@@ -67,5 +67,10 @@ export class ServicefilesService {
     // }
     matchingDates(days:any){
       return this.http.post(`${this.url}/matchDates`,days);
-}
+    }
+
+    updatePassword(id: string, body: any){
+      return this.http.put(`${this.url}/updatePassword/`+id,body);
+    }
+
     }

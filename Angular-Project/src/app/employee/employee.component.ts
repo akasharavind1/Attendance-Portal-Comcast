@@ -389,5 +389,11 @@ getDaysInMonth(month: number, year: number) {
   console.log( "iahsicwsivg"+ this.employeeName)
 
 }
+
+routeToProfile(){
+  this.router.navigateByUrl('/employeeprofile/'+this.empId);  
+
+}
+
 }
 

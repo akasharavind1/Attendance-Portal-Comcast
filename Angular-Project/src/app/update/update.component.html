@@ -24,6 +24,7 @@
      <button (click)="openDialog()" class="sub"  type="submit"mat-raised-button color="primary" >Submit</button><br>
      <button routerLink="/admin" type="submit"mat-raised-button color="warn" >Close</button><br>
 </div>
+</form>
 <ngx-spinner
   [name]="spinnerName"
   [type]="spinnerType"
@@ -33,7 +34,7 @@
   [fullScreen]="true">
   <p style="color: white">Loading...</p>
 </ngx-spinner>
-  </form>
+  
   <ng-template  #dialogRef>
     <h2>Are you sure?</h2>
     <button (click)="UpdateData()" mat-raised-button color="primary"  >Confirm</button>

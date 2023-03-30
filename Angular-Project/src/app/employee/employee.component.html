@@ -116,6 +116,7 @@
      <!-- <th>Attendance %</th> -->
     <!-- <th>Flag</th>  -->
     <th>Roles:</th>
+    <th>Edit</th>
 </tr>
 </thead>
 
@@ -123,7 +124,7 @@
   <tr class="active-row" style="color:white; background-color: black;" *ngIf="employee">
 
   
-    <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<i [routerLink]="'/employeeprofile'" class="fa fa-address-card-o" style="font-size:24px;color:red"></i></td>&nbsp;
+    <td>{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<i class="fa fa-address-card-o" style="font-size:24px;color:red"></i></td>&nbsp;
     <!-- <td>{{employees.id}}</td>&nbsp; -->
     
     <td>{{employee.lastName | uppercase}}</td>&nbsp;
@@ -139,9 +140,9 @@
       </ng-container>
     </td>  -->
     <td>{{employee.roles | uppercase}}</td>
+    <td><button routerLink="/employeeprofile/{{employee.id}}"><mat-icon>edit</mat-icon></button></td>
 </tr>
 </tbody>
-
 
 </table>
 </div>

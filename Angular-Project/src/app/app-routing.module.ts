@@ -28,12 +28,14 @@ const routes: Routes = [
   {
     path:'addemployee',component: AddemployeeComponent
   },
+
   {
     path:'employee/:id',component: EmployeeComponent,canActivate:[ServicefilesuserGuard],
     resolve:{
       data: ResolveGuardGuard,
     }
   },
+ 
   {
     path:'update/:id',component: UpdateComponent,canActivate:[ServicefilesGuard]
   },
@@ -43,12 +45,13 @@ const routes: Routes = [
   { 
     path:'test-cal', component: TestCalComponent,
   },
+  {
+    path:'employeeprofile/:id', component: EmployeeProfileComponent, 
+  },
   { 
     path:'**', component: PagenotfoundComponent,
   },
-  {
-    path:'employeeprofile', component: EmployeeProfileComponent, 
-  },
+
   
 
 ];
