@@ -21,14 +21,14 @@
   </div>
   <div class="content">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
-      <div class="date_box" *ngFor="let item of Object.keys(data);let i=index">
+      <div class="date_box" *ngFor="let item of Object.keys(data);let i=index;">
          <div *ngIf="data[i]">
          <span class="count"> {{data[i].date}}</span>
-         <span class="date">{{employeeCount[i-3]}}</span>
+         <span class="date">{{employeeCount[i-startingIndex]}}</span>
           <span  class="empAvail">
           <ul>
               
-                  {{employeeName[i-3]}}
+                  {{employeeName[i-startingIndex]}}
               
           </ul>
           

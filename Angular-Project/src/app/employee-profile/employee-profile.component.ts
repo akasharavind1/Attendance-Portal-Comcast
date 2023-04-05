@@ -118,7 +118,7 @@ export class EmployeeProfileComponent {
           })
           this.cancelDialog();
         }
-        // window.location.reload();
+        window.location.reload();
       }
 
 

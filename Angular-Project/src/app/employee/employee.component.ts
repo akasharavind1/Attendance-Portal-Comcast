@@ -284,7 +284,7 @@ employeeFirstName: any;
     console.log(this.startingIndex);
     
     this.data={}
-    for(let i =0;i<35;i++){
+    for(let i =0;i<42;i++){
       if(i<this.startingIndex || this.startingValue>this.monthDates){
         this.data[i] = null
       }else{
