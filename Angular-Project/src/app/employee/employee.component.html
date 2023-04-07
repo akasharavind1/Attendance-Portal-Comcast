@@ -71,7 +71,7 @@
 
 
 <br><br>
-<table *ngIf="ifValid" class="zigzag">
+<table  class="zigzag">
   <thead>
   <tr>
     <th class="header">Dates selected:</th>
@@ -171,7 +171,7 @@
   </thead>
 
   <tbody>
-  <tr class="active-row" *ngFor="let employee of employeeList">
+  <tr class="active-row" *ngFor="let employee of checkByEmployee">
   
     
       <td routerLink="/detailemployee/{{employee.id}}">{{employee.firstName | uppercase}}&nbsp;&nbsp;&nbsp;<span class='material-icons'>person</span></td>

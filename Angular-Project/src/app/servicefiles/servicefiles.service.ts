@@ -65,6 +65,9 @@ export class ServicefilesService {
     deleteEmployee(id:number){
       return this.http.delete(`${this.url}/delete?id=`+id);
     }
+    checkSpecificEmp(id:number){
+      return this.http.get(`${this.url}/employeeInfoForUser/`+id);
+    }
     // postDate(dates: any){
     //   return this.http.post("http://localhost:8080/api/v1/postDate?dates=",dates);
     // }

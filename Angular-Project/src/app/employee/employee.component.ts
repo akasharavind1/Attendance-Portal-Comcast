@@ -85,6 +85,7 @@ export class EmployeeComponent {
    this.getEmployee();
    this.setMonthDates();
    this.sendDates();
+   this.checkSpecificEmpInfo();
    this.getDaysInMonth(this.month, this.year);``
   //  this.demo2();
   
@@ -95,7 +96,7 @@ export class EmployeeComponent {
     dates:[''],
   })
   daysSelected: any[] = [];
-  daysToBeRemoved:any[]=["2023-04-19"];
+  daysToBeRemoved:any[]=[];
 any: any;
 days: any;
 calendar:any;
@@ -109,13 +110,7 @@ isSelected:any = (event: any) => {
     ("00" + event.getDate()).slice(-2)
   return this.daysSelected.find(x => x == date) ? "selected" : null;
 };
-previouslySelected(){
-  // console.log(this.daysSelected);
-  //   console.log(this.alreadySelected);
-    this.daysSelected=this.alreadySelected;
-    console.log(this.daysSelected);
 
-}
 select(event: any, calendar: any) {
   const date = 
     event.getFullYear() +
@@ -123,26 +118,23 @@ select(event: any, calendar: any) {
     ("00" + (event.getMonth() + 1)).slice(-2) +
     "-" +
     ("00" + event.getDate()).slice(-2);
-
   const index = this.daysSelected.findIndex(x => x == date);
   if (index < 0) this.daysSelected.push(date);
   else this.daysSelected.splice(index, 1);
   calendar.updateTodaysDate();
   console.log(this.daysSelected)
+  console.log(this.alreadySelected);
 }
-
 passTheDates(){
-
-  // requestBody:{
-  //   daysSelected: this.daysSelected,
-
-  // }
   console.log(this.daysToBeRemoved);
-  console.log(this.daysSelected);
-  
-this.serviceData.deleteDates(this.daysToBeRemoved,this.empId).subscribe((result:any)=>{
 
-})
+  console.log(this.daysSelected);
+  console.log(this.alreadySelected); 
+
+ this.alreadySelected.filter((result:any)=>{if(!this.daysSelected.includes(result)){
+  this.daysToBeRemoved.push(result)
+ }})
+ console.log(this.daysToBeRemoved)
      this.serviceData.postDates(this.daysSelected,this.empId).subscribe((result: any)=>{
         console.log(result);
         console.log(this.fn);
@@ -161,7 +153,17 @@ this.serviceData.deleteDates(this.daysToBeRemoved,this.empId).subscribe((result:
 
       
 }
+checkByEmployee:any;
 employeeFirstName: any;
+
+checkSpecificEmpInfo(){
+  this.employeeList=this.route.snapshot.data['data'];
+  this.serviceData.checkSpecificEmp(this.id).subscribe((result: any)=>{
+      this.checkByEmployee = result;
+      console.log(this.checkByEmployee);
+  })
+}
+
   getEmployeeList(){
     // this.serviceData.getEmployeeList().subscribe((result: any)=>{
     //   this.employeeList= result;
@@ -180,32 +182,27 @@ employee2:any;
 daysSelectedCount:any;
 empdate:any;
 alreadySelected:any;
+
   getEmployee(){
     this.serviceData.getEmployee(this.id).subscribe((resp: any)=>{
       this.employee= resp; 
       this.fn=resp.firstName; 
       // console.log(this.temp);
       this.empId=resp.employeeId;
+
       this.serviceData.getDates(this.empId).subscribe((result: any)=>{
+        
         this.employee2=result;
         this.empdate=result;
-    let res = this.empdate.map((element: any)=>{
+        this.alreadySelected = this.empdate.map((element: any)=>{
       // return (element.date);
       return (this.datePipe.transform (new Date(element.date),'yyyy-MM-dd'));
-      // return this.alreadySelected;
     })
-        this.alreadySelected=res;
-       console.log(this.alreadySelected);
-        this.daysSelectedCount= result.length;
-        console.log(this.daysSelectedCount);
-        console.log(this.employee2);
-        this.previouslySelected();
-
+    console.log(this.alreadySelected);
+    console.log(this.daysSelected);
+    this.daysSelected=this.alreadySelected;
+    console.log(this.daysSelected);
       })
-  // this.serviceData.getDates(this.empId).subscribe((resp: any)=>{
-  //         this.countt=resp.length;
-  //         // this.flagCreator();
-  //       })
       }
     )}
 
@@ -216,7 +213,7 @@ alreadySelected:any;
       console.log(this.empId);
       this.employeedates=result; 
       console.log(this.employeedates);
-
+      
       this.selectedDates = result.map((element: any)=>{
         return  new Date(element.date);
       })
