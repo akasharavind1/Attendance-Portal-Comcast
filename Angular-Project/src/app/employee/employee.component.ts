@@ -1,4 +1,4 @@
-import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
 import { ServicefilesService } from '../servicefiles/servicefiles.service';
 import { HttpClient } from '@angular/common/http';
 import { Router ,ActivatedRoute} from '@angular/router';
@@ -87,6 +87,7 @@ export class EmployeeComponent {
    this.sendDates();
    this.getDaysInMonth(this.month, this.year);``
   //  this.demo2();
+  
   }
 
 
@@ -98,13 +99,14 @@ export class EmployeeComponent {
 any: any;
 days: any;
 calendar:any;
+
 isSelected:any = (event: any) => {
   const date =
     event.getFullYear() +
     "-" +
     ("00" + (event.getMonth() + 1)).slice(-2) +
     "-" +
-    ("00" + event.getDate()).slice(-2)+this.employeedates;
+    ("00" + event.getDate()).slice(-2)
   return this.daysSelected.find(x => x == date) ? "selected" : null;
 };
 previouslySelected(){
@@ -112,6 +114,7 @@ previouslySelected(){
   //   console.log(this.alreadySelected);
     this.daysSelected=this.alreadySelected;
     console.log(this.daysSelected);
+
 }
 select(event: any, calendar: any) {
   const date = 
@@ -120,11 +123,7 @@ select(event: any, calendar: any) {
     ("00" + (event.getMonth() + 1)).slice(-2) +
     "-" +
     ("00" + event.getDate()).slice(-2);
-    // console.log(this.daysSelected);
-    // console.log(date);
-    // console.log(this.alreadySelected);
-    // this.daysSelected=this.alreadySelected;
-    // console.log(this.daysSelected);
+
   const index = this.daysSelected.findIndex(x => x == date);
   if (index < 0) this.daysSelected.push(date);
   else this.daysSelected.splice(index, 1);

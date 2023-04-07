@@ -91,12 +91,17 @@ table.zigzag {
 .mat-calendar{
   background-color: rgb(235, 230, 230);
 }
+.mat-calendar-body-cell {
+  background-color:transparent!important;
+
+}
 .mat-calendar-body-cell.selected
 {
   background-color:green!important;
   border-radius: 50%;
   // width:auto;
 }
+
 .drop-calendar
 {
   width:30rem;

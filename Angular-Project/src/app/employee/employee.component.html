@@ -54,10 +54,11 @@
 </button> 
  <!-- <div class="matmenu" cdkDrag>  -->
  <mat-menu class="matmenu"  #appMenu="matMenu" cdkDrag >
-    <div (click)="$event.stopPropagation()" ><br>
+    <div (click)="$event.stopPropagation()" >
         <mat-calendar #calendar 
            (selectedChange)="select($event,calendar)" 
-            [dateClass]="isSelected">
+            [dateClass]="isSelected"
+            [(ngModel)]="isSelected">
         </mat-calendar>
       </div>
     <br>
