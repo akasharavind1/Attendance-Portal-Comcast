@@ -94,8 +94,10 @@ export class EmployeeComponent {
     dates:[''],
   })
   daysSelected: any[] = [];
-event: any;
+  daysToBeRemoved:any[]=["2023-04-19"];
+any: any;
 days: any;
+calendar:any;
 isSelected:any = (event: any) => {
   const date =
     event.getFullYear() +
@@ -105,7 +107,12 @@ isSelected:any = (event: any) => {
     ("00" + event.getDate()).slice(-2)+this.employeedates;
   return this.daysSelected.find(x => x == date) ? "selected" : null;
 };
-
+previouslySelected(){
+  // console.log(this.daysSelected);
+  //   console.log(this.alreadySelected);
+    this.daysSelected=this.alreadySelected;
+    console.log(this.daysSelected);
+}
 select(event: any, calendar: any) {
   const date = 
     event.getFullYear() +
@@ -113,15 +120,14 @@ select(event: any, calendar: any) {
     ("00" + (event.getMonth() + 1)).slice(-2) +
     "-" +
     ("00" + event.getDate()).slice(-2);
-    // new Date(event.getFullYear() +
-    // "-" +
-    // ("00" + (event.getMonth() + 1)).slice(-2) +
-    // "-" +
-    // ("00" + event.getDate()).slice(-2));
+    // console.log(this.daysSelected);
+    // console.log(date);
+    // console.log(this.alreadySelected);
+    // this.daysSelected=this.alreadySelected;
+    // console.log(this.daysSelected);
   const index = this.daysSelected.findIndex(x => x == date);
   if (index < 0) this.daysSelected.push(date);
   else this.daysSelected.splice(index, 1);
- 
   calendar.updateTodaysDate();
   console.log(this.daysSelected)
 }
@@ -132,7 +138,12 @@ passTheDates(){
   //   daysSelected: this.daysSelected,
 
   // }
+  console.log(this.daysToBeRemoved);
+  console.log(this.daysSelected);
+  
+this.serviceData.deleteDates(this.daysToBeRemoved,this.empId).subscribe((result:any)=>{
 
+})
      this.serviceData.postDates(this.daysSelected,this.empId).subscribe((result: any)=>{
         console.log(result);
         console.log(this.fn);
@@ -147,7 +158,7 @@ passTheDates(){
       })
 
       const dialogue= this.dialog.closeAll();
-      window.location.reload();
+      // window.location.reload();
 
       
 }
@@ -166,14 +177,32 @@ employeeFirstName: any;
       })
       console.log("fn is "+ this.employeeFirstName);
     })}
-
+employee2:any;
+daysSelectedCount:any;
+empdate:any;
+alreadySelected:any;
   getEmployee(){
     this.serviceData.getEmployee(this.id).subscribe((resp: any)=>{
       this.employee= resp; 
       this.fn=resp.firstName; 
       // console.log(this.temp);
       this.empId=resp.employeeId;
-       
+      this.serviceData.getDates(this.empId).subscribe((result: any)=>{
+        this.employee2=result;
+        this.empdate=result;
+    let res = this.empdate.map((element: any)=>{
+      // return (element.date);
+      return (this.datePipe.transform (new Date(element.date),'yyyy-MM-dd'));
+      // return this.alreadySelected;
+    })
+        this.alreadySelected=res;
+       console.log(this.alreadySelected);
+        this.daysSelectedCount= result.length;
+        console.log(this.daysSelectedCount);
+        console.log(this.employee2);
+        this.previouslySelected();
+
+      })
   // this.serviceData.getDates(this.empId).subscribe((resp: any)=>{
   //         this.countt=resp.length;
   //         // this.flagCreator();

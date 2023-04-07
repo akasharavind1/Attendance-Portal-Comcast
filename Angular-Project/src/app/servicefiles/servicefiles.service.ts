@@ -47,9 +47,12 @@ export class ServicefilesService {
     postEmployee(body:any){
       return this.http.post(`${this.url}/signup`,body)
     }
-    postDates(body:any, id:any,){
+    postDates(body:any, id:any){
       return this.http.post(`${this.url}/postDates/`+id,body)
     }   
+    deleteDates(body:any, empId:any){
+      return this.http.delete(`${this.url}/empDateDelete/`+empId,body)
+    }
     postLogin(body:any){
             return this.http.post(`${this.url}/login`,body);
           }
