@@ -71,7 +71,7 @@
 
 
 <br><br>
-<table  class="zigzag">
+<table  class="zigzag" *ngIf="flagForDatesTable">
   <thead>
   <tr>
     <th class="header">Dates selected:</th>
@@ -149,7 +149,13 @@
 </div>
 </div>
 
-<div class="list-choice" style="float:right">
+<div style="float:right">
+<button class="buttonForSchedule" routerLink="/detailemployee/{{employee.id}}" mat-raised-button color="primary">YOUR AVAILABILITY</button>
+<div class="list-choice" >
+
+  
+  <br>
+  <br>
   <div class="list-choice-title">Check By Employee:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mat-icon>arrow_drop_down_circle</mat-icon></div>
   <div class="list-choice-objects">
 <table class="tableStyle">
@@ -191,6 +197,7 @@
 
 </div>
 
+</div>
 </div>
 <!-- <div style="float: right;">
   <div><img class="img" src="assets/img/greenflag.png" > Great Attendance </div>

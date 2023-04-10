@@ -111,6 +111,7 @@ isSelected:any = (event: any) => {
   return this.daysSelected.find(x => x == date) ? "selected" : null;
 };
 
+flagForDatesTable=false;
 select(event: any, calendar: any) {
   const date = 
     event.getFullYear() +
@@ -124,6 +125,7 @@ select(event: any, calendar: any) {
   calendar.updateTodaysDate();
   console.log(this.daysSelected)
   console.log(this.alreadySelected);
+  this.flagForDatesTable=true;
 }
 passTheDates(){
   console.log(this.daysToBeRemoved);
@@ -138,7 +140,7 @@ passTheDates(){
      this.serviceData.postDates(this.daysSelected,this.empId).subscribe((result: any)=>{
         console.log(result);
         console.log(this.fn);
-      
+        window.location.reload();
       
       })
       this.matSnackBar.open("DATES ADDED SUCCESSFULLY ...!✔👍", "Okay", {
@@ -157,7 +159,7 @@ checkByEmployee:any;
 employeeFirstName: any;
 
 checkSpecificEmpInfo(){
-  this.employeeList=this.route.snapshot.data['data'];
+  // this.employeeList=this.route.snapshot.data['data'];
   this.serviceData.checkSpecificEmp(this.id).subscribe((result: any)=>{
       this.checkByEmployee = result;
       console.log(this.checkByEmployee);
@@ -415,10 +417,6 @@ getDaysInMonth(month: number, year: number) {
 
 }
 
-routeToProfile(){
-  this.router.navigateByUrl('/employeeprofile/'+this.empId);  
-
-}
 
 }
 
