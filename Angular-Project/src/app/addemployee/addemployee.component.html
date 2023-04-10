@@ -20,9 +20,19 @@
       <!-- <span style="color:red" *ngIf="!this.addEmployeeForm.get('mailID')?.value"  >MailId is required.</span> -->
       <br>
   
-      <label for="email"><b> Employee ID:</b></label>
+      <label for="employeeId"><b> Employee ID:</b></label>
       <input required type="text" placeholder="Enter your Employee Id" name="email" required formControlName="employeeId">
       <!-- <span style="color:red" *ngIf="!this.addEmployeeForm.get('employeeId')?.value"  >EmployeeId is required.</span> -->
+      <br>
+
+      <label for="email"><b> Team ID:</b></label>
+      <select required type="text" placeholder="Enter your Team Id" name="teamID" required formControlName="teamId">
+        <option value="DummyTeam1">TeamA</option>
+        <option value="DummyTeam2">TeamB</option>
+        <option value="DummyTeam2">TeamC</option>
+        </select>
+
+      <span style="color:red" *ngIf="this.addEmployeeForm.get('teamId')?.value ==null"  >Team Id is required.</span>
       <br>
   
       <label for="newpsw"><b>New Password:</b></label>

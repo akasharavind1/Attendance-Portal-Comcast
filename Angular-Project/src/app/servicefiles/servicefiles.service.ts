@@ -79,4 +79,8 @@ export class ServicefilesService {
       return this.http.put(`${this.url}/updatePassword/`+id,body);
     }
 
+    addTeam(body:any){
+      return this.http.post(`${this.url}/addTeam`,body);
+    }
+
     }

@@ -3,6 +3,13 @@
 <button type="submit" style="float: right;" (click)="openDialog1()" mat-raised-button color="warn" ><i  class="fa fa-sign-out" >Logout</i></button><br>
 <h1>Employee Details:</h1>
 <br>
+<form [formGroup]="addTeamForm">
+    <label for="teamId"><b>Team Id:</b></label>
+    <input type="text" formControlName="teamId" placeholder="Team Id" >
+    <label for="teamName"><b>Team Name:</b></label>
+    <input type="text" formControlName="teamName"  placeholder="Team Name" >
+<button (click)="addTeam()" mat-raised-button color="primary" >Add New Team</button>
+</form>
 <br>
 <div class="container">
     <div class="search"> Filter By: 

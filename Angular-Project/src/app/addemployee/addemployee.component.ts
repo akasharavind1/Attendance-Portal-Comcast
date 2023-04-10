@@ -25,6 +25,7 @@ export class AddemployeeComponent {
       lastName:[''],
       mailID:['',[Validators.required,Validators.email]],
       employeeId:['',[Validators.required]],
+      teamId:['',[Validators.required]],
       password:['', [Validators.required,Validators.minLength(3)]],
       confirmPassword:['',[Validators.required]],
       roles: ['user']
@@ -57,6 +58,7 @@ export class AddemployeeComponent {
             lastName: this.addEmployeeForm.get('lastName')?.value,
             mailID: this.addEmployeeForm.get('mailID')?.value,
             employeeId: this.addEmployeeForm.get('employeeId')?.value,
+            teamId: this.addEmployeeForm.get('teamId')?.value,
             password: this.addEmployeeForm.get('password')?.value,
             confirmpassword: this.addEmployeeForm.get('confirmpassword')?.value,
             roles:this.addEmployeeForm.get('roles')?.value

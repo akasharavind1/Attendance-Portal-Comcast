@@ -6,6 +6,8 @@ import {MatDialog} from '@angular/material/dialog';
 // import { DialogComponent } from '../dialog/dialog.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormBuilder, FormGroup, Validators , FormControl} from '@angular/forms';
+
 
 @Component({
   selector: 'app-admin',
@@ -28,7 +30,7 @@ id: any;
     employeeList:any;
     details:any;
     searchtext:any;
-  constructor(private matSnackBar: MatSnackBar,private spinner: NgxSpinnerService,public dialog: MatDialog,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router){
+  constructor(private matSnackBar: MatSnackBar,private spinner: NgxSpinnerService,public dialog: MatDialog,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router,private form:FormBuilder){
     this.employeeList=[];
     // this.details=[];
     this.spinnerName="sp1";
@@ -46,6 +48,12 @@ id: any;
     // this.details();
     this.fromDialog= "I am the dialog";
   }
+
+  addTeamForm=this.form.group({
+    teamId: ['',[Validators.required]],
+    teamName: ['',[Validators.required]],
+  })
+
   
   getEmployeeList(){
 
@@ -139,6 +147,20 @@ logout(){
 
   const dialogue= this.dialog.open(this.dialogRef);
   
+}
+
+addTeam(){
+
+  let requestBody={
+    teamId: this.addTeamForm.get('teamId')?.value,
+    teamName: this.addTeamForm.get('teamName')?.value
+  }
+
+  this.serviceData.addTeam(requestBody).subscribe((result: any)=>{
+
+
+  })
+
 }
 
 
