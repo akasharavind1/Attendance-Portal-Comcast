@@ -85,7 +85,6 @@ export class EmployeeComponent {
    this.getEmployee();
    this.setMonthDates();
    this.sendDates();
-   this.checkSpecificEmpInfo();
    this.getDaysInMonth(this.month, this.year);``
   //  this.demo2();
   
@@ -129,7 +128,6 @@ select(event: any, calendar: any) {
 }
 passTheDates(){
   console.log(this.daysToBeRemoved);
-
   console.log(this.daysSelected);
   console.log(this.alreadySelected); 
 
@@ -158,20 +156,7 @@ passTheDates(){
 checkByEmployee:any;
 employeeFirstName: any;
 
-checkSpecificEmpInfo(){
-  // this.employeeList=this.route.snapshot.data['data'];
-  this.serviceData.checkSpecificEmp(this.id).subscribe((result: any)=>{
-      this.checkByEmployee = result;
-      console.log(this.checkByEmployee);
-  })
-}
-
   getEmployeeList(){
-    // this.serviceData.getEmployeeList().subscribe((result: any)=>{
-    //   this.employeeList= result;
-    //   console.log(this.employeeList);
-    //   console.log(this.id);
-    // })
     this.employeeList=this.route.snapshot.data['data'];
     this.serviceData.getEmployeeList().subscribe((result: any)=>{
       this.employeeList= result;
@@ -184,14 +169,17 @@ employee2:any;
 daysSelectedCount:any;
 empdate:any;
 alreadySelected:any;
-
+tn:any;
   getEmployee(){
     this.serviceData.getEmployee(this.id).subscribe((resp: any)=>{
       this.employee= resp; 
-      this.fn=resp.firstName; 
-      // console.log(this.temp);
+      this.fn=resp.firstName;
       this.empId=resp.employeeId;
-
+      this.tn= resp.teamName;
+        this.serviceData.checkSpecificEmp(this.id,this.tn).subscribe((result: any)=>{
+            this.checkByEmployee = result;
+            console.log(this.checkByEmployee);
+        })
       this.serviceData.getDates(this.empId).subscribe((result: any)=>{
         
         this.employee2=result;
@@ -397,8 +385,13 @@ getDaysInMonth(month: number, year: number) {
     this.dateOfCurrentMonth.setDate(this.dateOfCurrentMonth.getDate() +1);
   }
   console.log("The dates of current month are:" +this.daysOfMonth);
-
-  this.serviceData.matchingDates(this.daysOfMonth).subscribe((result: any)=>{
+  this.serviceData.getEmployee(this.id).subscribe((resp: any)=>{
+    this.employee= resp; 
+    this.fn=resp.firstName;
+    this.empId=resp.employeeId;
+    this.tn= resp.teamName;
+    console.log(this.tn);
+  this.serviceData.matchingDates(this.daysOfMonth,this.tn).subscribe((result: any)=>{
     this.matchedDates = result;
     console.log("Heyyyyy"+ this.matchedDates)
     console.log(this.month)
@@ -413,6 +406,7 @@ getDaysInMonth(month: number, year: number) {
   
 }
   )
+})
   console.log( "iahsicwsivg"+ this.employeeName)
 
 }
