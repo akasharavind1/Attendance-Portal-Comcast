@@ -16,15 +16,14 @@ import { TestCalComponent } from './test-cal/test-cal.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 // import { DialogComponent } from './dialog/dialog.component';
 const routes: Routes = [
-  {
-    path:'admin', component:AdminComponent,canActivate:[ServicefilesGuard]
-  },
+
   // {
   //   path:'DialogComponent', component:DialogComponent
   // },
   { 
     path:'', component: HomeComponent
   },
+ 
   {
     path:'addemployee',component: AddemployeeComponent
   },
@@ -38,6 +37,9 @@ const routes: Routes = [
  
   {
     path:'update/:id',component: UpdateComponent,canActivate:[ServicefilesGuard]
+  },
+  {
+    path:'admin/:id', component:AdminComponent,canActivate:[ServicefilesGuard]
   },
   {
     path:'detailemployee/:id',component: DetailemployeeComponent

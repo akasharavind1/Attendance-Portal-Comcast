@@ -30,7 +30,7 @@ id: any;
     employeeList:any;
     details:any;
     searchtext:any;
-  constructor(private matSnackBar: MatSnackBar,private spinner: NgxSpinnerService,public dialog: MatDialog,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router,private form:FormBuilder){
+  constructor(private matSnackBar: MatSnackBar,private spinner: NgxSpinnerService,public dialog: MatDialog,private serviceData:ServicefilesService, private httpClient:HttpClient, private router: Router,private route: ActivatedRoute,private form:FormBuilder){
     this.employeeList=[];
     // this.details=[];
     this.spinnerName="sp1";
@@ -42,11 +42,14 @@ id: any;
   }
 
   ngOnInit(): void{
-    this.getEmployeeList();
+    this.id=  this.route.snapshot.params['id'];
+    // this.getEmployeeList();
+    this.getEmployee();
     
     // this.getEmployee();
     // this.details();
     this.fromDialog= "I am the dialog";
+ 
   }
 
   addTeamForm=this.form.group({
@@ -54,18 +57,37 @@ id: any;
     teamName: ['',[Validators.required]],
   })
 
-  
-  getEmployeeList(){
+  employee:any;
+  fn:any;
+  empId:any;
+  teamId:any;
+  flag=false;
+  getEmployee(){
+    this.serviceData.getEmployee(this.id).subscribe((resp: any)=>{
+      this.employee= resp; 
+      this.fn=resp.firstName; 
+      this.teamId=this.employee.teamId;
+      console.log(this.teamId);
+      this.empId=resp.employeeId;
+      this.spinner.show(this.spinnerName);
 
-    this.spinner.show(this.spinnerName);
-    this.serviceData.getEmployeeList().subscribe((result: any)=>{
-      this.employeeList= result;
-      this.id=result.id;
-      console.log(this.id);
-      console.log(this.employeeList);
-    })
-    this.spinner.hide(this.spinnerName);
-}  
+
+      this.serviceData.getEmployeeListByTeam(this.teamId).subscribe((result: any)=>{
+        this.employeeList= result;
+        this.id=result.id;
+        console.log(this.id);
+        console.log(this.employeeList);
+      })
+      this.spinner.hide(this.spinnerName);
+    }
+    )}
+
+  
+//   getEmployeeList(){
+
+   
+// } 
+    
 // employee: any;
 // empId: any;
 // countt: any;
@@ -96,7 +118,7 @@ delete(employees: any){
 
   this.serviceData.deleteEmployee(employees.deleteEmployee.id).subscribe((Response) => {
       console.log(Response);
-      this.getEmployeeList();
+      this.getEmployee();
     } )
     this.matSnackBar.open("DELETED SUCCESSFULLY ...!✔👍", "Okay!", {
       duration: 2500,

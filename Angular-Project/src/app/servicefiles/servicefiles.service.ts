@@ -29,6 +29,10 @@ export class ServicefilesService {
     getEmployeeList(){
       return this.http.get(`${this.url}/getLogin`)
     }
+
+    getEmployeeListByTeam(teamId:any){
+      return this.http.get(`${this.url}/getLoginByTeam/`+ teamId)
+    }
     getEmployee(id: any){
       return this.http.get(`${this.url}/employeeInfo/`+id)
     }

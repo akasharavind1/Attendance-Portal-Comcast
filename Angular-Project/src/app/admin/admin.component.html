@@ -28,6 +28,7 @@
     <!-- <th>No. of Selected</th> -->
     <!-- <th>Flag</th>  -->
     <th>Roles:</th>
+    <th>TeamID</th>
 </tr>
 
 <br>
@@ -46,6 +47,7 @@
     <!-- <td>{{countt}}</td>&nbsp; -->
     <!-- <td></td>  -->
     <td>{{employee.roles | uppercase}}</td>
+    <td>{{employee.teamId | uppercase}}</td>
     
     <a [title]="'Click here to update'" routerLink="/update/{{employee.id}}" mat-raised-button color="primary"><i class="fa fa-edit">EDIT</i></a>
     <td [title]="'Click here to delete '"><button mat-button class="delete button"(click)="openDialog(employee)"mat-raised-button color="primary"><i class="fa fa-trash" >&nbsp;</i>DELETE</button> 
