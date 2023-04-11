@@ -69,16 +69,12 @@ export class ServicefilesService {
     deleteEmployee(id:number){
       return this.http.delete(`${this.url}/delete?id=`+id);
     }
-    checkSpecificEmp(id:number){
-      return this.http.get(`${this.url}/employeeInfoForUser/`+id);
+    checkSpecificEmp(id:number,teamName:any){
+      return this.http.get(`${this.url}/employeeInfoForUser?id=${id}&teamName=${teamName}`);
     }
-    // postDate(dates: any){
-    //   return this.http.post("http://localhost:8080/api/v1/postDate?dates=",dates);
-    // }
-    matchingDates(days:any){
-      return this.http.post(`${this.url}/matchDates`,days);
+    matchingDates(days:any,teamName:any){
+      return this.http.post(`${this.url}/matchDates?teamName=`+teamName,days);
     }
-
     updatePassword(id: string, body: any){
       return this.http.put(`${this.url}/updatePassword/`+id,body);
     }

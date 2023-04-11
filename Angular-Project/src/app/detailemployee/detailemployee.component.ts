@@ -133,11 +133,11 @@ getDaysInMonth(month: number, year: number) {
   }
   console.log("The dates of current month are:" +this.daysOfMonth);
 
-  this.serviceData.matchingDates(this.daysOfMonth).subscribe((result: any)=>{
-    this.matchedDates = result;
+  // this.serviceData.matchingDates(this.daysOfMonth,this.tn).subscribe((result: any)=>{
+  //   this.matchedDates = result;
   
   
-})
+// })
 
 
 
@@ -149,11 +149,12 @@ monthName = this.monthNames[this.d.getMonth()];
 
 dummy1:any;
 daysSelectedCount:any;
+tn:any;
 getEmployee(){
   this.serviceData.getEmployee(this.id).subscribe((result: any)=>{
     this.employee= result;
     this.empId=result.employeeId;
-    
+    this.tn=result.teamName;
     this.serviceData.getDates(this.empId).subscribe((result: any)=>{
     this.employee2=result;
     this.daysSelectedCount= result.length;
